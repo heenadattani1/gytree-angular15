@@ -23,7 +23,7 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
         component: DashboardComponent,
       },
     ]),
-    PdfViewerModule,
+    //PdfViewerModule,
     ImageLazyLoadModule,
     SharedModule
   ],
