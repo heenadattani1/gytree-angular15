@@ -15,7 +15,7 @@ export class AreaCodeComponent implements OnInit, OnDestroy {
   labTest: any;
   enableContinue = false;
   isCheckClicked = false;
-  pincodeFilterData: string;
+  pincodeFilterData;
   subscriptions: Subscription[] = [];
   pinCodeLength = 6;
   areaPincodeForm = new FormGroup({

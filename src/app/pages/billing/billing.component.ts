@@ -34,7 +34,7 @@ export class BillingComponent implements OnInit {
   userDetails: any;
   transactionDetails: any;
   dsaBookingEmail: string;
-  billingDetailForm = new FormGroup({});
+  billingDetailForm ;
   billingData: any;
   discountAmount = 0;
   subscriptions: Subscription[] = [];
@@ -106,7 +106,7 @@ export class BillingComponent implements OnInit {
       this.patchFormValues();
       this.getSlotList(payload);
     }
-    this.billingDetailForm.get('selectDate')?.valueChanges.subscribe((date) => {
+    this.billingDetailForm.get('selectDate')?.valueChanges.subscribe((date:any) => {
       const payload = {
         Pincode: this.billingData.pincodeFilterData.pincode,
         Date: date.year + '-' + (Number(date.month) < 10 ? "0" + date.month : date.month) + '-' + (Number(date.day) < 10 ? "0" + date.day : date.day)
@@ -151,7 +151,7 @@ export class BillingComponent implements OnInit {
    * Method to get Slot List
    */
   getSlotList(payload: any) {
-    this.thyrocareService.getSlotAvailability(payload).subscribe(res => {
+    this.thyrocareService.getSlotAvailability(payload).subscribe((res:any) => {
       if (res.success) {
         if (res.data.response === 'Success') {
           this.noSlotAvailabilityMessage = '';

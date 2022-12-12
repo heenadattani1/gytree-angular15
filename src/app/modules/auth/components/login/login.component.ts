@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       return;
     const formVal = this.phoneForm.getRawValue();
     const payload = {
-      user_mobile_number: formVal.phone.number.replaceAll(' ', '')
+      user_mobile_number: formVal.phone.replaceAll(' ', '')
     }
     this.subscriptions.push(this.authenticationService.generateOtp(payload).subscribe(data => {
       if (data?.success) {
@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   otpNextClickHandler() {
     const formVal = this.phoneForm.getRawValue();
     const payload = {
-      user_mobile_number: formVal.phone.number.replace(' ', ''),
+      user_mobile_number: formVal.phone.replace(' ', ''),
       user_otp: formVal.otp
     }
     this.subscriptions.push(this.authenticationService.validateUser(payload).subscribe((data: any) => {
