@@ -1,0 +1,57 @@
+.title {
+  background-image: url('https://image.gytree.com/assets/media/gaytree/background/button_bg.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 127px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 33px;
+  font-weight: bolder;
+  font-size: 24px;
+}
+
+.number {
+  position: relative;
+  margin-right: 1rem;
+  &-cover {
+    background-image: url('https://image.gytree.com/assets/media/gaytree/background/number-1-white-bordered.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 54px;
+  }
+
+  &-count {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #F36B71;
+    font-weight: 600;
+  }
+}
+
+.rotate-60 {
+  transform: rotate(60deg);
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.rotate-210 {
+  transform: rotate(210deg);
+}

@@ -1,0 +1,30 @@
+<ng-container *ngIf="(form.controls[field].dirty || form.controls[field].touched)">
+    <div *ngIf="form.controls[field].hasError('required')">
+        <div class="fv-plugins-message-container text-danger">
+            <span role="alert">
+                {{ label + ' is required'}}
+            </span>
+        </div>
+    </div>
+    <div *ngIf="form.controls[field].hasError('pattern')">
+        <div class="fv-plugins-message-container text-danger">
+            <span role="alert">
+                {{ label + ' is invalid'}}
+            </span>
+        </div>
+    </div>
+    <div *ngIf="form.controls[field].hasError('minlength')">
+        <div class="fv-plugins-message-container text-danger">
+            <span role="alert">
+                {{ label + ' should have atleast ' + length + ' characters'}}
+            </span>
+        </div>
+    </div>
+    <div *ngIf="form.controls[field].hasError('maxlength')">
+        <div class="fv-plugins-message-container text-danger">
+            <span role="alert">
+                {{ label + ' should have atmost ' + length + ' characters'}}
+            </span>
+        </div>
+    </div>
+</ng-container>

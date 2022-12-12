@@ -1,0 +1,91 @@
+<ng-container *ngIf="!phoneForm.get('isOtpScreen')?.value">
+  <!--begin::Form-->
+  <form class="form w-100" [formGroup]="phoneForm" novalidate="novalidate" id="kt_login_signin_form">
+    <!--begin::Heading-->
+    <div class=" mb-10 mt-20">
+      <h1 class="text-dark mb-3">Enter your <br>Mobile Number.</h1>
+    </div>
+    <!--end::Heading-->
+
+    <div class="fv-row mt-20 mb-20">
+      <!--begin::Mobile Number Input-->
+      <ngx-intl-tel-input [enableAutoCountrySelect]="true" (isKeyUpEnter)="sendOtpClickHandler()"
+        [enablePlaceholder]="true" [searchCountryFlag]="true"
+        [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]" [selectFirstCountry]="false"
+        [selectedCountryISO]="CountryISO.India" [maxLength]="10" [phoneValidation]="true" [separateDialCode]="true"
+        name="phone" formControlName="phone">
+      </ngx-intl-tel-input>
+
+      <div class="mt-4">
+        <strong>You will receive an OTP via SMS to verify your mobile number.</strong>
+      </div>
+      <!--end::Mobile Number Input-->
+
+      <!--begin::captcha verification-->
+      <div class="mt-10" id="recaptcha-container"></div>
+      <!--end::captcha verification-->
+    </div>
+
+    <!--begin::Action-->
+    <div class="text-center">
+      <button type="submit" id="kt_sign_in_submit" class="btn btn-lg next-btn w-100 mb-20"
+        [disabled]="phoneForm.invalid" (click)="sendOtpClickHandler()">
+        <ng-container *ngIf="isLoading">
+          <span class="indicator-progress text-white" [style.display]="'block'">
+            Please wait...
+            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+          </span>
+        </ng-container>
+        <ng-container *ngIf="!isLoading">
+          <span class="indicator-label text-white">Next</span>
+          <span [inlineSVG]="'https://image.gytree.com/assets/media/icons/duotune/arrows/arr023.svg'" class="svg-icon svg-icon-4"></span>
+        </ng-container>
+      </button>
+    </div>
+    <!--end::Action-->
+  </form>
+  <!--end::Form-->
+</ng-container>
+
+<ng-container *ngIf="phoneForm.get('isOtpScreen')?.value">
+  <!--begin::Heading-->
+  <div class=" mb-10 mt-20">
+    <h1 class="text-dark mb-3">Verify Mobile <br>Number.</h1>
+    <div class="mt-6"><strong>Please enter the 6 digit OTP sent on your number as SMS</strong></div>
+    <div *ngIf="phoneForm.get('invalidOTP')?.value" class="mt-6 fs-bolder text-danger">Invalid OTP, Please enter the
+      correct OTP.</div>
+  </div>
+  <!--end::Heading-->
+
+  <!--begin::OTP Input-->
+  <div class="fv-row mt-20 mb-20">
+    <div class="d-flex">
+      <ng-otp-input (isKeyUpEnter)="otpNextClickHandler()" (onInputChange)="phoneForm.get('otp')?.setValue($event)"
+        [config]="config">
+      </ng-otp-input>
+    </div>
+    <div class="mt-8 text-color">
+      <strong>Did not receive OTP?</strong>
+      <strong class="cursor-pointer ms-4 link-danger" (click)="sendOtpClickHandler()">Resend OTP</strong>
+    </div>
+  </div>
+  <!--end::OTP Input-->
+
+  <!--begin::Action-->
+  <div class="text-center">
+    <button type="submit" id="kt_sign_in_submit" class="btn btn-lg next-btn w-100 mb-20"
+      [disabled]="((phoneForm.get('otp')?.value)?.length != 6)" (click)="otpNextClickHandler()">
+      <ng-container *ngIf="isLoading ">
+        <span class="indicator-progress text-white" [style.display]="'block'">
+          Please wait
+          <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+        </span>
+      </ng-container>
+      <ng-container *ngIf="!isLoading">
+        <span class="indicator-label text-white">Next</span>
+        <span [inlineSVG]="'https://image.gytree.com/assets/media/icons/duotune/arrows/arr023.svg'" class="svg-icon svg-icon-4"></span>
+      </ng-container>
+    </button>
+  </div>
+  <!--end::Action-->
+</ng-container>

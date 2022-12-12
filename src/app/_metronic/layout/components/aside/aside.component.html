@@ -1,0 +1,87 @@
+<!--begin::Brand-->
+<div class="aside-logo flex-column-auto px-9 justify-content-center" id="kt_aside_logo">
+  <!--begin::Logo-->
+  <a routerLink="/">
+    <img alt="Logo" img-preloader="https://image.gytree.com/assets/media/gaytree/logo/logo1.webp" class="h-60px logo">
+  </a>
+  <!--end::Logo-->
+</div>
+<!--end::Brand-->
+
+<!--begin::Aside user-->
+<div class="aside-user mt-5 mt-lg-10" id="kt_aside_user" [class.aside-user]="isPortrait">
+  <!--begin::User-->
+  <div class="d-flex align-items-center flex-column">
+    <!--begin::Symbol-->
+    <div class="symbol symbol-75px mb-4">
+      <!--begin::Image input-->
+      <div class="image-input image-input-circle" data-kt-image-input="true"
+        style="background-image: url(https://image.gytree.com/assets/media/svg/avatars/blank.svg)">
+        <!--begin::Image preview wrapper-->
+        <!-- <div class="image-input-wrapper w-125px h-125px"
+          style="background-image: url(https://image.gytree.com/assets/media/avatars/female-avatar.png)"></div> -->
+        <div class="image-input-wrapper w-125px h-125px" [class.portrait]="isPortrait"
+          [ngStyle]="{'background-image': userDetails?.user_image ? 'url(' + userDetails?.user_image + ')' : 'url(' + 'https://image.gytree.com/assets/media/avatars/female-avatar.png' + ')' }">
+        </div>
+        <!--end::Image preview wrapper-->
+
+        <!--begin::Remove button-->
+        <!-- <span class="btn btn-icon btn-circle w-25px h-25px shadow" data-kt-image-input-action="remove"
+          data-bs-toggle="tooltip" data-bs-dismiss="click" title="Change avatar">
+          <img alt="Logo" img-preloader="https://image.gytree.com/assets/media/gaytree/icons/edit.svg" height="24" width="24
+          ">
+        </span> -->
+        <!--end::Remove button-->
+      </div>
+      <!--end::Image input-->
+    </div>
+    <!--end::Symbol-->
+    <!--begin::Info-->
+    <div class="text-center">
+      <!--begin::Username-->
+      <a class="text-gray-900 text-hover-primary fs-4 fw-boldest" [class.font-change]="isPortrait">{{userDetails.user_name}}</a>
+      <!--end::Username-->
+    </div>
+    <!--end::Info-->
+  </div>
+  <!--end::User-->
+</div>
+<!--end::Aside user-->
+
+
+<!-- begin::Aside menu -->
+<div class="aside-menu flex-column-fluid ps-5 pe-3 mb-9 sidebar-navigation-menu overflow-auto" id="kt_aside_menu">
+  <div #ktAsideScroll id="kt_aside_menu_wrapper" class="w-100 hover-scroll-overlay-y d-flex pe-2" data-kt-scroll="true"
+    data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer"
+    data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="0">
+    <div id="#kt_aside_menu" data-kt-menu="true" class="menu menu-column menu-rounded fw-bold my-auto">
+      <app-aside-menu [isPortrait]="isPortrait" id="asideMenu"></app-aside-menu>
+    </div>
+  </div>
+</div>
+<!-- end::Aside menu -->
+
+<!--begin::Footer-->
+<div class="aside-footer flex-column-auto px-6 px-lg-9" id="kt_aside_footer">
+  <!--begin::User panel-->
+  <div class="d-flex flex-stack ms-7">
+    <!--begin::Link-->
+    <a class="btn btn-sm btn-icon btn-active-color-primary btn-icon-gray-600 btn-text-gray-600" (click)="logout()">
+      <!--begin::Svg Icon | path: icons/duotune/arrows/arr076.svg-->
+      <span class="svg-icon svg-icon-1 me-2">
+        <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M13.4289 6.81897C14.9469 6.81897 16.3168 6.81897 17.6845 6.81897C19.1665 6.81897 19.6344 7.3283 19.645 8.90566C19.6556 10.7276 19.645 12.5473 19.645 14.4186H24.6712L24.8702 14.1448C24.1757 13.4717 23.4792 12.821 22.7869 12.1524C22.2364 11.6229 22.0649 10.9946 22.6281 10.4045C23.1913 9.81439 23.7248 10.0747 24.2054 10.584C25.4757 11.9302 26.746 13.2765 28.0163 14.6228C28.5943 15.2376 28.5986 15.8568 28.0163 16.4761L24.2054 20.5149C23.7269 21.0242 23.1637 21.2553 22.6302 20.6966C22.0565 20.0998 22.2682 19.4805 22.7975 18.9465L24.9676 16.7499H19.6556C19.6556 18.4977 19.6556 20.2434 19.6556 21.989C19.6556 23.8379 19.2025 24.3158 17.4749 24.3203C16.177 24.3203 14.8792 24.3203 13.4374 24.3203C13.4374 24.9665 13.467 25.5162 13.4374 26.0592C13.3781 26.8961 12.8954 27.318 12.148 27.0958C10.0817 26.4788 8.02164 25.8259 5.99338 25.0765C5.65252 24.953 5.27354 24.3001 5.26931 23.8895C5.22273 18.3175 5.22273 12.747 5.26931 7.17797C5.26931 6.76063 5.72662 6.11442 6.10348 5.97307C8.028 5.24833 9.98851 4.62681 11.949 4.02773C12.9145 3.73155 13.3993 4.16908 13.431 5.27301C13.4501 5.73747 13.4289 6.18398 13.4289 6.81897ZM13.5115 8.94605V14.4074H17.64C17.64 12.7358 17.6591 11.1427 17.6146 9.55187C17.5772 9.41391 17.5072 9.28834 17.4113 9.18704C17.3153 9.08574 17.1966 9.01206 17.0662 8.97297C15.923 8.91688 14.7691 8.94605 13.52 8.94605H13.5115ZM13.5115 16.7342V22.0698H17.5828V16.7342H13.5115Z"
+            fill="#F25769" />
+        </svg>
+      </span>
+      <!--end::Svg Icon-->
+      <!--begin::Major-->
+      <span class="d-flex flex-shrink-0 link">Log Out</span>
+      <!--end::Major-->
+    </a>
+    <!--end::Link-->
+  </div>
+  <!--end::User panel-->
+</div>
+<!--end::Footer-->

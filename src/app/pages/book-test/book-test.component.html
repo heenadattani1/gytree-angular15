@@ -1,0 +1,48 @@
+<ng-container *ngFor="let book of bookAnExpertList; let index = index">
+    <section class="mb-10">
+        <div class="card card-flush shadow-sm book-card">
+            <div class="card-header collapsible rotate">
+                <h3 class="card-title"> {{book?.name}}</h3>
+                <div class="card-toolbar">
+                    <button [id]="book?.gtl_id" [attr.data-uniqueId]="book?.gtl_id" type="button" class="btn btn-sm btn-danger" (click)="bookDoctor(book)">
+                        BOOK NOW
+                    </button>
+                </div>
+            </div>
+            <div class="card-body pt-0">
+                <p>{{book?.description}}</p>
+
+                <div class="d-flex align-items-end justify-content-between">
+                    <span class="fw-bolder fs-4 currency-font">{{book?.rate?.offerRate | currency:
+                        'INR'}} <span style="
+                        font-size: 12px;
+                    ">(includes {{book?.childs?.length}} {{book?.childs?.length > 1 ? 'tests' : 'test'}})</span></span>
+                    <button type="button" (click)="onClickPackageDetail(book)"
+                        class="btn btn-sm btn-link text-dark collapsible toggle" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#book' + index" aria-expanded="false"> Click
+                        for package details <img class="download-image-rotation" [class.transform180]="book?.isOpen"
+                            img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down.svg" alt="arrow" height="14"
+                            width="14">
+                    </button>
+                </div>
+                <!-- <div class="fw-bold my-2">This package includes {{book?.childs?.length}} tests.</div> -->
+            </div>
+            <div class="collapse" [id]="'book' + index">
+                <div class="card-body pt-0">
+                    <div class="separator border-3 border-gray-300 mb-5"></div>
+                    <div class="lh-lg">
+                        <ul *ngFor="let testdesc of book.childs">
+                            <li> {{testdesc?.name}} </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-container>
+
+<!-- No data Found Start -->
+<ng-container *ngIf="bookAnExpertList && !bookAnExpertList.length">
+    <div class="text-center text-danger h1">No records found</div>
+</ng-container>
+<!-- No data Found End-->

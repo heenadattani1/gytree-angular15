@@ -1,0 +1,41 @@
+@import "../../../../../assets/sass/gytree-config.scss";
+
+.aside-footer {
+  .svg-icon {
+    color: $g-red-light  !important;
+  }
+
+  .link {
+    color: $g-red-light;
+    font-weight: 700;
+  }
+}
+
+.portrait{
+  height: 60px !important;
+  width: 60px !important;
+}
+
+.aside-user{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.font-change{
+  font-size: 1rem !important;
+  
+}
+
+.aside-user {
+  padding-bottom: 2rem;
+  margin: 0 0.75rem 0 1.25rem;
+  border-bottom: 1px solid $g-red-light;
+}
+
+.sidebar-navigation-menu {
+  flex: 1 1 auto;
+
+  @media only screen and (max-width: 768px) and (orientation: landscape) {
+    flex: 1 0 auto;
+  }
+}

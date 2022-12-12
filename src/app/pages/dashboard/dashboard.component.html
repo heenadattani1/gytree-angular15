@@ -1,0 +1,125 @@
+<!-- Consultation Start -->
+<app-show-consultation></app-show-consultation>
+<!-- Consultation End -->
+
+<!-- Notifiation start -->
+
+<section class="notification my-10">
+    <div class="fw-bolder mb-3 fs-2"
+        *ngIf="dasboardnotificationDetail?.reminder?.length || dasboardnotificationDetail?.appointment?.length || dasboardnotificationDetail?.prescription?.length">
+        Notifications</div>
+
+    <ng-container *ngIf="dasboardnotificationDetail?.reminder?.length && dasboardnotificationDetail?.appointment?.length">
+        <owl-carousel-o [options]="notificationOption" class="responsive-arrows">
+            <ng-container *ngFor="let reminder of dasboardnotificationDetail?.reminder;let index =index">
+                <ng-template carouselSlide [id]="index.toString()">
+                    <div class="responsive-appointment-slides alert flex-sm-row p-5 my-0 mb-6">
+                        <div class="d-flex text-light">
+                            <h3 class="mb-2 text-light light">Reminders</h3>
+                            <button type="button" (click)="updateDashboardList(reminder)"
+                                class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto">
+                                <img style="width: auto;" src="https://image.gytree.com/assets/media/gaytree/icons/times.svg" alt="close"
+                                    height="30" width="30">
+                            </button>
+                        </div>
+                        <div class="text-light">
+                            <h4 class="mb-2 text-light light">Hello {{userDetails.user_name}}</h4>
+                            <span> {{reminder?.gtnf_name}} </span>
+                            <span> {{reminder?.gtnf_appdate}} </span>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+    </ng-container>
+
+    <owl-carousel-o [options]="notificationOption" class="responsive-arrows">
+        <ng-container *ngFor="let appointment of dasboardnotificationDetail?.appointment;let index =index">
+            <ng-template carouselSlide [id]="index.toString()">
+                <div class="responsive-appointment-slides alert d-flex flex-column flex-sm-row p-5 my-0 mb-6">
+                    <img class="ms-5" style="width: 34px" src="https://image.gytree.com/assets/media/gaytree/icons/book-appoinment.svg"
+                        alt="appointment" height="34" width="34">
+                    <div class="d-flex flex-column text-light pe-0 pe-sm-10 ms-5">
+                        <h4 class="mb-2 text-light light">{{appointment?.gtnf_name}}</h4>
+                        <span>
+                            Appointment Date
+                        </span>
+                        <span>
+                            {{appointment?.gtnf_appdate}} | {{appointment?.gtnf_dscr?.gtnf_time}}
+                        </span>
+                    </div>
+                    <button type="button" (click)="notificationClickHandler(appointment)"
+                        class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto">
+                        <img style="width: auto;" src="https://image.gytree.com/assets/media/gaytree/icons/arrow-right.svg" alt="arrow-right"
+                            height="18">
+                    </button>
+                </div>
+            </ng-template>
+        </ng-container>
+    </owl-carousel-o>
+
+    <owl-carousel-o [options]="notificationOption" class="responsive-arrows">
+        <ng-container *ngFor="let prescription of dasboardnotificationDetail?.prescription;let index =index">
+            <ng-template carouselSlide [id]="index.toString()">
+                <div class="responsive-appointment-slides alert d-flex flex-column flex-sm-row p-5 mb-6">
+                    <img class="ms-5" style="width: 34px" src="https://image.gytree.com/assets/media/gaytree/icons/pill.png" alt="appointment"
+                        height="34" width="34">
+                    <div class="d-flex flex-column text-light pe-0 pe-sm-10 ms-5">
+                        <h4 class="mb-2 text-light light">{{prescription?.gtnf_name}}</h4>
+                        <span>
+                            {{prescription?.gtnf_appdate}}
+                        </span>
+                    </div>
+                    <button type="button" (click)="notificationClickHandler(prescription)"
+                        class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto">
+                        <img style="width: auto;" src="https://image.gytree.com/assets/media/gaytree/icons/arrow-right.svg" alt="arrow-right"
+                            height="18">
+                    </button>
+                </div>
+            </ng-template>
+        </ng-container>
+    </owl-carousel-o>
+
+</section>
+<!-- Notifiation end -->
+
+<!-- Packages Start -->
+<section *ngIf="dashboardPackages?.packageData && dashboardPackages?.packageData?.length" class="other-packages my-10">
+    <div class="fw-bolder mb-3 fs-2">{{isDashboardPackageWiseOrders ? 'Purchased Packages' : 'Other Packages'}}
+    </div>
+    <div class="mb-3 fs-4">
+        Our packages are backed by research and curated by trusted doctors.
+    </div>
+    <div *ngIf="!isDashboardPackageWiseOrders" class="fw-bolder mb-3 fs-3 text-danger text-end">
+        <span class="cursor-pointer" (click)="viewAllPackages()">View All</span>
+    </div>
+    <app-show-packages [packageData]="dashboardPackages" [purchasedPackages]="isDashboardPackageWiseOrders ? true : false">
+    </app-show-packages>
+</section>
+<!-- Packages End -->
+
+<!-- Unloack feature start -->
+<section *ngIf="unlockeDashboarddFeatures?.length" class="unloack-feature my-10">
+    <div class="fw-bolder mb-3 fs-2">Unlock Free Features</div>
+    <div class="row">
+        <ng-container *ngFor="let feature of unlockeDashboarddFeatures">
+            <div class="col-md-4 col-6 mb-6">
+                <div class="card h-100">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <img class="features-background rounded p-2"
+                                img-preloader="{{IMAGE_TYPE_CONFIG[feature.type]}}" alt="image" height="40" width="40">
+                            <h3 class="my-4 max-line-3">{{feature.title}}</h3>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="openClickHandler(feature)">Open</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+</section>
+<!-- Unloack feature end -->

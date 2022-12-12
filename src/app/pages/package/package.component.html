@@ -1,0 +1,242 @@
+<!-- Consultation Start -->
+<app-show-consultation></app-show-consultation>
+<!-- Consultation End -->
+
+<!-- Pills Start -->
+<section class="my-10">
+    <div *ngIf="packageScreenPackageWiseOrderData?.length" class="fw-bolder mb-3 fs-2">Your Packages</div>
+    <owl-carousel-o [options]="consultations.consultationList" class="responsive-arrows">
+        <ng-container *ngFor="let package of packageScreenPackageWiseOrderData; let index = index;">
+            <ng-template carouselSlide [id]="package.gtp_guid">
+                <div class="card responsive-appointment-slides bg-danger text-white">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between gap-5">
+                            <div class="col-6 col-md-6 col-lg-6"
+                                [ngClass]="mobileScreen ? 'col-12 col-md-12 col-lg-12' : ''">
+                                <div class="fw-bolder mb-3 fs-2 h-60px">
+                                    {{package?.gtp_name}}
+                                </div>
+                                <div>
+                                    <span class="fw-bolder mb-2 fs-5 fs-sm-4 line-djfhd"
+                                        [ngClass]="showDesc ? '' : 'max-line-3'">
+                                        {{package?.gtp_srtdescrn}}
+                                    </span>
+                                    <span *ngIf="showDesc" class="text-end fw-bold" (click)="expandDesc()">Show
+                                        {{showDesc ?
+                                        'Less' : 'More'}}</span>
+                                    <div *ngIf="!showDesc" class="text-end fw-bold me-4" (click)="expandDesc()">Show
+                                        {{showDesc ? 'Less' : 'More'}}
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-dark mt-1 z-index-1"
+                                    (click)="viewMoreClickHandler(package)" [id]="!xxlScreen ?'kt_package_toggle' : ''">
+                                    View More
+                                </button>
+                            </div>
+                            <div class="package-timeline col-md-6 col-lg-6"
+                                [ngClass]="mobileScreen ? 'progress-hide col-0 col-md-0 col-lg-0' : ''">
+                                <div class="package-timeline_item ps-0 done">
+                                    <span>Package purchased</span>
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg" width="22"
+                                        class="done-img" alt="circlesvg">
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/ring.svg" width="22"
+                                        class="pending-img" alt="ringsvg">
+                                </div>
+                                <div class="package-timeline_item d-flex justify-content-end ps-0"
+                                    [ngClass]="package.orders[0].order_appointment_status === 'completed' ? 'done' : 'pending'">
+                                    <span class="d-inline-block static-padding">{{package?.gtp_type}} Appointment</span>
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg" width="22"
+                                        class="done-img" alt="circlesvg">
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/ring.svg" width="22"
+                                        class="pending-img" alt="ringsvg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </ng-container>
+    </owl-carousel-o>
+</section>
+<!-- Pills End -->
+
+<!-- Packages Start -->
+<section *ngIf="packageScreenPackages?.packageData && packageScreenPackages?.packageData?.length" class="other-packages my-10">
+    <div class="fw-bolder mb-3 fs-2">Other Packages</div>
+    <div class="mb-3 fs-4">
+        Our packages are backed by research and curated by trusted doctors.
+    </div>
+    <div class="fw-bolder mb-3 fs-3 text-danger text-end">
+        <span class="cursor-pointer" (click)="viewAllPackages()">View All</span>
+    </div>
+    <app-show-packages [packageData]="packageScreenPackages"></app-show-packages>
+</section>
+<!-- Packages End -->
+
+<ng-container *ngIf="packageScreenPackageWiseOrderData?.length && xxlScreen">
+    <div class="sidebar overflow-auto">
+        <div class="d-flex flex-column sidebar-body pt-10 flex-fill" (window:resize)="screenWidth()"
+            [ngClass]="!xxlScreen ? 'card-background' : ''">
+            <div class="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center card-rounded-bottom h-200px mh-400px"
+                style="background-image:url('https://image.gytree.com/assets/media/gaytree/misc/my-schedule-aside.png')">
+            </div>
+            <div class="pt-5 sidebar-content h-100">
+                <div class="overflow-auto">
+                    <h2 class="text-center fw-bolder text-white my-0 fs-1 px-5 px-xxl-10">
+                        {{packageScreenSelectedPackage?.gtp_name}}
+                    </h2>
+                    <div class="card shadow-none bg-transparent">
+                        <div class="card-body">
+                            <ng-container *ngFor="let order of packageScreenSelectedPackage?.orders; let index = index;">
+                                <div *ngIf="packageScreenSelectedPackage.orders.length > 1" class="text-white h4 my-5">
+                                    Order {{index + 1}}
+                                </div>
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-line w-30px"></div>
+                                        <div class="timeline-icon">
+                                            <div class=" timeline-item_package done">
+                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg"
+                                                    width="30" class="done-img" alt="circlesvg">
+                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/ring.svg" width="30"
+                                                    class="pending-img" alt="ringsvg">
+                                            </div>
+                                        </div>
+                                        <div class="timeline-content mb-10 mt-n2">
+                                            <div class="overflow-auto pe-3">
+                                                <div class="d-inline-block bg-white py-2 px-3 rounded fw-bolder">
+                                                    Package purchased
+                                                </div>
+                                                <div class="fs-5 fw-bold text-white my-2">
+                                                    {{order.c_date}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-line w-30px"></div>
+                                        <div class="timeline-icon">
+                                            <div class=" timeline-item_package"
+                                                [ngClass]="order.order_appointment_status === 'completed' ? 'done' : 'pending'">
+                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg"
+                                                    width="30" class="done-img" alt="circlesvg">
+                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/ring.svg" width="30"
+                                                    class="pending-img" alt="ringsvg">
+                                            </div>
+                                        </div>
+                                        <div class="timeline-content mb-10 mt-n2">
+                                            <div class="overflow-auto pe-3">
+                                                <div class="d-inline-block bg-white py-2 px-3 rounded fw-bolder">
+                                                    {{packageScreenSelectedPackage?.gtp_type}} Appointment
+                                                </div>
+                                                <div class="fs-5 fw-bold text-white my-2">
+                                                    {{order.gto_date + ', ' + order.gto_slot}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="!xxlScreen">
+    <div id="kt_package" data-kt-drawer="true" data-kt-drawer-name="package"
+        data-kt-drawer-activate="{default: true, xxl: false}" data-kt-drawer-overlay="false"
+        data-kt-drawer-width="{default:'300px', 'xl': '400px'}" data-kt-drawer-direction="end"
+        data-kt-drawer-toggle="#kt_package_toggle" data-kt-drawer-close="#kt_package_close">
+        <div class="card" [ngClass]="!xxlScreen ? 'card-background' : ''">
+            <div id="kt_package_body" class="">
+                <div id="kt_package_scroll" data-kt-scroll="true" data-kt-scroll-height="auto"
+                    data-kt-scroll-wrappers="#kt_package_body" data-kt-scroll-dependencies="#kt_package_header"
+                    data-kt-scroll-offset="0px" class="auto_height" [style.min-height]="outerHeight + 'px !important'">
+
+                    <div class="overflow-auto h-100">
+                        <div class="d-flex flex-column sidebar-body flex-fill h-100" (window:resize)="screenWidth()">
+                            <div class="pt-5 sidebar-content h-100" [style.min-height]="outerHeight + 'px'">
+                                <div class="">
+
+                                    <h2 class="text-center fw-bolder text-white my-0 fs-1 px-5 px-xxl-10">
+                                        <div class="text-end">
+                                            <button type="button" id="kt_package_close" class="btn btn-sm btn-icon">
+                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/modal_close.svg"
+                                                    alt="modal_close" height="20" width="20">
+                                            </button>
+                                        </div>
+                                        {{packageScreenSelectedPackage?.gtp_name}}
+                                    </h2>
+                                    <div class="card shadow-none bg-transparent">
+                                        <div class="card-body">
+                                            <ng-container
+                                                *ngFor="let order of packageScreenSelectedPackage?.orders; let index = index;">
+                                                <div *ngIf="packageScreenSelectedPackage.orders.length > 1"
+                                                    class="text-white h4 my-5">
+                                                    Order {{index + 1}}
+                                                </div>
+                                                <div class="timeline">
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-line w-30px"></div>
+                                                        <div class="timeline-icon">
+                                                            <div class=" timeline-item_package done">
+                                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg"
+                                                                    width="30" class="done-img" alt="circlesvg">
+                                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/ring.svg"
+                                                                    width="30" class="pending-img" alt="ringsvg">
+                                                            </div>
+                                                        </div>
+                                                        <div class="timeline-content mb-10 mt-n2">
+                                                            <div class="overflow-auto pe-3">
+                                                                <div
+                                                                    class="d-inline-block bg-white py-2 px-3 rounded fw-bolder">
+                                                                    Package purchased
+                                                                </div>
+                                                                <div class="fs-5 fw-bold text-white my-2">
+                                                                    {{order.c_date}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-line w-30px"></div>
+                                                        <div class="timeline-icon">
+                                                            <div class=" timeline-item_package"
+                                                                [ngClass]="order.order_appointment_status === 'completed' ? 'done' : 'pending'">
+                                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg"
+                                                                    width="30" class="done-img" alt="circlesvg">
+                                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/ring.svg"
+                                                                    width="30" class="pending-img" alt="ringsvg">
+                                                            </div>
+                                                        </div>
+                                                        <div class="timeline-content mb-10 mt-n2">
+                                                            <div class="overflow-auto pe-3">
+                                                                <div
+                                                                    class="d-inline-block bg-white py-2 px-3 rounded fw-bolder">
+                                                                    {{packageScreenSelectedPackage?.gtp_type}} Appointment
+                                                                </div>
+                                                                <div class="fs-5 fw-bold text-white my-2">
+                                                                    {{order.gto_date + ', ' +
+                                                                    order.gto_slot}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,133 @@
+@import "../../../assets/sass/gytree-config.scss";
+
+.test-card {
+    &.card {
+        background-color: transparent;
+        border: 1px solid $g-red-light;
+        box-shadow: 0px 5.41649px 14.2183px -2.70824px rgba(0, 0, 0, 0.25);
+    }
+}
+
+@media (max-width: 443px) {
+    h3 {
+        width: 100px !important;
+    }
+}
+
+:host ::ng-deep {
+
+    .age-list {
+        .card {
+            background-color: $g-red-light;
+            border: 5px solid #fff;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+    }
+
+    .consult-list {
+        .card {
+            border: 3px solid $g-red-light;
+            text-align: center;
+            margin-top: 30px;
+            margin-right: 20px;
+            margin-left: 20px;
+
+            .image-top {
+                position: absolute;
+                right: -31px;
+                top: -31px;
+                width: auto;
+
+                @media (max-width: 991px) {
+                    right: -25px;
+                }
+
+                @media (max-width: 767px) {
+                    right: -21px;
+                }
+            }
+
+            .title {
+                font-size: 18px;
+                font-weight: 600;
+            }
+
+            .download {
+                position: absolute;
+                bottom: 0.5rem;
+                right: 0.5rem;
+                cursor: pointer;
+            }
+        }
+
+        .active {
+            .card {
+                .description {
+                    display: none;
+                }
+            }
+
+            &.center {
+                .card {
+                    .description {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 575px) {
+        .age-list {
+            .card {
+                margin: 0;
+                font-size: 14px;
+
+                &-body {
+                    padding: 1rem;
+                }
+            }
+        }
+
+        .consult-list {
+            .card {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+.text-custom {
+    color: $g-red-light;
+}
+
+.card-shadow {
+    box-shadow: 2.68727px 5.37455px 5.37455px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 992px) {
+    .health-clinic-width {
+        flex: 0 0 auto;
+        width: 33.33%;
+    }
+}
+
+.consult-card-body {
+    padding: 2rem 2.25rem 2rem 2.25rem;
+}
+
+.card-shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.title-height {
+    min-height: 52px;
+}
+
+.consult-desc-max-height {
+    height: 62px !important;
+}

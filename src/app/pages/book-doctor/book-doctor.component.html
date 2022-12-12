@@ -1,0 +1,264 @@
+<!-- <section class="gynec mb-10" *ngFor="let type of doctorType">
+    <div class="d-flex justify-content-between">
+        <div class="fw-bolder mb-3 fs-2">
+            {{type}}
+        </div>
+        <ng-container *ngIf="doctorsList[type].length > 10 && !doctorsList[type]?.viewAll">
+            <div class="fw-bolder mb-3 fs-2 cursor-pointer text-danger" (click)="viewAll(type)">View More </div>
+        </ng-container>
+    </div>
+    <ng-container *ngIf="!doctorsList[type]?.viewAll">
+        <owl-carousel-o [options]="doctorsList[type]?.length > 4 ? listOptions : withOutNavBarOption">
+            <ng-container *ngFor="let doctor of doctorsList[type]; let index = index">
+                <ng-container *ngIf="index < 10">
+                    <ng-template carouselSlide [id]="doctor?.gtd_guid" [width]="230">
+                        <div class="card">
+                            <div class="card-body d-flex flex-center flex-column p-9">
+                                <span class="badge text-white mb-5" [ngStyle]="{'background-color': doctor.gtdp_color}">
+                                    {{doctor?.gtd_type}}</span>
+                                <div class="mb-5">
+                                    <div class="symbol symbol-75px symbol-circle">
+                                        <img class="img-size-fit" alt="image" img-preloader="{{doctor?.gtd_image}}">
+                                    </div>
+                                </div>
+                                <small>Experience {{doctor?.gtd_exper}}</small>
+                                <span
+                                    class="text-truncate w-100 text-center ls-1 fs-3 text-gray-800 text-hover-primary fw-bolder mb-0 cursor-pointer"
+                                    (click)="goToConsult(doctor)">
+                                    {{doctor?.gtd_fullname?.replaceAll('-', ' ')}}</span>
+                                <small class="text-truncate w-100 text-center ls-1">
+                                    {{doctor?.gtd_degree }}</small>
+                                <div class="badge badge-danger mb-5 cursor-pointer py-2 px-6 mt-2 ls-1 fw-bolder"
+                                    (click)="viewDoctorProfile(doctor)">
+                                    View Profile
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </ng-container>
+        </owl-carousel-o>
+        <ng-container *ngIf="doctorsList[type] && !doctorsList[type].length">
+            <div class="text-center text-danger h1">No records found</div>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="doctorsList[type]?.viewAll">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 mb-10" *ngFor="let doctor of doctorsList[type]">
+                <div class="card">
+                    <div class="card-body d-flex flex-center flex-column p-9">
+                        <span class="badge text-white mb-5" [ngStyle]="{'background-color': doctor.gtdp_color}">
+                            {{doctor?.gtd_type}}
+                        </span>
+                        <div class="mb-5">
+                            <div class="symbol symbol-75px symbol-circle">
+                                <img class="img-size-fit" alt="image" img-preloader="doctor?.gtd_image">
+                            </div>
+                        </div>
+                        <small>Experience {{doctor?.gtd_exper}}</small>
+                        <span
+                            class="text-truncate w-100 text-center ls-1 fs-3 text-gray-800 text-hover-primary fw-bolder mb-0"
+                            (click)="goToConsult(doctor)">
+                            {{doctor?.gtd_fullname?.replaceAll('-', ' ')}}</span>
+                        <small class="text-truncate w-100 text-center ls-1">
+                            {{doctor?.gtd_degree}}</small>
+                        <div class="badge badge-danger mb-5 cursor-pointer py-2 px-6 mt-2 ls-1 fw-bolder"
+                            (click)="viewDoctorProfile(doctor)">
+                            View Profile
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 mb-10" *ngIf="doctorsList[type] && !doctorsList[type].length">
+                <div class="text-center text-danger h1">No records found</div>
+            </div>
+        </div>
+    </ng-container>
+</section>
+
+<section *ngIf="doctorType && !doctorType.length">
+    <div class="text-center text-danger h1">No records found</div>
+</section> -->
+
+
+<div class="card-body p-0 d-none d-lg-block d-xl-block d-md-block d-sm-block">
+    <section class="gynec mb-10" *ngFor="let type of doctorType">
+        <div class="d-flex justify-content-between">
+            <div class="fw-bolder mb-3 fs-2">
+                {{type}}
+            </div>
+            <ng-container *ngIf="doctorsList[type].length > 10 && !doctorsList[type]?.viewAll">
+                <div class="fw-bolder mb-3 fs-2 cursor-pointer text-primary" (click)="viewAll(type)">View
+                    More
+                </div>
+            </ng-container>
+        </div>
+        <ng-container *ngIf="!doctorsList[type]?.viewAll">
+            <owl-carousel-o [options]="doctorsList[type]?.length > 4 ? listOptions : withOutNavBarOption">
+                <ng-container *ngFor="let doctor of doctorsList[type]; let index = index">
+                    <ng-container *ngIf="index < 10">
+                        <ng-template carouselSlide [id]="doctor?.gtd_guid" [width]="290">
+                            <div class="card">
+                                <div class="card-body d-flex flex-center flex-column p-9">
+                                    <span class="badge text-white mb-5 white-space-normal"
+                                        [ngStyle]="{'background-color': doctor.gtdp_color}">
+                                        {{doctor?.gtd_type}}
+                                    </span>
+                                    <div class="mb-5">
+                                        <div class="symbol symbol-75px symbol-circle">
+                                            <img class="img-size-fit" alt="image" [src]="doctor?.gtd_image">
+                                        </div>
+                                    </div>
+                                    <small>Experience {{doctor?.gtd_exper}}</small>
+                                    <span
+                                        class="w-100 text-center ls-1 fs-4 text-gray-800 text-hover-primary fw-bolder mb-0 cursor-pointer"
+                                        (click)="viewDoctorProfile(doctor)">
+                                        {{doctor?.gtd_fullname?.replaceAll('-', ' ')}}
+                                    </span>
+                                    <small class="desc-min-height w-100 text-center ls-1">
+                                        {{doctor?.gtd_degree}}</small>
+
+
+                                        <div class="d-flex align-items-center justify-content-between w-100 mt-2 mb-5">
+                                            <div class="me-2">
+                                                <span class="fw-bolder fs-4 currency-font">
+                                                    {{doctor?.gtd_consultation_price | currency: 'INR'}}
+                                                </span>
+                                            </div>
+                                            <div [id]="doctor?.gtd_slug" [attr.data-uniqueId]="doctor?.gtd_slug" class="badge badge-danger cursor-pointer py-2 px-2 fw-bolder ms-2"
+                                                (click)="goToConsult(doctor)">
+                                                BOOK NOW
+                                            </div>
+                                        </div>
+                                    <!-- <div class="badge badge-danger mb-5 cursor-pointer py-2 px-6 mt-2 ls-1 fw-bolder"
+                                        (click)="goToConsult(doctor)">
+                                        BOOK NOW
+                                    </div> -->
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </ng-container>
+            </owl-carousel-o>
+            <!-- No data Found Start -->
+            <ng-container *ngIf="doctorsList[type] && !doctorsList[type].length">
+                <div class="text-center text-danger h1">No records found</div>
+            </ng-container>
+            <!-- No data Found End-->
+        </ng-container>
+        <ng-container *ngIf="doctorsList[type]?.viewAll">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4 mb-10" *ngFor="let doctor of doctorsList[type]">
+                    <div class="card cursor-pointer">
+                        <div class="card-body d-flex flex-center flex-column p-9">
+                            <span class="badge text-white mb-5" [ngStyle]="{'background-color': doctor.gtdp_color}">
+                                {{doctor?.gtd_type}}</span>
+                            <div class="mb-5">
+                                <div class="symbol symbol-75px symbol-circle">
+                                    <img class="img-size-fit" alt="image" [src]="doctor?.gtd_image">
+                                </div>
+                            </div>
+                            <small>Experience {{doctor?.gtd_exper}}</small>
+                            <span
+                                class="w-100 text-center ls-1 fs-4 text-gray-800 text-hover-primary fw-bolder mb-0"
+                                (click)="viewDoctorProfile(doctor)">
+                                {{doctor?.gtd_fullname?.replaceAll('-', ' ')}}
+                            </span>
+                            <small class="desc-min-height w-100 text-center ls-1">
+                                {{doctor?.gtd_degree}}</small>
+
+
+                                <div class="d-flex align-items-center justify-content-between w-100 mt-2 mb-5">
+                                    <div class="me-2">
+                                        <span class="fw-bolder fs-4 currency-font">
+                                            {{doctor?.gtd_consultation_price | currency: 'INR'}}
+                                        </span>
+                                    </div>
+                                    <div [id]="doctor?.gtd_slug" [attr.data-uniqueId]="doctor?.gtd_slug" class="badge badge-danger cursor-pointer py-2 px-2 fw-bolder ms-2"
+                                        (click)="goToConsult(doctor)">
+                                        BOOK NOW
+                                    </div>
+                                </div>
+                            <!-- <div class="badge badge-danger mb-5 cursor-pointer py-2 px-6 mt-2 ls-1 fw-bolder"
+                                (click)="goToConsult(doctor)">
+                                BOOK NOW
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- No data Found Start -->
+                <ng-container *ngIf="doctorsList[type] && !doctorsList[type].length">
+                    <div class="text-center text-danger h1">No records found</div>
+                </ng-container>
+                <!-- No data Found End-->
+            </div>
+        </ng-container>
+    </section>
+    <!-- No data Found Start -->
+    <section class="gynec mb-10" *ngIf="doctorType && !doctorType.length">
+        <div class="text-center text-danger h1">No records found</div>
+    </section>
+    <!-- No data Found End-->
+</div>
+
+
+
+<div class="card-body p-0 d-block d-sm-none">
+    <section class="gynec mb-10" *ngFor="let type of doctorType">
+        <div class="d-flex justify-content-between">
+            <div class="fw-bolder mb-3 fs-2">
+                {{type}}
+            </div>
+        </div>
+
+        <ng-container *ngFor="let doctor of doctorsList[type]; let index = index">
+            <div class="card-body py-4 ps-4">
+                <div class="d-flex flex-column justify-content-around h-100">
+                    <ng-container *ngIf="index < 10">
+                        <div class="card">
+                            <div class="card-body d-flex flex-center flex-column p-9">
+                                <span class="badge text-white mb-5 white-space-normal"
+                                    [ngStyle]="{'background-color': doctor.gtdp_color}">
+                                    {{doctor?.gtd_type}}
+                                </span>
+                                <div class="mb-5">
+                                    <div class="symbol symbol-75px symbol-circle">
+                                        <img class="img-size-fit" alt="image" [src]="doctor?.gtd_image">
+                                    </div>
+                                </div>
+                                <small>Experience {{doctor?.gtd_exper}}</small>
+                                <span
+                                    class="w-100 text-center ls-1 fs-4 text-gray-800 text-hover-primary fw-bolder mb-0 cursor-pointer"
+                                    (click)="viewDoctorProfile(doctor)">
+                                    {{doctor?.gtd_fullname?.replaceAll('-', ' ')}}
+                                </span>
+                                <small class="desc-min-height w-100 text-center ls-1">
+                                    {{doctor?.gtd_degree}}</small>
+
+                                    <div class="d-flex align-items-center justify-content-between w-100 mt-2 mb-5">
+                                        <div class="me-2">
+                                            <span class="fw-bolder fs-4 currency-font">
+                                                {{doctor?.gtd_consultation_price | currency: 'INR'}}
+                                            </span>
+                                        </div>
+                                        <div [id]="doctor?.gtd_slug" [attr.data-uniqueId]="doctor?.gtd_slug" class="badge badge-danger cursor-pointer py-2 px-2 fw-bolder ms-2"
+                                            (click)="goToConsult(doctor)">
+                                            BOOK NOW
+                                        </div>
+                                    </div>
+                                <!-- <div class="badge badge-danger mb-5 cursor-pointer py-2 px-6 mt-2 ls-1 fw-bolder"
+                                    (click)="goToConsult(doctor)">
+                                    BOOK NOW
+                                </div> -->
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="doctorsList[type] && !doctorsList[type].length">
+            <div class="text-center text-danger h1">No records found</div>
+        </ng-container>
+    </section>
+</div>

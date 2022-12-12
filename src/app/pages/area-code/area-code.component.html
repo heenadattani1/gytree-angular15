@@ -1,0 +1,37 @@
+<div class="card card-flush">
+    <div class="card-header">
+        <h3 class="card-title"></h3>
+        <div class="card-toolbar">
+            <button type="button" class="btn btn-sm btn-icon" data-bs-dismiss="modal" aria-label="Close"
+                (click)="modal.dismiss('cancel click')">
+                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/modal_close.svg" alt="modal_close" height="32"
+                    width="32">
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <h5>Enter your area code</h5>
+        <form [formGroup]="areaPincodeForm" novalidate="novalidate">
+            <div class="d-flex align-items-center">
+                <input numbersOnly class="form-control form-control-solid mb-2 me-6" maxlength="6" type="text"
+                    name="pincode" formControlName="pincode" (keypress)="pinCodeWiseFilter()" autocomplete="off"
+                    placeholder="Enter Pincode" />
+                <button [disabled]="!areaPincodeForm.valid" type="button" class="btn btn-sm btn-danger mb-2"
+                    (click)="pinCodeWiseFilter()">Check</button>
+            </div>
+            <app-form-validation-template [form]="areaPincodeForm" [field]="'pincode'" [label]="'Pincode'"
+                [length]="pinCodeLength">
+            </app-form-validation-template>
+            <div class="text-success h6" *ngIf="areaPincodeForm.valid && enableContinue && pincodeFilterData">
+                You are all set, click Continue to book a Lab Test.
+            </div>
+            <div class="text-danger h6" *ngIf="isCheckClicked">
+                Sorry. We don't offer lab-test in your area.
+            </div>
+            <div class="text-center mt-8 mt-lg-10">
+                <button [disabled]="!areaPincodeForm.valid || !enableContinue || !pincodeFilterData" type="button"
+                    class="btn btn-sm btn-danger text-uppercase" (click)="continue()">Continue</button>
+            </div>
+        </form>
+    </div>
+</div>

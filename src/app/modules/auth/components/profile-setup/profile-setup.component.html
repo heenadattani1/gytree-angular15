@@ -1,0 +1,116 @@
+<!--begin::Form-->
+<form class="form w-100" [formGroup]="setupProfileForm" novalidate="novalidate">
+
+    <!--begin::Heading-->
+    <div class=" mb-10 mt-20">
+        <h1 class="text-dark mb-3">Setup your <br>Profile</h1>
+    </div>
+    <!--end::Heading-->
+
+    <div class="fv-row mt-20 mb-20">
+        <!--begin::userName input-->
+        <div class="fv-row mt-5">
+            <input class="form-control form-control-lg input-bottom-border" type="text" name="userName"
+                formControlName="userName" autocomplete="off" placeholder="User name" />
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                    validation: 'required',
+                    message: 'User name is required',
+                    control: setupProfileForm.controls['userName']
+                  }"></ng-container>
+        </div>
+        <!--end::userName input-->
+
+        <!--begin::age input-->
+        <div class="fv-row mt-5">
+            <input class="form-control form-control-lg input-bottom-border" type="number" name="age"
+                formControlName="age" autocomplete="off" placeholder="Age" (keypress)="numberValidation(2, $event)" />
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                    validation: 'required',
+                    message: 'Age is required',
+                    control: setupProfileForm.controls['age']
+                  }">
+            </ng-container>
+        </div>
+        <!--end::age input-->
+
+        <!--begin::height input-->
+        <div class="fv-row mt-5">
+            <input class="form-control form-control-lg input-bottom-border" type="number" name="height"
+                formControlName="height" autocomplete="off" placeholder="Height (in cm)" />
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                    validation: 'required',
+                    message: 'Height is required',
+                    control: setupProfileForm.controls['height']
+                  }"></ng-container>
+        </div>
+        <!--end::height input-->
+
+        <!--begin::weight input-->
+        <div class="fv-row mt-5">
+            <input class="form-control form-control-lg input-bottom-border" type="number" name="weight"
+                formControlName="weight" autocomplete="off" placeholder="Weight (in Kg)" />
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                    validation: 'required',
+                    message: 'Weight is required',
+                    control: setupProfileForm.controls['weight']
+                  }"></ng-container>
+        </div>
+        <!--end::weight input-->
+
+        <!--begin::email input-->
+        <div class="fv-row mt-5">
+            <input class="form-control form-control-lg input-bottom-border" type="email" name="email"
+                formControlName="email" autocomplete="off" placeholder="Email Id" />
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+              validation: 'required',
+              message: 'Email is required',
+              control: setupProfileForm.controls['email']
+            }"></ng-container>
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'pattern',
+                message: 'Email is invalid.',
+                control: setupProfileForm.controls['email']
+              }"></ng-container>
+        </div>
+        <!--end::email input-->
+
+        <!--begin::Consult on whatsApp checkbox-->
+        <div class="form-check mt-5">
+            <input class="form-check-input" type="checkbox" id="consult" name="consult" formControlName="consult">
+            <label class="form-check-label" for="consult">
+                <strong>Send me whatsapp updates (important for appointment alerts)</strong>
+            </label>
+        </div>
+        <!--end::Consult on whatsApp checkbox-->
+    </div>
+
+    <!--begin::Action-->
+    <div class="text-center">
+        <button type="submit" id="kt_sign_in_submit" class="btn btn-lg next-btn w-100 mb-20"
+            [disabled]="setupProfileForm.invalid" (click)="profileSetupNextClickHandler()">
+            <ng-container *ngIf="isLoading">
+                <span class="indicator-progress text-white" [style.display]="'block'">
+                    Please wait...
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                </span>
+            </ng-container>
+            <ng-container *ngIf="!isLoading">
+                <span class="indicator-label text-white">Next</span>
+                <span [inlineSVG]="'https://image.gytree.com/assets/media/icons/duotune/arrows/arr023.svg'"
+                    class="svg-icon svg-icon-4"></span>
+            </ng-container>
+        </button>
+    </div>
+    <!--end::Action-->
+</form>
+<!--end::Form-->
+
+<ng-template #formError let-control="control" let-message="message" let-validation="validation">
+    <ng-container *ngIf="control.hasError(validation) && (control.dirty || control.touched)">
+        <div class="fv-plugins-message-container text-danger">
+            <span role="alert" class="">
+                {{ message }}
+            </span>
+        </div>
+    </ng-container>
+</ng-template>

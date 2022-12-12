@@ -1,0 +1,94 @@
+@import "../../../assets/sass/gytree-config.scss";
+
+:host ::ng-deep {
+
+    .notification {
+        .alert {
+            border-color: #3da5a5;
+            background-size: cover;
+            background-position-y: 50%;
+            background-color: #58adae;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .other-packages {
+        .card {
+            margin: 0 16px 0 0;
+            box-shadow: 1.5748px 1.5748px 3.14959px rgba(0, 0, 0, 0.25);
+
+            .card-img-top {
+                height: 130px;
+                background-color: #dce2e5;
+                border-radius: 12px 100px 12px 12px;
+                object-fit: cover;
+            }
+
+            .btn-more {
+                position: absolute;
+                right: -10px;
+                top: -8px;
+                font-size: 20px;
+                color: #fff;
+            }
+        }
+
+        .active {
+            transition: all 0.3s;
+            margin-top: 20px;
+
+            h5 {
+                font-size: 1.25rem;
+            }
+
+            .card-text {
+                font-size: 11px;
+            }
+
+            &.center {
+                opacity: 1;
+                margin-top: 0;
+
+                .card-img-top {
+                    height: 150px;
+                }
+
+                h5 {
+                    font-size: 1.75rem;
+                }
+
+                .card-text {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+.card-shadow {
+    box-shadow: 2.68727px 5.37455px 5.37455px rgba(0, 0, 0, 0.25);
+}
+
+.card-info {
+    background: $g-green;
+}
+
+.card-red {
+    background: $g-red;
+}
+
+.card-blue {
+    background: $g-blue;
+}
+
+.card-purple {
+    background: $g-purple;
+}
+
+.card-background {
+    background-color: #fbf7f2;
+}
+
+.features-background {
+    background-color: #58adae;
+}

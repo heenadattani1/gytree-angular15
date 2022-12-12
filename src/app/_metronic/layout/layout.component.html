@@ -1,0 +1,23 @@
+<div class="d-flex flex-column flex-root">
+  <div class="page d-flex flex-row flex-column-fluid">
+
+    <app-aside *ngIf="asideDisplay" id="kt_aside" class="aside py-9 drawer drawer-start h-100 shadow-right"
+      data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}"
+      data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}"
+      data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_toggle" [ngClass]="asideCSSClasses"></app-aside>
+
+    <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+
+      <app-header id="kt_header" [ngClass]="headerCSSClasses" class="header align-items-stretch" #ktHeader></app-header>
+
+      <div class="content d-flex flex-column flex-column-fluid h-100" id="kt_content">
+        <app-content id="kt_content_container" class="h-100" [ngClass]="contentContainerClasses"></app-content>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+
+<app-scripts-init></app-scripts-init>

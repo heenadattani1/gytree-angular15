@@ -1,0 +1,17 @@
+<div [style.background-image]="'url(https://image.gytree.com/assets/media/illustrations/sketchy-1/14.png)'"
+  class=" d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed">
+  <div class="d-flex flex-column flex-column-fluid text-center p-10 py-lg-20">
+    <a class="mb-10 pt-lg-20">
+      <img alt="Logo" src="https://image.gytree.com/assets/media/gaytree/logo/logo1.webp" class="h-125px mb-5" />
+    </a>
+    <div class="pt-lg-10">
+      <router-outlet></router-outlet>
+
+      <div class="text-center">
+        <a (click)="routeToDashboard()" class="btn btn-lg btn-primary fw-bolder cursor-pointer">
+          Explore our Site
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

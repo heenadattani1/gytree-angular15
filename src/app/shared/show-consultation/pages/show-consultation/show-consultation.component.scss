@@ -1,0 +1,73 @@
+:host ::ng-deep {
+  .consultation {
+    .card {
+      background-image: url("https://image.gytree.com/assets/media/gaytree/background/expert-consultation-bg.svg");
+      background-size: cover;
+      background-position-y: 16%;
+
+      .misc-image {
+        position: absolute;
+        bottom: -20px;
+        right: 20px;
+        width: 180px;
+        height: auto;
+      }
+    }
+  }
+
+  .consultation-home {
+    .card {
+      background-image: url("https://image.gytree.com/assets/media/gaytree/background/expert-consultation-bg.svg");
+      background-size: cover;
+      background-position-y: 16%;
+      margin-top: 4rem !important;
+
+      .card-body {
+        padding: 1rem 2.25rem;
+      }
+
+      .misc-image {
+        position: absolute;
+        bottom: -20px;
+        right: 20px;
+        width: 180px;
+        height: auto;
+      }
+    }
+  }
+}
+//Start design of expert consult carousel
+
+@media (max-width: 575px) {
+  .consultation-home .card .misc-image {
+    position: absolute;
+    bottom: -24px !important;
+    right: -10px !important;
+    width: 165px;
+    height: auto;
+  }
+
+  .title-height {
+    min-height: 76px;
+  }
+}
+
+@media (max-width: 443px) {
+  .consultation-home .card .misc-image {
+    position: absolute;
+    bottom: -24px !important;
+    right: -30px !important;
+    width: 165px;
+    height: auto;
+  }
+
+  .title-height {
+    min-height: 75px;
+  }
+}
+
+.description-height {
+  min-height: 50px;
+}
+
+//End design of expert consult carousel

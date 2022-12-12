@@ -1,0 +1,46 @@
+<div class="card card-flush shadow-none bg-transparent h-100">
+    <div class="card-body pb-5">
+        <div class="d-flex flex-column align-items-center text-center">
+            <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/booking-confirm.svg" alt="bookingConfirm" height="60">
+            <h1 class="my-3 w-300px">Appointment is confirmed</h1>
+
+            <h3 class="text-danger w-250px mb-6">
+                {{transactionDetails?.transactionDetails?.gto_billing?.gtbd_user_fname ?
+                'Thank you for Booking a Lab Test with Us.' :
+                'Thank you for Booking a Consultation with Us.'}}</h3>
+
+            <div class="mb-6">
+                <div class="fw-bolder fs-3">Name</div>
+                <div class="fs-5">{{transactionDetails?.transactionDetails?.gto_billing?.gtbd_user_fname ?
+                    (transactionDetails?.transactionDetails?.gto_billing.gtbd_user_fname + ' ' +
+                    transactionDetails?.transactionDetails?.gto_billing.gtbd_user_lname) : userDetails.user_name}}</div>
+            </div>
+            <div class="mb-6">
+                <div class="fw-bolder fs-3">Email</div>
+                <div class="fs-5">{{transactionDetails?.transactionDetails?.gto_billing?.gtbd_user_email ?
+                    transactionDetails?.transactionDetails?.gto_billing.gtbd_user_email : userDetails.user_email}}</div>
+            </div>
+            <div class="mb-6">
+                <div class="fw-bolder fs-3">Phone</div>
+                <div class="fs-5">{{transactionDetails?.transactionDetails?.gto_billing?.gtbd_user_mo_no ?
+                    transactionDetails?.transactionDetails?.gto_billing.gtbd_user_mo_no :
+                    userDetails.user_mobile_number}}</div>
+            </div>
+            <div class="mb-6">
+                <div class="fw-bolder fs-3">Appointment Date</div>
+                <div class="fs-5">{{transactionDetails?.transactionDetails?.date}}</div>
+            </div>
+            <div class="mb-6">
+                <div class="fw-bolder fs-3">Appointment Time</div>
+                <div class="fs-5">
+                    {{transactionDetails?.transactionDetails?.gto_slot ?
+                    transactionDetails?.transactionDetails?.gto_slot :
+                    transactionDetails?.transactionDetails?.gto_time}}
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-15">
+            <button type="button" class="btn btn-danger w-200px" (click)="continueClickHandler()">My Dashboard</button>
+        </div>
+    </div>
+</div>

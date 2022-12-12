@@ -1,0 +1,206 @@
+<div class="d-flex align-items-stretch justify-content-end flex-lg-grow-1">
+    <div class="btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline btn-outline-secondary d-xxl-none w-40px h-40px mb-2"
+        [ngClass]="toolbarButtonMarginClass">
+        <!-- begin::Drawer toggle -->
+        <div class="btn btn-icon btn-active-light-primary btn-custom" [ngClass]="toolbarButtonHeightClass"
+            id="kt_sidebar_appointment_schedule_toggler">
+            <span [inlineSVG]="'https://image.gytree.com/assets/media/icons/duotune/general/gen032.svg'" class="svg-icon"
+                [ngClass]="toolbarButtonIconSizeClass"></span>
+        </div>
+        <!-- end::Drawer toggle -->
+    </div>
+</div>
+
+<!-- Schedule Appointment form Start -->
+<form [formGroup]="scheduleAppointmentForm" novalidate="novalidate">
+    <div class="card card-flush shadow-none bg-transparent">
+        <div class="card-header justify-content-center">
+            <div class="row">
+                <div class="col">
+                    <div class="timeline-steps">
+                        <div class="timeline-step {{(currentStep >= 1)  ? 'done' : ''}}">
+                            <div class="timeline-content">
+                                <div class="inner-circle">1</div>
+                                <p class="">Information</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-step {{(currentStep >= 2)  ? 'done' : ''}}">
+                            <div class="timeline-content">
+                                <div class="inner-circle">2</div>
+                                <p class="">Book Now</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body py-4">
+            <div class="text-center mb-4">
+                <button type="button" class="btn btn-active-danger w-sm-200px m-1" *ngIf="currentStep > 1"
+                    (click)="backStep()">Back</button>
+                <button type="button" [disabled]="!selectedSlot || !scheduleAppointmentForm.valid"
+                    class="btn btn-danger w-sm-200px m-1" *ngIf="currentStep === 2"
+                    (click)="scheduleClickHandler()">BOOK NOW</button>
+                <button type="button" class="btn btn-danger w-sm-200px m-1" *ngIf="currentStep < 2 && currentStep !== 0"
+                    (click)="nextStep()">Next</button>
+            </div>
+
+            <ng-container *ngIf="currentStep === 1">
+                <form [formGroup]="informationForm" novalidate="novalidate">
+                    <div class="fw-bolder mb-3 fs-2 text-center">
+                        Q. Anything you would like our experts to know?
+                    </div>
+                    <textarea rows="10" placeholder="Optional" class="form-control"
+                        formControlName="additionalInfo"></textarea>
+                    <div class="fw-bolder mt-3 mb-1 fs-2">
+                        Upload Image / PDF
+                    </div>
+                    <div class="fw-bolder mb-3 fs-6 text-muted">
+                        (Maximum upload file size: 2MB)
+                    </div>
+                    <div class="h-60px d-flex align-items-center rounded" style="background: rgba(242, 87, 105, 0.1);">
+                        <label for="files" class="btn btn-choose mx-4"
+                            style="background: #F25769; color: #fff;">Choose</label>
+                        <span class="ms-4 fs-4">{{selectedFileName ? '1' : 'No'}} File Selected</span>
+                        <input id="files" (change)="onFileChange($event)" style=" visibility:hidden;" type="file">
+                    </div>
+                </form>
+                <ng-container *ngIf="selectedFileError">
+                    <div class="text-danger fs-lg-4">
+                        {{selectedFileError}}
+                    </div>
+                </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="currentStep === 2">
+                <!-- Schedule Appointment form Start -->
+                <form [formGroup]="scheduleAppointmentForm" novalidate="novalidate">
+                    <div class="card card-flush shadow-none bg-transparent h-100">
+                        <div class="card-body py-5">
+                            <div class="fw-bolder mb-3 fs-2 text-center">Schedule an Appointment</div>
+                            <div class="mb-5">
+                                <label class="form-label required">Select Date</label>
+                                <div class="d-flex" (click)="d.toggle();$event.stopPropagation();">
+                                    <input type="date" class="form-control cursor-pointer" [minDate]="minDate"
+                                        [maxDate]="maxDate" ngbDatepicker #d="ngbDatepicker" container="body"
+                                        formControlName="date" [markDisabled]="markDateAsDisabled">
+                                    <div class=" input-group-append cursor-pointer">
+                                        <span class="form-control">
+                                            <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/PCOS.svg" alt="calendar"
+                                                height="20" width="20">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-5">
+                                <div class="text-danger">{{noSlotAvailable}}</div>
+                                <label class="form-label required">Select Time</label>
+                                <select class="form-control" formControlName="time">
+                                    <option disabled value="">Select</option>
+                                    <option [value]="time" *ngFor="let time of selectTimeArray">
+                                        {{time}}</option>
+                                </select>
+                            </div>
+                            <div *ngIf="chooseSlotSection" class="mb-5">
+                                <label class="form-label required">Choose a slot</label>
+                                <div class="row">
+                                    <div *ngFor="let slot of chooseSlotArray; let index = index;" class="col-6 mb-5">
+                                        <button
+                                            class="btn btn-sm btn-outline btn-outline-dashe btn-outline-danger w-100"
+                                            [class.btn-danger]="selectedSlot === slot"
+                                            (click)="selectedSlotHandler(slot)" type="button">
+                                            {{slot}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-5">
+                                <!--begin::Alert-->
+                                <div class="alert alert-warning">
+                                    <div class="d-flex align-items-top gap-3">
+                                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/video.svg" alt="videoIcon"
+                                            height="16">
+                                        <span>Consultation will be done on a video call</span>
+                                    </div>
+                                    <div class="d-flex align-items-top gap-3">
+                                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/clock.svg" alt="clockIcon"
+                                            height="16">
+                                        <span>Video call will last for {{packageDetails?.gtp_consultation_time}}</span>
+                                    </div>
+                                    <div class="d-flex align-items-top gap-3">
+                                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check.svg" alt="checkIcon"
+                                            height="16">
+                                        <span>Join the call using the link that
+                                            will be sent on WhatsApp/E-mail</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- Schedule Appointment form end -->
+            </ng-container>
+            <div class="text-center pt-10">
+                <button type="button" class="btn btn-active-danger w-sm-200px m-1" *ngIf="currentStep > 1"
+                    (click)="backStep()">Back</button>
+                <button type="button" [disabled]="!selectedSlot || !scheduleAppointmentForm.valid"
+                    class="btn btn-danger w-sm-200px m-1" *ngIf="currentStep === 2"
+                    (click)="scheduleClickHandler()">BOOK NOW</button>
+                <button type="button" class="btn btn-danger w-sm-200px m-1" *ngIf="currentStep < 2 && currentStep !== 0"
+                    (click)="nextStep()">Next</button>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- Schedule Appointment form end -->
+<div id="kt_sidebar_appointment_schedule" class="sidebar overflow-auto" data-kt-drawer="true"
+    data-kt-drawer-name="sidebar" data-kt-drawer-activate="{default: true, xxl: false}" data-kt-drawer-overlay="false"
+    data-kt-drawer-width="{default:'300px', 'lg': '400px'}" data-kt-drawer-direction="end"
+    data-kt-drawer-toggle="#kt_sidebar_appointment_schedule_toggler"
+    data-kt-drawer-close="#kt_sidebar_appointment_schedule_close">
+    <div class="d-flex flex-column sidebar-body p-10 flex-fill" id="kt_sidebar_appointment_schedule_body">
+        <div id="kt_sidebar_appointment_schedule_content" class="sidebar-content h-100">
+            <div class="overflow-auto">
+                <section class="gynec mb-10">
+                    <div class="text-end d-xxl-none">
+                        <button type="button" id="kt_sidebar_appointment_schedule_close" class="btn btn-sm btn-icon">
+                            <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/modal_close.svg" alt="modal_close"
+                                height="20" width="20">
+                        </button>
+                    </div>
+                    <div *ngIf="packageDetails?.gtp_type" class="fw-bolder mb-6 fs-2 text-center">GYTREE
+                        {{packageDetails?.gtp_type}}S</div>
+                    <ng-container *ngFor="let doctor of doctorsList">
+                        <div class="card mb-6 mx-auto" style="width: 230px;">
+                            <div class="card-body d-flex flex-center flex-column p-9">
+                                <span class="badge text-white mb-5" [ngStyle]="{'background-color': doctor.gtdp_color}">
+                                    {{doctor?.gtd_type}}
+                                </span>
+                                <div class="mb-5">
+                                    <div class="symbol symbol-75px symbol-circle">
+                                        <img alt="Pic" img-preloader="{{doctor?.gtd_image}}">
+                                    </div>
+                                </div>
+                                <small>Experience {{doctor?.gtd_exper}}</small>
+                                <span
+                                    class="w-100 text-center ls-1 fs-3 text-gray-800 text-hover-primary fw-bolder mb-0">{{doctor?.gtd_fullname}}</span>
+                                <small class="w-100 text-center ls-1">{{doctor?.gtd_degree}}</small>
+                                <div class="badge badge-danger mb-5 cursor-pointer py-2 px-6 mt-2 ls-1 fw-bolder"
+                                    (click)="viewDoctorProfile(doctor)">
+                                    View Profile
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <!-- No data Found Start -->
+                    <ng-container *ngIf="!doctorsList?.length && doctorsList">
+                        <div class="text-center text-danger h1">No records found</div>
+                    </ng-container>
+                    <!-- No data Found End-->
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

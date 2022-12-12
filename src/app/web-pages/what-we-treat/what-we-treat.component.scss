@@ -1,0 +1,112 @@
+.title {
+  background-image: url('https://image.gytree.com/assets/media/gaytree/background/button_bg.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 127px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 33px;
+  font-weight: bolder;
+  font-size: 24px;
+}
+
+.number {
+  position: relative;
+  margin-right: 1rem;
+
+  &-cover {
+    background-image: url('https://image.gytree.com/assets/media/gaytree/background/number-1-white-bordered.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 54px;
+  }
+
+  &-count {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #F36B71;
+    font-weight: 600;
+  }
+}
+
+.rotate-60 {
+  transform: rotate(60deg);
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.rotate-210 {
+  transform: rotate(210deg);
+}
+
+:host ::ng-deep {
+  .package-list {
+    .card {
+      margin: 0 16px 0 0;
+      box-shadow: 1.5748px 1.5748px 3.14959px rgba(0, 0, 0, 0.25);
+
+      .card-img-top {
+        height: 130px;
+        background-color: #dce2e5;
+        border-radius: 12px 80px 12px 12px;
+        object-fit: cover;
+      }
+
+      .btn-more {
+        position: absolute;
+        right: -10px;
+        top: -8px;
+        font-size: 20px;
+        color: #fff;
+      }
+    }
+
+    .active {
+      transition: all 0.3s;
+      margin-top: 20px;
+
+      h5 {
+        font-size: 1.25rem;
+      }
+
+      .card-text {
+        font-size: 11px;
+      }
+
+      &.center {
+        opacity: 1;
+        margin-top: 0;
+
+        .card-img-top {
+          height: 150px;
+        }
+
+        h5 {
+          font-size: 1.75rem;
+        }
+
+        .card-text {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

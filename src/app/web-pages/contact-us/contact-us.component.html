@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="card card-flush shadow-none bg-transparent my-10">
+        <div class="card-header align-items-center justify-content-center">
+            <div class="title text-danger">
+                Contact Us
+            </div>
+        </div>
+        <div class="card-body px-0">
+            <div class="card card-flush mb-10">
+                <div class="card-header flex-column align-items-center justify-content-center">
+
+                    <div class="badge bg-success rounded fs-2 px-12 py-6 m-4" *ngIf="message?.length">
+                        {{message}}
+                    </div>
+                    <div class="card-title">
+                        Send us a message
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Contact us form Start -->
+                    <form [formGroup]="contactUsForm" novalidate="novalidate" (ngSubmit)="submitContactUsForm()">
+                        <div class="row pb-8 pb-lg-10">
+                            <div class="col-md-6 mb-5">
+                                <label class="form-label required">Name</label>
+                                <input class="form-control" type="text" name="name" formControlName="name"
+                                    autocomplete="off" placeholder="Enter Name" />
+                                <app-form-validation-template [form]="contactUsForm" [field]="'name'" [label]="'Name'">
+                                </app-form-validation-template>
+                            </div>
+                            <div class="col-md-6 mb-5">
+                                <label class="form-label required">Email</label>
+                                <input class="form-control" type="email" name="email" formControlName="email"
+                                    autocomplete="off" placeholder="Enter Email" />
+                                <app-form-validation-template [form]="contactUsForm" [field]="'email'"
+                                    [label]="'Email'">
+                                </app-form-validation-template>
+                            </div>
+                            <div class="col-12 mb-5">
+                                <label class="form-label required">Write a Message</label>
+                                <textarea rows="6" class="form-control" name="message" formControlName="message"
+                                    autocomplete="off" placeholder="Please type your message here"></textarea>
+                                <app-form-validation-template [form]="contactUsForm" [field]="'message'"
+                                    [label]="'Message'">
+                                </app-form-validation-template>
+                            </div>
+                            <div class="col-12">
+                                <button [disabled]="!contactUsForm.valid" type="submit"
+                                    class="btn btn-sm btn-danger">Send
+                                    Message</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- Contact us form End -->
+                </div>
+            </div>
+            <div class="card card-flush mb-10">
+                <div class="card-body">
+                    <!-- Address and social Icons Start -->
+                    <!-- <div class="row pb-8 pb-lg-10"> -->
+                        <div class="d-flex flex-column align-items-center justify-content-center pb-8 pb-lg-10">
+                        <!-- <div class="col-md-6 mb-5">
+                            <h2 class="text-danger">Address</h2>
+                            <div>Street: Hollander Strasse 1</div>
+                            <div>City: Heistenbach</div>
+                            <div>State: Rheinland-Pfalz</div>
+                            <div>Support@gmail.com</div>
+                            <div>9987456698</div>
+                        </div> -->
+                        <!-- <div class="col-md-6 mb-5"> -->
+                            <h2 class="text-danger">Stay Connected</h2>
+                            <div class="d-flex align-items-center gap-3">
+                                <a href="https://www.facebook.com/askgytree" target="_blank">
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/facebook1.svg" alt="facebook" height="30"
+                                        width="30">
+                                </a>
+                                <a href="https://www.instagram.com/askgytree" target="_blank">
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/instagram1.svg" alt="instagram" height="30"
+                                        width="30">
+                                </a>
+                                <!-- <a href="https://twitter.com/" target="_blank">
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/twitter1.svg" alt="twitter" target="_blank" height="30" width="30">
+                                </a> -->
+                                <a href="https://www.youtube.com/channel/UCtLlKMhk2Y2HQ6mbMrIGrbQ" target="_blank">
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/youtube1.svg" alt="youtube" height="30"
+                                        width="30">
+                                </a>
+                                <a href="https://bit.ly/3Fv5JWw" target="_blank">
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/whatsapp1.svg" alt="whatsapp" height="30"
+                                        width="30">
+                                </a>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                    <!-- Address and social Icons End -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,178 @@
+<div [class.visiblility-hidden]="isLoading">
+    <div class="container">
+        <div class="card card-flush shadow-none bg-transparent my-10">
+            <div class="card-header align-items-center justify-content-center">
+                <div class="title-package text-danger">
+                    Check Out Our Packages
+                </div>
+                <div class="mb-3 fs-4">
+                    <!-- Our packages are backed by research and curated by trusted doctors. -->
+                    {{currentContent?.data || 'Our packages are backed by research and curated by trusted doctors.'}}
+                </div>
+            </div>
+            <div class="card-body px-0">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <ng-container *ngFor="let typeBar of packageType; let index = index">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" [class.active]="typeBar === type"
+                                [id]="typeBar.split(' ', 1) + '-tab'" data-bs-toggle="tab"
+                                [attr.data-bs-target]="'#' + typeBar.split(' ', 1)" type="button" role="tab"
+                                [attr.aria-controls]="typeBar.split(' ', 1)" [attr.aria-selected]="typeBar === type"
+                                (click)="selectedPackageType(typeBar)">{{typeBar}}</button>
+                        </li>
+                    </ng-container>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <section class="other-packages my-10">
+                        <!--start::Header-->
+                        <div class="d-flex justify-content-between">
+                            <div class="fw-bolder mb-3 fs-2">
+                                {{type | uppercase | slice: 0 : 1}}{{type | lowercase | slice : 1 }}
+                            </div>
+                            <ng-container
+                                *ngIf="packages?.packageData[type]?.length > 10 && !packages?.packageData[type]?.viewAll">
+                                <div class="fw-bolder mb-3 fs-3 cursor-pointer text-danger" (click)="viewAll()">
+                                    View More
+                                </div>
+                            </ng-container>
+                        </div>
+                        <!--end::Header-->
+
+                        <!--start::Packages with carousel-->
+                        <ng-container *ngIf="!packages?.packageData[type]?.viewAll">
+                            <!-- Packages Start -->
+                            <app-show-packages
+                                [carouselOption]="packages?.packageData[type]?.length < 4 ? CAROUSEL_CONFIG.options : CAROUSEL_CONFIG.carouselOptions"
+                                [packageData]="{packageData:packages?.packageData[type]?.slice(0, 10)}">
+                            </app-show-packages>
+                            <!-- Packages End -->
+
+                            <div class="d-flex justify-content-end d-block d-sm-none">
+                                <ng-container
+                                    *ngIf="packages?.packageData[type]?.length > 10">
+                                    <div class="fw-bolder mt-3 fs-3 cursor-pointer text-danger" (click)="viewAll()">
+                                        View More
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                        <!--end::Packages with carousel-->
+
+                        <!--start::All Packages without carousel-->
+                        <ng-container *ngIf="packages?.packageData[type]?.viewAll">
+                            <!-- Packages Start -->
+                            <app-show-packages
+                                [carouselOption]="packages?.packageData[type]?.length < 4 ? CAROUSEL_CONFIG.options : CAROUSEL_CONFIG.carouselOptions"
+                                [packageData]="{packageData:packages?.packageData[type]}">
+                            </app-show-packages>
+                            <!-- Packages End -->
+                        </ng-container>
+                        <!--end::All Packages without carousel-->
+                    </section>
+                </div>
+
+                <div>
+
+                    <!-- Explore Age Start -->
+                    <section class="age-list my-20" *ngIf="ages">
+                        <div class="fw-bolder mb-6 fs-2">Explore Age wise</div>
+                        <div class="mb-3 fs-4">
+                            Find these science backed packages according to your age
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4" *ngFor="let age of ages">
+                                <div class="card text-white h-100 cursor-pointer"
+                                    (click)="ageGroupClickHandler(age.gtag_value)">
+                                    <div class="card-body">
+                                        <span class="">
+                                            {{age?.gtag_value}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- No data Found Start -->
+                        <div *ngIf="ages && !ages.length">
+                            <div class="text-center text-danger h1">No records found</div>
+                        </div>
+                        <!-- No data Found End-->
+                    </section>
+                    <!-- Explore Age End -->
+
+                    <!-- Consult Via Health Clinics start -->
+                    <section class="consult-list my-20" *ngIf="consults">
+                        <div class="fw-bolder mb-6 fs-2">Consult Via Health Clinics</div>
+                        <div class="mb-3 fs-4">
+                            Choose the area of your concern and get the solution to your problem through these science
+                            backed
+                            packages curated according to your health needs.
+                        </div>
+                        <div class="row">
+                            <div class="health-clinic-width col-12 col-md-6 col-lg-4 mb-8"
+                                *ngFor="let consult of consults; let index = index">
+                                <div class="card text-custom ms-0 me-0">
+                                    <div class="consult-card-body">
+                                        <img img-preloader="{{consult?.gthc_image}}" height="62" width="62"
+                                            [alt]="consult?.gthc_name" class="image-top">
+                                        <div class="title cursor-pointer"
+                                            (click)="healthClinicClickHandler(consult.gthc_name)">
+                                            {{consult?.gthc_name?.replaceAll('-', ' ')}}
+                                        </div>
+                                        <div class="description mt-6 max-line-3 collapse consult-desc-max-height"
+                                            [id]="'pack_consult_via_health_' + index">
+                                            {{consult?.gthc_dscr}}
+                                        </div>
+                                        <div class="download collapsible toggle"
+                                            (click)="onToggleConsultConsultHealthClinic(consult)"
+                                            data-bs-toggle="collapse"
+                                            [attr.data-bs-target]="'#pack_consult_via_health_' + index"
+                                            aria-expanded="false">
+                                            <img class="download-image-rotation" [class.transform180]="consult?.isOpen"
+                                                img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-3.svg"
+                                                alt="arrow-down" height="20" width="20">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- No data Found Start -->
+                            <ng-container *ngIf="consults && !consults.length">
+                                <div class="text-center text-danger h1">No records found</div>
+                            </ng-container>
+                            <!-- No data Found End-->
+                        </div>
+                    </section>
+                    <!-- Consult Via Health Clinics end -->
+
+                    <!-- Articles start -->
+                    <section class="article-list my-20" *ngIf="articles">
+                        <div class="fw-bolder mb-6 fs-2">Must Read</div>
+                        <div class="mx-10 mx-lg-0">
+                            <owl-carousel-o [options]="articleList">
+                                <ng-container *ngFor="let article of articles">
+                                    <ng-template carouselSlide [id]="article?.id" [width]="300">
+                                        <div class="card responsive-slides card-flush bg-transparent cursor-pointer"
+                                            (click)="articleClickHandler(article.link)">
+                                            <img img-preloader="{{article?._embedded['wp:featuredmedia'] && article?._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url }}"
+                                                alt="image" width="300" height="169" class="card-shadow rounded">
+                                            <div class="fs-2 fw-bolder text-danger mt-3 ms-2 title-height max-line-2"
+                                                [innerHTML]="(article?.title?.rendered || '') | safe: 'html'"></div>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+                            </owl-carousel-o>
+                            <!-- No data Found Start -->
+                            <ng-container *ngIf="articles && !articles.length">
+                                <div class="text-center text-danger h1">No records found</div>
+                            </ng-container>
+                            <!-- No data Found End-->
+                        </div>
+                    </section>
+                    <!-- Articles start -->
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

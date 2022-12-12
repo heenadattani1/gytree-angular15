@@ -1,0 +1,188 @@
+<!-- Packages Start -->
+<ng-container *ngIf="!packageData?.packageData?.viewAll">
+    <div class="d-none d-lg-block d-xl-block d-md-block d-sm-block">
+        <owl-carousel-o [options]="carouselOption ? carouselOption : packageData?.carouselOptions"
+            class="custom-height">
+            <ng-container *ngFor="let package of packageData?.packageData; let index = index">
+                <ng-template carouselSlide [id]="index.toString()">
+                    <div class="card text-white" [ngStyle]="{'background' : package.gtp_color}">
+                        <img class="card-img-top" height="114" width="114" loading="lazy"
+                            [src]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'"
+                            alt="Package">
+                        <button class="btn btn-more" (click)="packageDetailsClick(package.gtp_slug)">
+                            >
+                        </button>
+                        <div class="card-body">
+                            <div>
+                                <h5 class="text-white cursor-pointer max-line-3 "
+                                    (click)="packageDetailsClick(package.gtp_slug)">
+                                    {{package?.gtp_name}}</h5>
+                                <p class="card-text max-line-3">
+                                    {{package?.gtp_srtdescrn}}
+                                </p>
+                                <div *ngIf="!purchasedPackages"
+                                    class="d-flex align-items-center justify-content-between gap-3">
+                                    <span class="fw-bolder fs-2 currency-font">
+                                        {{package?.gtp_price | currency: 'INR'}}
+                                        <span style="font-size: 12px;font-weight: normal;">
+                                            {{converToNumber(package?.gtp_total_consultations) > 1 ? ('(includes ' +
+                                            package?.gtp_total_consultations + ' consults)') : ''}}
+                                        </span>
+                                    </span>
+                                    <button [id]="package?.gtp_slug" [attr.data-uniqueId]="package?.gtp_slug"
+                                        type="button" class="btn btn-sm btn-white"
+                                        (click)="buyNowClickHandler(package.gtp_slug)">BUY NOW</button>
+                                </div>
+                                <div *ngIf="purchasedPackages"
+                                    class="d-flex align-items-center justify-content-between gap-3">
+                                    <div></div>
+                                    <button type="button" class="btn btn-sm btn-white"
+                                        (click)="viewMoreClickHandler(package)">
+                                        View More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+    </div>
+</ng-container>
+
+<!-- For mobile screen -->
+<div class="package-mobile d-block d-sm-none" *ngIf="!packageData?.packageData?.viewAll">
+    <ng-container *ngFor="let package of packageData?.packageData; let index = index">
+        <div class="card text-white mt-2" [class.cursor-pointer]="!purchasedPackages"
+            [ngStyle]="{'background' : package.gtp_color}"
+            (click)="purchasedPackages ? '' : packageDetailsClick(package.gtp_slug)">
+            <img class="card-img-top img-cover" height="114" width="114" loading="lazy"
+                [src]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'"
+                alt="Package">
+            <button class="btn btn-more" (click)="packageDetailsClick(package.gtp_slug)">
+                >
+            </button>
+            <div class="card-body py-4 ps-4">
+                <div class="d-flex flex-column justify-content-around h-100">
+                    <h5 class="text-white cursor-pointer max-line-3 z-index-1"
+                        (click)="packageDetailsClick(package.gtp_slug)">
+                        {{package?.gtp_name}}</h5>
+                    <div *ngIf="!purchasedPackages" class="d-flex align-items-center justify-content-between gap-3">
+                        <span class="fw-bolder fs-2 currency-font">
+                            {{package?.gtp_price | currency: 'INR'}}
+                            <span style="font-size: 12px;font-weight: normal;">
+                                {{converToNumber(package?.gtp_total_consultations) > 1 ? ('(includes ' +
+                                package?.gtp_total_consultations + ' consults)') : ''}}
+                            </span>
+                        </span>
+                        <button [id]="package?.gtp_slug" [attr.data-uniqueId]="package?.gtp_slug" type="button"
+                            class="btn btn-sm btn-white py-1 px-2 z-index-1">BUY NOW</button>
+                    </div>
+                    <div *ngIf="purchasedPackages" class="d-flex align-items-center justify-content-between gap-3">
+                        <div></div>
+                        <button type="button" class="btn btn-sm btn-white z-index-1"
+                            (click)="viewMoreClickHandler(package)">
+                            View More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+<!-- Packages End -->
+
+<!-- For mobile screen -->
+<div class="package-mobile d-block d-sm-none" *ngIf="packageData?.packageData?.viewAll">
+    <ng-container *ngFor="let package of packageData?.packageData; let index = index">
+        <div class="card text-white mt-2" [class.cursor-pointer]="!purchasedPackages"
+            [ngStyle]="{'background' : package.gtp_color}"
+            (click)="purchasedPackages ? '' : packageDetailsClick(package.gtp_slug)">
+            <img class="card-img-top img-cover" height="114" width="114"
+                [src]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'"
+                alt="Package">
+            <button class="btn btn-more" (click)="packageDetailsClick(package.gtp_slug)">
+                >
+            </button>
+            <div class="card-body py-4 ps-4">
+                <div class="d-flex flex-column justify-content-around h-100">
+                    <h5 class="text-white cursor-pointer max-line-3 z-index-1"
+                        (click)="packageDetailsClick(package.gtp_slug)">
+                        {{package?.gtp_name}}</h5>
+                    <div *ngIf="!purchasedPackages" class="d-flex align-items-center justify-content-between gap-3">
+                        <span class="fw-bolder fs-2 currency-font">
+                            {{package?.gtp_price | currency: 'INR'}}
+                            <span style="font-size: 12px;font-weight: normal;">
+                                {{converToNumber(package?.gtp_total_consultations) > 1 ? ('(includes ' +
+                                package?.gtp_total_consultations + ' consults)') : ''}}
+                            </span>
+                        </span>
+                        <button [id]="package?.gtp_slug" [attr.data-uniqueId]="package?.gtp_slug" type="button"
+                            class="btn btn-sm btn-white py-1 px-2 z-index-1">BUY NOW</button>
+                    </div>
+                    <div *ngIf="purchasedPackages" class="d-flex align-items-center justify-content-between gap-3">
+                        <div></div>
+                        <button type="button" class="btn btn-sm btn-white" (click)="viewMoreClickHandler(package)">
+                            View More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+<!-- Packages End -->
+
+
+<!-- Packages Start -->
+<ng-container *ngIf="packageData?.packageData?.viewAll">
+    <div class="d-none d-lg-block d-xl-block d-md-block d-sm-block">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 mb-10"
+                *ngFor="let package of packageData?.packageData; let index = index">
+                <div class="card text-white" [ngStyle]="{'background' : package.gtp_color}">
+                    <img class="card-img-top" alt="package-image" height="114" width="114"
+                        [src]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'">
+                    <button class="btn btn-more" (click)="packageDetailsClick(package.gtp_slug)">
+                        >
+                    </button>
+                    <div class="card-body">
+                        <h5 class="text-white cursor-pointer max-line-3 "
+                            (click)="packageDetailsClick(package.gtp_slug)">
+                            {{package?.gtp_name}}
+                        </h5>
+                        <p class="card-text max-line-3">
+                            {{package?.gtp_srtdescrn}}
+                        </p>
+                        <div *ngIf="!purchasedPackages" class="d-flex align-items-center justify-content-between gap-3">
+                            <span class="fw-bolder fs-2 currency-font">
+                                {{package?.gtp_price | currency: 'INR'}}
+                                <span style="font-size: 12px;font-weight: normal;">
+                                    {{converToNumber(package?.gtp_total_consultations) > 1 ? ('(includes ' +
+                                    package?.gtp_total_consultations + ' consults)') : ''}}
+                                </span>
+                            </span>
+                            <button [id]="package?.gtp_slug" [attr.data-uniqueId]="package?.gtp_slug" type="button"
+                                class="btn btn-sm btn-white" (click)="buyNowClickHandler(package.gtp_slug)">
+                                BUY NOW
+                            </button>
+                        </div>
+                        <div *ngIf="purchasedPackages" class="d-flex align-items-center justify-content-between gap-3">
+                            <div></div>
+                            <button type="button" class="btn btn-sm btn-white" (click)="viewMoreClickHandler(package)">
+                                View More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<!-- Packages End -->
+
+<!-- No data Found Start -->
+<ng-container *ngIf="!packageData && !packageData?.packageData && !packageData?.packageData?.length">
+    <div class="text-center text-danger h1">No records found</div>
+</ng-container>
+<!-- No data Found End-->

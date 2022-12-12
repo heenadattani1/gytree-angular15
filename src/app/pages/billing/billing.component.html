@@ -1,0 +1,133 @@
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="billingDetailForm" novalidate="novalidate" (ngSubmit)="submitBillingDetailForm()">
+            <div class="row g-5">
+                <div class="col-md-5 col-lg-4 order-md-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-6">
+                        <span>Your orders</span>
+                    </h4>
+
+                    <table class="table table-flush">
+                        <tr class="py-2">
+                            <td>Plan</td>
+                            <td class="text-end">
+                                {{billingData?.labTest?.name}}
+                            </td>
+                        </tr>
+                        <tr class="py-2">
+                            <td>GST</td>
+                            <td class="text-end">
+                                18%
+                            </td>
+                        </tr>
+                        <tr class="py-2" *ngIf="discountAmount && discountAmount !== 0">
+                            <td>Promocode</td>
+                            <td class="text-end">
+                                {{ '-' + discountAmount | currency: 'INR'}}
+                            </td>
+                        </tr>
+                        <tr class="py-2">
+                            <td class="fs-3">Summary</td>
+                            <td class="fs-3 text-end currency-font">{{billingData?.labTest?.rate?.offerRate |
+                                currency: 'INR'}}
+                            </td>
+                        </tr>
+                        <tr class="py-5 fw-bold border-top border-gray-300 fs-3">
+                            <td>Total</td>
+                            <td class="text-end currency-font">{{billingData?.labTest?.rate?.offerRate - discountAmount |
+                                currency: 'INR'}}
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div>
+                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/logo/razorpay.svg" alt="razorPayImage" height="30">
+                        <div class="my-3">
+                            Pay securely by Credit / Debit card, <br> Internet Banking, and UPI through Razorpay.
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-10">
+                        <button [disabled]="billingDetailForm.invalid || noSlotAvailabilityMessage" type="submit"
+                            class="btn btn-sm btn-danger py-2 px-4 w-100">Proceed to Pay</button>
+                    </div>
+                </div>
+                <div class="col-md-7 col-lg-8">
+                    <h4 class="mb-6">Billing Details</h4>
+                    <div class="row pb-8 pb-lg-10">
+                        <ng-container *ngFor="let control of formControlsConfig">
+                            <div [class]="control.partentClass">
+                                <label class="form-label required">{{control.label}}</label>
+                                <input class="form-control form-control-solid" [type]="control.type"
+                                    [name]="control.controlName" [formControlName]="control.controlName"
+                                    (change)="control.controlName === 'phoneNumber' ? phoneNumberRemoveZero($event): ''"
+                                    autocomplete=" off" [placeholder]="control.placeHolder"
+                                    (keypress)="control.controlName === 'phoneNumber' ? numberValidation(10, $event): (control.controlName === 'age' ? numberValidation(2, $event) : '')" />
+                                <app-form-validation-template [form]="billingDetailForm" [field]="control.controlName"
+                                    [label]="control.label">
+                                </app-form-validation-template>
+                            </div>
+                        </ng-container>
+                        <div class="col-md-6 mb-5">
+                            <label class="form-label">Promocode ?</label>
+                            <input type="text" class="form-control form-control-solid cursor-pointer"
+                                placeholder="Enter Promocode" formControlName="promocode">
+                        </div>
+                        <div class="align-items-end col-md-6 d-flex mb-7">
+                            <button class="btn btn-sm btn-danger py-2 px-4"
+                                (click)="validateCouponClick()">Apply</button>
+                        </div>
+                    </div>
+                    <div class="pb-6">
+                        <h2 class="fw-bolder text-dark">Schedule Lab Test</h2>
+                        <div class="text-gray-400 fw-bold fs-6">
+                            Our collection team will get in touch with you. Technicians may be subject to availability.
+                        </div>
+                    </div>
+                    <div class="row pb-8 pb-lg-10">
+                        <div class="col-md-6 mb-5">
+                            <label class="form-label required">Select Date</label>
+                            <div class="d-flex" (click)="d.toggle();$event.stopPropagation();">
+                                <input type="date" class="form-control form-control-solid cursor-pointer"
+                                    container="body" [minDate]="minDate" ngbDatepicker #d="ngbDatepicker"
+                                    formControlName="selectDate">
+                                <div class="input-group-append cursor-pointer">
+                                    <span class="form-control form-control-solid">
+                                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/PCOS.svg" alt="calendar"
+                                            height="20" width="20">
+                                    </span>
+                                </div>
+                            </div>
+                            <app-form-validation-template [form]="billingDetailForm" [field]="'selectDate'"
+                                [label]="'Select Date'">
+                            </app-form-validation-template>
+                            <div class="fv-plugins-message-container text-danger">
+                                <span role="alert">
+                                    {{noSlotAvailabilityMessage}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-5">
+                            <label class="form-label required">Select Time</label>
+                            <select class="form-control form-control-solid" formControlName="selectTime">
+                                <option *ngFor="let option of SlotAvailability">{{option?.slot}}</option>
+                            </select>
+                            <app-form-validation-template [form]="billingDetailForm" [field]="'selectTime'"
+                                [label]="'Select Time'">
+                            </app-form-validation-template>
+                        </div>
+                    </div>
+                    <div class="">
+                        <h2 class="fw-bolder text-dark">Additional information</h2>
+                        <div class="mb-5">
+                            <label class="form-label">Notes (optional)</label>
+                            <input class="form-control form-control-solid" type="text" name="additionalInformation"
+                                formControlName="additionalInformation" autocomplete="off"
+                                placeholder="Enter Additional information" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

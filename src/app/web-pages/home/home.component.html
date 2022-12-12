@@ -1,0 +1,351 @@
+<div>
+  <div class="container">
+    <div class="my-20">
+
+      <h1 class="text-danger text-center w-lg-800px mx-auto mb-10"> Building a comprehensive healthcare ecosystem for
+        women</h1>
+
+      <section class="offer-section">
+        <div *ngIf="banners && banners.length" class="mx-10 mx-lg-0">
+          <owl-carousel-o [options]="newOfferList">
+            <ng-container *ngFor="let banner of banners">
+              <ng-template carouselSlide *ngIf="banner && banner?.gtb_image">
+                <div class="banner-slide w-100">
+                  <img fetchpriority="high" name="banner" class="banner-carousel-img rounded-3"
+                    [src]="banner?.gtb_image" alt="Banner" width="684" height="430">
+                  <div class="banner-slide-caption">
+                    <div class="banner-title mb-0">{{banner?.gtb_title}}</div>
+                    <p class="banner-desc mb-0">{{banner?.gtb_desc}}</p>
+                    <div class="cc-btns">
+                      <button [id]="banner?.gtbn_slug" [attr.data-uniqueId]="banner?.gtbn_slug" type="button"
+                        class="btn btn-primary banner-slide-btn" (click)="bannerClick(banner)">Learn More</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+          <!-- No data Found Start -->
+          <ng-container *ngIf="banners && !banners.length">
+            <div class="text-center text-danger h1">No records found</div>
+          </ng-container>
+          <!-- No data Found End-->
+        </div>
+      </section>
+
+      <!-- Consultation Start -->
+      <app-show-consultation [Home]="true"></app-show-consultation>
+      <!-- Consultation End -->
+
+    </div>
+  </div>
+
+  <!--start::Stand out video section-->
+  <div *ngIf="whatWeTreat?.whatWeTreatList" class="container">
+    <div class="fw-bolder fs-2">What We Treat</div>
+  </div>
+  <section class="text-center w-100 overflow-hidden py-5" id="what-we-treat-block">
+    <div class="container px-container-0 what-we-treat-height"
+      [class.loading-data]="!isDataVisible.whatWeTreat || !whatWeTreat?.whatWeTreatList?.length">
+      <div class="d-none d-xl-block cursor-pointer" (click)="whatWeTreatClickHandler()">
+        <div id="scrollFirstAnimationBottomToTop" #firstblock class="animation-style mb-15"
+          [ngStyle]="animationStylesRight">
+          <div class="row flex-nowrap animation-boxes-group justify-content-end m-0">
+            <ng-container *ngFor="let slide of whatWeTreat?.first; let index = index">
+              <div class="animation-cols"
+                [ngClass]="index % 2===0 ? 'animation-cols-solid' : 'animation-cols-transparent'">
+                <img img-preloader="{{slide?.gt_wwt_icon}}" alt="" height="50" width="50" class="mb-4">
+                {{slide?.gt_wwt_title.slice(0, 1).toUpperCase() +
+                slide?.gt_wwt_title.slice(1).toLowerCase()}}
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div id="scrollFirstAnimationTopToBotttom" class="animation-style" [ngStyle]="animationStylesLeft" #secondblock>
+          <div class="row flex-nowrap animation-boxes-group m-0">
+            <ng-container *ngFor="let slide of whatWeTreat?.second; let index = index">
+              <div class="animation-cols"
+                [ngClass]="index % 2===0 ? 'animation-cols-solid' : 'animation-cols-transparent'">
+                <img img-preloader="{{slide?.gt_wwt_icon}}" alt="" height="50" width="50" class="mb-4">
+                {{slide?.gt_wwt_title.slice(0, 1).toUpperCase() +
+                slide?.gt_wwt_title.slice(1).toLowerCase()}}
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="d-block d-xl-none">
+        <div class="px-10">
+          <owl-carousel-o class="what-we-treat-owl" [options]="whatWeTreatOwl">
+            <ng-container *ngFor="let slide of whatWeTreat?.whatWeTreatList; let i = index">
+              <ng-template carouselSlide [id]="slide.gt_wwt_guid">
+                <div class="animation-cols"
+                  [ngClass]="i % 2===0 ? 'animation-cols-solid' : 'animation-cols-transparent'">
+                  <img img-preloader="{{slide?.gt_wwt_icon}}" alt="" height="50" width="50"
+                    class="mb-4 animation-col-img">
+                  {{slide?.gt_wwt_title.slice(0, 1).toUpperCase() +
+                  slide?.gt_wwt_title.slice(1).toLowerCase()}}
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--end::Stand out video section-->
+
+  <div class="container">
+    <div class="my-20">
+      <section class="package-list my-20" id="package-block">
+        <div class="fw-bolder mb-3 fs-2 d-flex justify-content-between">Packages
+          <div (click)="viewAllPackage()" class="text-danger" *ngIf="mobileScreen">
+            View All
+          </div>
+        </div>
+        <div class="mb-3 fs-4">
+          Our packages are backed by research and curated by trusted doctors.
+        </div>
+        <div class="packages-height" [class.loading-data]="!isDataVisible.packages || !packages?.packageData">
+          <app-show-packages *ngIf="packages?.packageData"
+            [carouselOption]="packages?.packageData?.length < 4 ? OUR_TEAM_CONFIG.list : CAROUSEL_CONFIG.carouselOptions"
+            [packageData]="{packageData: mobileScreen ? packages?.first?.slice(0,3) : packages?.first}">
+          </app-show-packages>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Why Gytree Start -->
+  <div class="container">
+    <div class="fw-bolder mb-6 fs-2">Why Gytree</div>
+  </div>
+  <section class="why-gytree why-gytree-height" id="why-gytree-block"
+    [class.loading-data]="!isDataVisible.whyGytree || !whyGytree?.length">
+    <div class="container">
+      <div class="row">
+        <ng-container *ngFor="let reason of whyGytree;let index = index">
+          <div class="col-lg-4">
+            <div class="block" *ngIf="index < 3">
+              <div class="count">0{{index + 1}}</div>
+              <div class="details">
+                <div class="title max-line-2">
+                  {{reason?.gtwg_title}}
+                </div>
+                <div class="description mt-2">
+                  {{reason?.gtwg_desc}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+  <!-- No data Found Start -->
+  <ng-container *ngIf="whyGytree && !whyGytree.length">
+    <div class="text-center text-danger h1">No records found</div>
+  </ng-container>
+  <!-- No data Found End-->
+  <!-- Why Gytree End -->
+
+  <div class="container">
+    <div class="my-20">
+
+      <section class="my-20" id="shaping-gytree-block">
+        <div class="fw-bolder mb-6 fs-2">Shaping the Gytree Story</div>
+        <div class="mx-10 mx-lg-0 shaping-height"
+          [class.loading-data]="!isDataVisible.shapingGytree || !shapingGytreeTeam?.length">
+          <owl-carousel-o [options]="shapingGytree">
+            <ng-container *ngFor="let user of shapingGytreeTeam ; let i = index">
+              <ng-template carouselSlide>
+                <div class="card responsive-slides mb-4 overflow-hidden h-100">
+                  <img img-preloader="{{user?.image}}" alt="image" width="380" height="380">
+                  <div class="fs-2 fw-bolder mt-3 mx-4">{{user?.title}}</div>
+                  <div class="fs-2 fw-bolder mx-4">{{user?.position}}</div>
+                  <div class="d-flex align-items-center fs-4 fw-bold my-3 desc-height mx-4 ">{{user?.description}}</div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+      </section>
+
+      <section class="age-list my-20" id="age-wise-block">
+        <div class="fw-bolder mb-6 fs-2">Explore Age wise</div>
+        <div class="mb-3 fs-4">
+          Find these science backed packages according to your age
+        </div>
+        <div class="row" [class.ageWiseHeight]="!isDataVisible.ageWiseFilter || !ages?.length"
+          [class.loading-data]="!isDataVisible.ageWiseFilter || !ages?.length">
+          <div class="col-sm-4" *ngFor="let age of ages">
+            <div class="card text-white h-100 cursor-pointer" (click)="ageGroupClickHandler(age.gtag_value)">
+              <div class="card-body">
+                <span class="">
+                  {{age?.gtag_value}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="ages && !ages.length">
+          <div class="text-center text-danger h1">No records found</div>
+        </div>
+      </section>
+
+      <section class="consult-list my-20" id="health-clinic-block">
+        <div class="fw-bolder mb-6 fs-2">Consult Via Health Clinics</div>
+        <div class="mb-3 fs-4">
+          Choose the area of your concern and get the solution to your problem through these science
+          backed packages curated according to your health needs.
+        </div>
+        <div class="row common-height" [class.loading-data]="!isDataVisible.healthClinic || !consults?.length">
+          <div class="health-clinic-width col-12 col-md-6 col-lg-4 mb-8"
+            *ngFor="let consult of consults; let index = index">
+            <div class="card text-custom ms-0 me-0">
+              <div class="consult-card-body">
+                <img img-preloader="{{consult?.gthc_image}}" height="62" width="62" [alt]="consult?.gthc_name"
+                  class="image-top">
+                <div class="title cursor-pointer" (click)="healthClinicClickHandler(consult.gthc_name)">
+                  {{consult?.gthc_name?.replaceAll('-', ' ')}}
+                </div>
+                <div class="description mt-6 max-line-3 collapse consult-desc-max-height"
+                  [id]="'home_consult_via_health_' + index">
+                  {{consult?.gthc_dscr}}
+                </div>
+                <div class="download collapsible toggle" (click)="onToggleConsultConsultHealthClinic(consult)"
+                  data-bs-toggle="collapse" [attr.data-bs-target]="'#home_consult_via_health_' + index">
+                  <img class="download-image-rotation" [class.transform180]="consult?.isOpen"
+                    img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-3.svg"
+                    alt="arrow-down" height="20" width="20">
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-container *ngIf="consults && !consults.length">
+            <div class="text-center text-danger h1">No records found</div>
+          </ng-container>
+        </div>
+      </section>
+
+      <section class="article-list my-20" id="article-block">
+        <div class="fw-bolder mb-6 fs-2">Must Read</div>
+        <div class="mx-10 mx-lg-0 common-height" [class.loading-data]="!isDataVisible.articles || !articles?.length">
+          <owl-carousel-o [options]="articleList">
+            <ng-container *ngFor="let article of articles">
+              <ng-template carouselSlide [id]="article?.id" [width]="300">
+                <div class="card responsive-slides card-flush bg-transparent cursor-pointer"
+                  (click)="articleClickHandler(article.link)">
+                  <img
+                    img-preloader="{{article?._embedded['wp:featuredmedia'] && article?._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url }}"
+                    alt="image" width="300" height="169" class="card-shadow rounded">
+                  <div class="fs-2 fw-bolder text-danger mt-3 ms-2 title-height max-line-2"
+                    [innerHTML]="(article?.title?.rendered || '') | safe: 'html'"></div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+          <ng-container *ngIf="articles && !articles.length">
+            <div class="text-center text-danger h1">No records found</div>
+          </ng-container>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="package-list my-20" id="other-package-block">
+      <div class="fw-bolder mb-3 fs-2">Other Packages</div>
+      <div class="mb-3 fs-4">
+        Our packages are backed by research and curated by trusted doctors.
+      </div>
+      <div class="packages-height" [class.loading-data]="!isDataVisible.otherPackages || !packages?.packageData">
+        <app-show-packages *ngIf="packages?.packageData"
+          [carouselOption]="packages?.packageData?.length < 4 ? OUR_TEAM_CONFIG.list : CAROUSEL_CONFIG.carouselOptions"
+          [packageData]="{packageData: mobileScreen ? packages?.second?.slice(0,3) : packages?.second}">
+        </app-show-packages>
+      </div>
+    </section>
+
+    <section class="my-20" id="video-block">
+      <div class="fw-bolder mb-6 fs-2">Watch Video</div>
+      <div class="mx-10 mx-lg-0 common-height" [class.loading-data]="!isDataVisible.videos || !videos?.length">
+        <owl-carousel-o [options]="videoList">
+          <ng-container *ngFor="let video of videos ; let i = index">
+            <ng-template carouselSlide [width]="290">
+              <div class="card responsive-slides card-shadow mb-2 overflow-hidden">
+                <div class="video__wrap">
+                  <div class="video__item js-video-item" [id]="video.gtv_url" appYoutubeDirective
+                    [video]="video.gtv_url">
+                    <button class="video__play js-video-play"></button>
+                  </div>
+                </div>
+                <div class="p-3">
+                  <span class="text-danger fs-3 fw-bolder title-height max-line-2">
+                    {{video?.gtv_title?.replaceAll('-', ' ')}}
+                  </span>
+                </div>
+              </div>
+            </ng-template>
+
+          </ng-container>
+        </owl-carousel-o>
+        <ng-container *ngIf="videos && !videos.length">
+          <div class="text-center text-danger h1">No records found</div>
+        </ng-container>
+      </div>
+    </section>
+
+    <section class="faq my-20" id="faq-block">
+      <div class="fw-bolder mb-6 fs-2">FAQs</div>
+      <div class="row" [class.faq-height]="!isDataVisible?.faq || !faq?.length"
+        [class.loading-data]="!isDataVisible?.faq || !faq?.length">
+        <div class="col-md-5" *ngIf="isDataVisible?.faq">
+          <img img-preloader="https://image.gytree.com/assets/media/gaytree/misc/FAQ.svg" alt="FAQ" width="310"
+            height="300" class="faq-img">
+        </div>
+        <div class="col-md-7">
+          <div class="my-20 my-lg-0">
+            <ng-container *ngFor="let faqData of faq; let index = index;">
+              <div *ngIf="index < 3" class="m-0">
+                <div class="d-flex align-items-center collapsible py-3 toggle mb-0" data-bs-toggle="collapse"
+                  [class.collapsed]="index !== 0" [attr.data-bs-target]="'#quetion_' + index + 1">
+                  <div class="number">
+                    <div class="number-cover" [class.rotate-210]="index === 1" [class.rotate-60]="index === 2"></div>
+                    <div class="number-count">
+                      {{index + 1}}
+                    </div>
+                  </div>
+
+                  <h4 class="text-danger fw-bolder cursor-pointer mb-0">
+                    {{faqData?.gtf_que}}
+                  </h4>
+                  <div class="btn btn-sm btn-icon mw-20px btn-active-color-primary ms-auto">
+                    <span class="svg-icon toggle-on svg-icon-primary svg-icon-1 rotate-180">
+                      <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-2.svg"
+                        alt="arrow" width="22" height="12">
+                    </span>
+                    <span class="svg-icon toggle-off svg-icon-1 rotate-90">
+                      <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-2.svg"
+                        alt="arrow" width="22" height="12">
+                    </span>
+                  </div>
+                </div>
+                <div [id]="'quetion_' + index + 1" class="fs-6 ms-1 collapse" [class.show]="index === 0">
+                  <div class="mb-4 text-gray-600 fw-bold fs-6 ps-20">
+                    {{faqData?.gtf_ans}}
+                  </div>
+                </div>
+                <div class="separator separator-dashed"></div>
+              </div>
+            </ng-container>
+            <div class="text-end mt-4">
+              <span class="fw-bolder text-danger cursor-pointer fs-4" (click)="viewAllFaq()">View All</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="card card-flush shadow-none bg-transparent my-10">
+        <div class="card-header align-items-center justify-content-center">
+            <div class="title text-danger">
+                FAQs
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="">
+                <ng-container *ngFor="let faq of faqList; let index = index">
+                    <div class="m-0">
+                        <div class="d-flex align-items-center collapsible py-3 toggle mb-0 " data-bs-toggle="collapse"
+                            [attr.data-bs-target]="'#quetion_' + index"
+                            [class.collapsed]="index !== 0">
+                            <div class="number">
+                                <div class="number-cover"
+                                    [ngClass]="index % 3 === 1 ? 'rotate-210' : (index % 3 === 2 ? 'rotate-60' : '')">
+                                </div>
+                                <div class="number-count">
+                                    {{index+1}}
+                                </div>
+                            </div>
+
+                            <h4 class="text-gray-700 fw-bolder cursor-pointer mb-0">
+                                {{faq?.gtf_que}}
+                            </h4>
+                            <div class="btn btn-sm btn-icon mw-20px btn-active-color-primary ms-auto">
+                                <span class="svg-icon toggle-on svg-icon-primary svg-icon-1 rotate-180">
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-2.svg" alt="arrow" width="22" height="12">
+                                </span>
+                                <span class="svg-icon toggle-off svg-icon-1 rotate-90">
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-2.svg" alt="arrow" width="22" height="12">
+                                </span>
+                            </div>
+                        </div>
+                        <div [id]="'quetion_' + index" class="fs-6 ms-1 collapse" [class.show]="index === 0">
+                            <div class="mb-4 text-gray-600 fw-bold fs-6 ps-20">
+                                <div [innerHTML]="(faq?.gtf_ans || '') | safe: 'html'"></div>
+                            </div>
+
+                        </div>
+                        <div class="separator separator-dashed"></div>
+                    </div>
+                </ng-container>
+                <!-- No data Found Start -->
+                <ng-container *ngIf="faqList && !faqList.length">
+                    <div class="text-center text-danger h1">No records found</div>
+                </ng-container>
+                <!-- No data Found End-->
+            </div>
+        </div>
+    </div>
+</div>

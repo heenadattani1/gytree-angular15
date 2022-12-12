@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="card card-flush shadow-none bg-transparent my-10">
+        <div class="card-header align-items-center justify-content-center">
+            <div class="title text-danger">
+                What We Treat
+            </div>
+            <div class="mb-3 fs-4">
+                Gytree is the elder sister every girl and woman needs. We have curated a universe of many immediate and
+                pressing needs every woman wants to solve for. Take a look at these below and explore our packages.
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="">
+                <ng-container *ngFor="let whatWeTreat of whatWeTreatList; let index = index">
+                    <div class="m-0">
+                        <div class="d-flex align-items-center collapsible py-3 toggle mb-0 " data-bs-toggle="collapse"
+                            [attr.data-bs-target]="'#option_' + index" [attr.aria-expanded]="index === 0 ? true : false"
+                            [class.collapsed]="index !== 0">
+                            <div class="number">
+                                <div class="number-cover"
+                                    [ngClass]="index % 3 === 1 ? 'rotate-210' : (index % 3 === 2 ? 'rotate-60' : '')">
+                                </div>
+                                <div class="number-count">
+                                    {{index+1}}
+                                </div>
+                            </div>
+
+                            <h4 class="text-gray-700 fw-bolder cursor-pointer mb-0">
+                                {{whatWeTreat?.gt_wwt_title}}
+                            </h4>
+                            <div class="btn btn-sm btn-icon mw-20px btn-active-color-primary ms-auto">
+                                <span class="svg-icon toggle-on svg-icon-primary svg-icon-1 rotate-180">
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-2.svg" alt="arrow"
+                                        width="22" height="12">
+                                </span>
+                                <span class="svg-icon toggle-off svg-icon-1 rotate-90">
+                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-2.svg" alt="arrow"
+                                        width="22" height="12">
+                                </span>
+                            </div>
+                        </div>
+                        <div [id]="'option_' + index" class="fs-6 ms-1 collapse" [class.show]="index === 0">
+                            <div class="mb-4 text-gray-600 fw-bold fs-6 ps-20">
+                                <div [innerHTML]="(whatWeTreat?.gt_wwt_description || '') | safe: 'html'"></div>
+                            </div>
+
+                        </div>
+                        <div class="separator separator-dashed"></div>
+                    </div>
+                </ng-container>
+                <!-- No data Found Start -->
+                <ng-container *ngIf="whatWeTreatList && !whatWeTreatList.length">
+                    <div class="text-center text-danger h1">No records found</div>
+                </ng-container>
+                <!-- No data Found End-->
+            </div>
+        </div>
+    </div>
+
+    <section class="package-list my-20">
+        <div class="fw-bolder mb-3 fs-2">Packages</div>
+        <div class="mb-3 fs-4">
+            Our packages are backed by research and curated by trusted doctors.
+        </div>
+        <app-show-packages *ngIf="packageDetails" [packageData]="packageDetails"></app-show-packages>
+    </section>
+</div>

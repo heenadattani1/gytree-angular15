@@ -1,0 +1,71 @@
+<section *ngIf="!Home" class="consultation-home">
+  <owl-carousel-o [options]="consultations.consultationList" class="responsive-arrows">
+    <ng-container *ngFor="let con of consultations.staticData">
+      <ng-template carouselSlide>
+        <div class="fw-bolder mb-3 fs-2">{{con?.heading}}</div>
+        <div class="card responsive-appointment-slides card-info card-shadow mt-8">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <div class="text-white fw-bolder mb-3 fs-2 title-height">{{con?.title}}</div>
+                <div *ngIf="!mobileScreen" class="text-white fw-bolder mb-2 fs-4 description-height max-line-2">
+                  {{con.description}}
+                </div>
+                <button [id]="con?.id" [attr.data-uniqueId]="con?.id" (click)="bookNowClickHandler(con?.afterLoginRouting)" class="btn btn-sm bg-dark text-light mt-2">BOOK
+                  NOW</button>
+              </div>
+              <div class="col-6 position-relative">
+                <img [src]="con.src" alt="image" class="misc-image" width="180" height="206" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</section>
+
+<section *ngIf="Home" class="consultation-home my-20">
+  <div class="row">
+    <div class="fw-bolder mb-1 fs-2">Expert Consultation</div>
+    <!-- <div class="mb-3 col-lg-8 fs-4">
+      What you are going through is real. We have brought together the best team of health experts from
+      all over the country to design science backed packages and programs specially for you.
+    </div> -->
+    <div class="mb-3 col-lg-8 fs-4">
+      What you are going through is real. We have brought together the best team of judgement-free health experts from
+      all
+      over the country to design science backed packages for you.
+    </div>
+    <div class="col-lg-8">
+      <owl-carousel-o [options]="consultations.consultationList" class="responsive-arrows">
+        <ng-container *ngFor="let con of consultations.staticData;let index=index;">
+          <ng-template carouselSlide>
+            <div class="card responsive-appointment-slides card-info card-shadow">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="text-white fw-bolder mb-3 fs-2 title-height">{{con.title}}</div>
+                    <div *ngIf="!mobileScreen" class="text-white fw-bolder mb-2 fs-4 description-height"
+                      [class.h-lg-100px]="index % 2 !== 0 && laptopScreen">
+                      {{con.description}}
+                    </div>
+                    <button [id]="con?.id" [attr.data-uniqueId]="con?.id" (click)="bookNowClickHandler(con.routing)" class="btn btn-sm bg-dark text-light mt-2"
+                      (window:resize)="screenWidth()" [class.mt-6]="mobileScreen">BOOK
+                      NOW</button>
+                  </div>
+                  <div class="col-6 position-relative">
+                    <img [src]="con.src" alt="image" class="misc-image" width="180" height="206" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+    <div class="col-lg-4 d-none d-lg-block">
+      <img img-preloader="https://image.gytree.com/assets/media/gaytree/misc/box-images-new.webp" alt="image" width="271" height="280" />
+    </div>
+  </div>
+</section>

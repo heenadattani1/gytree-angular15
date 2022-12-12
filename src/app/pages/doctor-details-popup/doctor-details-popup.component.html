@@ -1,0 +1,47 @@
+<div class="card doctor-details-popup-card">
+    <div class="card-header">
+        <h3 class="card-title">Doctor Details</h3>
+        <div class="card-toolbar">
+            <button type="button" class="btn btn-sm btn-icon" data-bs-dismiss="modal" aria-label="Close"
+                (click)="modal.dismiss('cancel click')">
+                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/modal_close.svg" alt="modal_close" height="32"
+                    width="32">
+            </button>
+        </div>
+    </div>
+    <!-- Profile start -->
+    <div class="card-body">
+        <div class="d-flex align-items-center flex-column flex-sm-row">
+            <div class="flex-fill align-self-start align-self-sm-center">
+                <div class="d-flex align-items-center">
+                    <div *ngIf="doctorDetails?.gtd_image" class="symbol symbol-circle symbol-100px">
+                        <img img-preloader="{{doctorDetails.gtd_image}}" class="img-size-fit"
+                            [alt]="doctorDetails?.gtd_name">
+                    </div>
+                    <div class="ms-6">
+                        <span class="text-gray-800 fs-6 fw-bolder lh-1">
+                            {{doctorDetails?.gtd_fullname?.replaceAll('-', ' ')}}
+                        </span>
+                        <span class="text-muted fw-bold d-block fs-7 lh-1">
+                            {{doctorDetails?.gtd_degree}}</span>
+                        <small class="text-danger d-block">
+                            {{doctorDetails?.gtd_type}}
+                        </small>
+                        <small class="text-muted d-block">{{doctorDetails?.gtd_exper}} of Experience</small>
+                    </div>
+                </div>
+            </div>
+            <!-- <button class="btn btn-sm btn-danger ms-6 align-self-end align-self-sm-center my-6"
+                        (click)="goToConsult()">BOOK NOW</button> -->
+        </div>
+    </div>
+
+    <div class="card-body py-0">
+        <div class="border-top border-top-3 border-gray-400"></div>
+    </div>
+    <div class="card-body">
+        <span class="badge badge-lg badge-danger">Bio</span>
+        <p class="mt-6" [innerHTML]="(doctorDetails?.gtd_about_me || '') | safe: 'html'"></p>
+    </div>
+    <!-- Profile end -->
+</div>

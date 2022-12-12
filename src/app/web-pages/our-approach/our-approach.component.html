@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="card card-flush shadow-none bg-transparent my-10">
+        <div class="card-header align-items-center justify-content-center">
+            <div class="title text-danger">
+                Our Approach
+            </div>
+        </div>
+        <div class="card-body">
+            <section>
+                <div [innerHTML]="(ourApproachDetails?.gtmp_value || '') | safe: 'html'">
+                </div>
+            </section>
+            <!-- No data Found Start -->
+            <ng-container *ngIf="ourApproachDetails && !ourApproachDetails?.gtmp_value">
+                <div class="text-center text-danger h1">No records found</div>
+            </ng-container>
+            <!-- No data Found End-->
+        </div>
+    </div>
+</div>

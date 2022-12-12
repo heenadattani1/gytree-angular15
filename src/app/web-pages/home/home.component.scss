@@ -1,0 +1,731 @@
+@import "../../../assets/sass/gytree-config.scss";
+
+:host ::ng-deep {
+  .offer-section {
+    &_img {
+      height: 416px;
+    }
+  }
+
+  .package-list {
+    .card {
+      margin: 0 16px 0 0;
+      box-shadow: 1.5748px 1.5748px 3.14959px rgba(0, 0, 0, 0.25);
+
+      .card-img-top {
+        height: 130px;
+        background-color: #dce2e5;
+        border-radius: 12px 80px 12px 12px;
+        object-fit: cover;
+      }
+
+      .btn-more {
+        position: absolute;
+        right: -10px;
+        top: -8px;
+        font-size: 20px;
+        color: #fff;
+      }
+    }
+
+    .active {
+      transition: all 0.3s;
+      margin-top: 20px;
+
+      h5 {
+        font-size: 1.25rem;
+      }
+
+      .card-text {
+        font-size: 11px;
+      }
+
+      &.center {
+        opacity: 1;
+        margin-top: 0;
+
+        .card-img-top {
+          height: 150px;
+        }
+
+        h5 {
+          font-size: 1.75rem;
+        }
+
+        .card-text {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .age-list {
+    .card {
+      background-color: $g-red-light;
+      border: 5px solid #fff;
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      margin-right: 20px;
+      margin-left: 20px;
+    }
+  }
+
+  .consult-list {
+    .card {
+      border: 3px solid $g-red-light;
+      text-align: center;
+      margin-top: 30px;
+      margin-right: 20px;
+      margin-left: 20px;
+
+      .image-top {
+        position: absolute;
+        right: -31px;
+        top: -31px;
+        width: auto;
+
+        @media (max-width: 991px) {
+          right: -25px;
+        }
+
+        @media (max-width: 767px) {
+          right: -21px;
+        }
+      }
+
+      .title {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .download {
+        position: absolute;
+        bottom: 0.5rem;
+        right: 0.5rem;
+        cursor: pointer;
+      }
+    }
+
+    .active {
+      .card {
+        .description {
+          display: none;
+        }
+      }
+
+      &.center {
+        .card {
+          .description {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1025px) {
+    .offer-section {
+      &_img {
+        height: 350px;
+      }
+    }
+  }
+
+  @media (max-width: 769px) {
+    .offer-section {
+      &_img {
+        height: 270px;
+      }
+    }
+  }
+
+  @media (max-width: 575px) {
+    .offer-section {
+      &_img {
+        height: 150px;
+      }
+    }
+
+    .age-list {
+      .card {
+        margin: 0;
+        font-size: 14px;
+
+        &-body {
+          padding: 1rem;
+        }
+      }
+    }
+
+    .consult-list {
+      .card {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.stand-out-video {
+  width: 960px;
+}
+
+.why-gytree {
+  background-color: $g-red-light;
+
+  .block {
+    display: flex;
+    height: 100%;
+    color: #fff;
+    gap: 2rem;
+    padding: 2rem 0;
+
+    .count {
+      font-size: 30px;
+      font-weight: 600;
+      background-image: url("https://image.gytree.com/assets/media/gaytree/background/number-2.svg");
+      background-size: contain;
+      height: 136px;
+      width: 120px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      text-align: right;
+      line-height: 1;
+    }
+
+    .details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        font-size: 22px;
+        font-weight: 600;
+
+        @media (min-width: 992px) {
+          height: 66px;
+        }
+      }
+    }
+  }
+}
+
+.faq {
+  .number {
+    position: relative;
+    margin-right: 1rem;
+
+    &-cover {
+      background-image: url("https://image.gytree.com/assets/media/gaytree/background/number-1.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 36px;
+      width: 54px;
+    }
+
+    &-count {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+
+  .faq-img {
+    width: 310px;
+
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+  }
+}
+
+.text-custom {
+  color: $g-red-light;
+}
+
+.card-shadow {
+  box-shadow: 2.68727px 5.37455px 5.37455px rgba(0, 0, 0, 0.25);
+}
+
+.card-info {
+  background: $g-green;
+}
+
+.card-red {
+  background: $g-red;
+}
+
+.card-blue {
+  background: $g-blue;
+}
+
+.card-purple {
+  background: $g-purple;
+}
+
+.card-background {
+  background-color: #fbf7f2;
+}
+
+@media (max-width: 992px) {
+  .stand-out-video {
+    width: 320px;
+  }
+
+  .why-gytree .block {
+    .count {
+      font-size: 32px;
+      height: 60px;
+      width: 60px;
+      margin-top: 10px;
+    }
+  }
+}
+
+.banner-background {
+  background: linear-gradient(95.04deg, #fa7586 -16.8%, #ff9f79 111.22%);
+}
+
+.rotate-60 {
+  transform: rotate(60deg);
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.rotate-210 {
+  transform: rotate(210deg);
+}
+
+@media (min-width: 992px) {
+  .health-clinic-width {
+    flex: 0 0 auto;
+    width: 33.33%;
+  }
+}
+
+.consult-card-body {
+  padding: 2rem 2.25rem 2rem 2.25rem;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.title-height {
+  min-height: 52px;
+}
+
+.desc-height {
+  min-height: 98px;
+}
+
+.animation-boxes-group {
+  display: flex;
+  width: 100%;
+  gap: 50px;
+
+  @media (max-width: 1400px) {
+    gap: 25px;
+  }
+}
+
+.animation-cols {
+  flex-shrink: 0;
+  border-radius: 25px;
+  min-height: 100%;
+  display: flex;
+  height: 140px;
+  width: 163px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  padding: 15px;
+
+  .animation-col-img {
+    width: auto;
+  }
+
+  @media (max-width: 1199px) {
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.animation-cols-solid {
+  background-color: #fdf8ec;
+  box-shadow: 0px 0px 10px 4px #0000001f;
+}
+
+.animation-cols-transparent {
+  color: #f36b71;
+  border: 3px solid #f36b71;
+}
+
+.px-container-0 {
+  @media (min-width: 1200px) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+// new Banner Carousel
+
+.banner-slide {
+  position: relative;
+  height: 450px;
+  padding: 10px 20px;
+
+  @media (max-width: 1399px) {
+    padding: 10px 20px;
+  }
+
+  @media (max-width: 1199px) {
+    height: 380px;
+  }
+
+  @media (max-width: 991px) {
+    height: 600px;
+  }
+
+  @media (max-width: 767px) {
+    height: 550px;
+  }
+
+  @media (max-width: 767px) {
+    height: 400px;
+    padding: 10px 0;
+  }
+
+  .banner-carousel-img {
+    box-shadow: inset 5px 3px 5px #0000002b;
+    width: 58% !important;
+    object-fit: cover;
+    border-radius: 15px;
+    height: 100%;
+
+    @media (max-width: 1399px) {
+      width: 60% !important;
+    }
+
+    @media (max-width: 991px) {
+      height: 65%;
+      margin: 0 auto;
+      width: 85% !important;
+    }
+
+    @media (max-width: 767px) {
+      width: 100% !important;
+    }
+  }
+
+  .banner-slide-caption {
+    position: absolute;
+    z-index: 10;
+    border-radius: 15px;
+    text-align: left;
+    background-color: #efefef;
+    top: 60px;
+    bottom: 60px;
+    right: 3%;
+    color: #1c1c1c;
+    padding: 36px;
+    width: 44%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+
+    &>* {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 1399px) {
+      right: 0%;
+      width: 46%;
+    }
+
+    @media (max-width: 1199px) {
+      bottom: 50px;
+      top: 50px;
+    }
+
+    @media (max-width: 991px) {
+      height: 45%;
+      width: 55%;
+      bottom: 0px;
+      top: auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @media (max-width: 767px) {
+      height: auto;
+      width: 90%;
+    }
+
+    @media (max-width: 575px) {
+      width: 78%;
+      padding: 20px;
+    }
+  }
+
+  .banner-title {
+    font-size: 36px;
+    font-weight: bold;
+
+    @media (max-width: 1199px) {
+      font-size: 32px;
+    }
+
+    @media (max-width: 575px) {
+      font-size: 22px;
+    }
+  }
+
+  .banner-desc {
+    font-size: 17px;
+    font-weight: 600;
+
+    @media (max-width: 1199px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 575px) {
+      font-size: 12px;
+    }
+  }
+
+  .banner-slide-btn {
+    border: 1px solid transparent !important;
+    background-color: #f25769;
+    border-radius: 43px;
+
+    &:hover {
+      color: #f25769;
+      border: 1px solid #f25769 !important;
+      background-color: transparent !important;
+    }
+  }
+}
+
+// Responsive Slides
+
+.responsive-slides {
+  @media (max-width: 767px) {
+    img {
+      height: auto;
+    }
+
+    margin: 0 auto;
+  }
+
+  @media (max-width: 380px) {
+    margin: 0 10px 0 10px;
+    width: 245px;
+  }
+
+  @media (max-width: 355px) {
+    margin: 0 10px 0 10px;
+    width: 220px;
+  }
+
+  @media (max-width: 340px) {
+    margin: 0 10px 0 10px;
+    width: 210px;
+  }
+
+
+}
+
+
+
+
+
+.video__wrap {
+  width: 290px;
+  height: 163px;
+  z-index: 10;
+  background-color: #e0e0e0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+@media (max-width: 658px) {
+  .video__wrap {
+    width: 100%;
+  }
+}
+
+.video__wrap .video__item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer
+}
+
+.video__wrap .video__item:hover .video__play,
+.video__wrap .video__item:focus .video__play {
+  outline: none;
+  opacity: 1;
+  -webkit-transition: opacity .25s ease-in-out;
+  -o-transition: opacity .25s ease-in-out;
+  transition: opacity .25s ease-in-out
+}
+
+.video__wrap .video__item:hover .video__play svg,
+.video__wrap .video__item:focus .video__play svg {
+  fill: #f12f2f;
+  opacity: 1;
+  -webkit-transition: fill .25s, background-color .25s;
+  -o-transition: fill .25s, background-color .25s;
+  transition: fill .25s, background-color .25s
+}
+
+.video__wrap .text__hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px
+}
+
+.video__wrap .video__img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none
+}
+
+.video__wrap iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none
+}
+
+.video__wrap .video__play {
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 68px;
+  height: 48px;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: .8;
+  -webkit-transition: opacity .25s ease-in-out;
+  -o-transition: opacity .25s ease-in-out;
+  transition: opacity .25s ease-in-out;
+  outline: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 1
+}
+
+.video__wrap .video__play:focus svg {
+  fill: #f12f2f
+}
+
+.video__wrap .video__play img,
+.video__wrap .video__play svg {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: fill .25s, background-color .25s;
+  -o-transition: fill .25s, background-color .25s;
+  transition: fill .25s, background-color .25s
+}
+
+.video__wrap .video__caption {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 400;
+  font-family: sans-serif;
+  z-index: 1
+}
+
+.consult-desc-max-height {
+  height: 62px !important;
+}
+
+.visiblility-hidden {
+  visibility: hidden;
+}
+
+.faq-height {
+  height: 300px;
+}
+
+.ageWiseHeight {
+  height: 150px;
+}
+
+.packages-height {
+  min-height: 350px;
+}
+
+.why-gytree-height {
+  min-height: 220px;
+}
+
+.shaping-height {
+  min-height: 450px;
+}
+
+.common-height {
+  min-height: 245px;
+}
+
+.what-we-treat-height {
+  min-height: 160px;
+}
+
+.loading-data {
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  border-radius: 5px;
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
+}
+
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}

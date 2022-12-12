@@ -1,0 +1,27 @@
+<div class="container mt-10 mb-10">
+    <div class="d-flex row" *ngIf="dataList">
+        <div *ngFor="let type of dataTypes; let index = index" class="col-12 col-md-4 mt-4">
+            <h2 class="ms-2">{{type === typesList.Packages ? "Packages" : (type === typesList.Doctors ?
+                "Doctors" : "Lab Tests")}}
+            </h2>
+            <ng-container *ngIf="type === typesList.Packages">
+                <ul>
+                    <li *ngFor="let item of dataList[type]"><a [routerLink]="'/package-details/' + item?.gtp_slug"
+                            class="text-gray-600 text-hover-danger cursor-pointer fs-5 fw-bold max-line-2">{{item?.gtp_name}}</a></li>
+                </ul>
+            </ng-container>
+            <ng-container *ngIf="type === typesList.Doctors">
+                <ul>
+                    <li *ngFor="let item of dataList[type]"><a [routerLink]="'/doctor-details/' + item?.gtd_slug"
+                            class="text-gray-600 text-hover-danger cursor-pointer fs-5 fw-bold max-line-2">{{item?.gtd_fullname}}</a></li>
+                </ul>
+            </ng-container>
+            <ng-container *ngIf="type === typesList.Labtest">
+                <ul>
+                    <li *ngFor="let item of dataList[type]"><a [routerLink]="'/lab-test-details/' + item?.gtl_id"
+                            class="text-gray-600 text-hover-danger cursor-pointer fs-5 fw-bold max-line-2">{{item?.name}}</a></li>
+                </ul>
+            </ng-container>
+        </div>
+    </div>
+</div>

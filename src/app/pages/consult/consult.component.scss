@@ -1,0 +1,128 @@
+@import "../../../assets/sass/gytree-config.scss";
+
+:host ::ng-deep {
+  .sidebar {
+    background-color: #b3d6d3;
+    background-image: url("https://image.gytree.com/assets/media/gaytree/background/consult.svg");
+    background-size: cover;
+  }
+}
+
+.timeline-steps {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .timeline-step {
+    width: 10rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 1rem;
+
+    &:before {
+      content: "";
+      height: 2px;
+      width: 116px;
+      position: absolute;
+      top: 21px;
+      background: #c7c7c7;
+      right: 84px;
+    }
+
+    &:first-child {
+      &:before {
+        display: none;
+      }
+    }
+
+    .timeline-content {
+      .inner-circle {
+        text-align: center;
+        border: 2px solid #c7c7c7;
+        border-radius: 50%;
+        height: 42px;
+        width: 42px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 18px;
+        color: #c7c7c7;
+      }
+
+      p {
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 0.75rem;
+      }
+    }
+
+    &.done {
+      .timeline-content {
+        .inner-circle {
+          border: 2px solid $g-red-light;
+          color: $g-red-light;
+        }
+      }
+
+      &:before {
+        background: $g-red-light;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .timeline-steps {
+    .timeline-step {
+      width: 6rem;
+      margin: 0.5rem;
+
+      &:before {
+        width: 62px;
+        top: 10px;
+        right: 47px;
+      }
+
+      .timeline-content {
+        .inner-circle {
+          height: 22px;
+          width: 22px;
+          font-size: 12px;
+        }
+
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.alert.alert-warning {
+  background-color: #ffe7ca !important;
+  border-color: #ffe7ca !important;
+}
+
+.btn-choose {
+  padding: 0.25rem 1rem !important;
+  font-size: 1.3rem !important;
+}
+
+.form-check-input:checked {
+  background-color: #F25769;
+  border-color: #F25769;
+}
+
+.promo-form-control {
+  background-color: #FAF0E4;
+}

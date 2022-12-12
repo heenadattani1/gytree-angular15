@@ -1,0 +1,250 @@
+<!-- Consultation Start -->
+<app-show-consultation></app-show-consultation>
+<!-- Consultation End -->
+<!-- Appointment Start -->
+
+<section class="my10">
+    <ng-container *ngIf="scheduleappointmentList?.length">
+        <div class="fw-bolder mb-3 fs-2">Your Appointments</div>
+        <owl-carousel-o [options]="appointmentListOptions" class="responsive-arrows">
+            <ng-container *ngFor="let appointment of scheduleappointmentList; let index = index">
+                <ng-template class="slide" carouselSlide [id]="index.toString()">
+                    <div class="card responsive-appointment-slides card-info text-white mb-4">
+                        <div class="card-body">
+                            <div class="fw-bolder mb-3 fs-3">
+                                Appointment {{ (appointment?.appointment_data?.gtap_status &&
+                                appointment?.appointment_data?.gtap_status == 'completed') ? 'Completed' :
+                                (appointment?.appointment_data?.gtap_status == 'cancelled' ? 'Cancelled' :'Booked')
+                                }}
+                                <span class=" ms-2 badge"
+                                    [ngClass]="appointment?.gto_type === 'consultation' ? 'badge-warning' : 'badge-success'">
+                                    {{appointment?.gto_type?.replace('_', ' ')}}</span>
+                            </div>
+                            <div class="d-flex">
+                                <div class="me-4">
+                                    <div class="mb-2">Appointment Date</div>
+                                    <div class="">
+                                        {{appointment?.gto_date}}
+                                    </div>
+                                </div>
+                                <div class="ms-4">
+                                    <div class="mb-2">Appointment Time</div>
+                                    <div class="">
+                                        {{appointment?.gto_slot ? appointment?.gto_slot :
+                                        appointment?.gto_time}}
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" [id]="'kt_schedule_toggle'" class="btn btn-sm btn-dark mt-1"
+                                (click)="viewMoreClickHandler(appointment)">
+                                VIEW MORE
+                            </button>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+        <ng-container *ngIf="!scheduleappointmentList?.length">
+            <div class="text-center text-danger h1">No records found</div>
+        </ng-container>
+    </ng-container>
+</section>
+<!-- Appointment End -->
+
+<!-- Packages Start -->
+<section *ngIf="schedulepackages?.packageData" class="other-packages my-10">
+    <div class="fw-bolder mb-3 fs-2">Other Packages</div>
+    <div class="mb-3 fs-4">
+        Our packages are backed by research and curated by trusted doctors.
+    </div>
+    <div class="fw-bolder mb-3 fs-3 text-danger text-end">
+        <span class="cursor-pointer" (click)="viewAllPackages()">View All</span>
+    </div>
+    <app-show-packages [packageData]="schedulepackages">
+    </app-show-packages>
+</section>
+<!-- Packages End -->
+
+<ng-container *ngIf="scheduleappointmentList?.length">
+    <div class="sidebar overflow-auto">
+        <div class="d-flex flex-column sidebar-body pt-10 flex-fill">
+            <div class="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center card-rounded-bottom h-200px mh-400px"
+                style="background-image:url('https://image.gytree.com/assets/media/gaytree/misc/my-schedule-aside.png')">
+            </div>
+            <div class="card sidebar-content h-100">
+                <div id="kt_schedule_scroll" data-kt-scroll="true" data-kt-scroll-wrappers="#kt_schedule_body"
+                    data-kt-scroll-dependencies="#kt_schedule_header" data-kt-scroll-offset="0px"
+                    class="d-flex flex-column h-100">
+                    <div class="card-header flex-nowrap py-12 border-0">
+                        <h2 class="fw-bolder text-white fs-1 pt-2">
+                            Appointment Details
+                            <span class=" ms-2 badge badge-lg"
+                                [ngClass]="scheduleselectedAppointment?.gto_type === 'consultation' ? 'badge-warning' : 'badge-success'">
+                                {{scheduleselectedAppointment?.gto_type?.replace('_', ' ')}}</span>
+                        </h2>
+                    </div>
+                    <div class="card-body py-0">
+                        <div class="text-white fw-bolder mb-2 fs-2">Appointment Status</div>
+                        <div class="text-white fw-bolder mb-14 fs-4">
+                            {{ (scheduleselectedAppointment?.appointment_data?.gtap_status &&
+                            scheduleselectedAppointment?.appointment_data?.gtap_status == 'completed') ? 'Completed' :
+                            (scheduleselectedAppointment?.appointment_data?.gtap_status == 'cancelled' ?
+                            'Cancelled':'Booked') }}</div>
+
+                        <div class="text-white fw-bolder mb-2 fs-2">Appointment Date</div>
+                        <div class="text-white fw-bolder mb-14 fs-4">
+                            {{scheduleselectedAppointment?.gto_date}}</div>
+
+                        <div class="text-white fw-bolder mb-2 fs-2">Appointment Time</div>
+                        <div class="text-white fw-bolder fs-4 mb-14">
+                            {{scheduleselectedAppointment?.gto_slot ? scheduleselectedAppointment?.gto_slot :
+                            scheduleselectedAppointment?.gto_time}}
+                        </div>
+                        <div class="text-white fw-bolder fs-2 mb-2">
+                            {{scheduleselectedAppointment?.gto_from === 'package' ?
+                            'Booked Package' : ''}}
+                            {{scheduleselectedAppointment?.gto_from === 'thyrocare' ?
+                            'Booked' : ''}}
+                            {{(scheduleselectedAppointment?.gto_from?.startsWith('expert-consult') ||
+                            scheduleselectedAppointment?.gto_from?.includes('doctor')) ?
+                            'Booked With' : ''}}
+                        </div>
+                        <div class="text-white fw-bolder mb-14 fs-4">
+                            {{scheduleselectedAppointment?.gto_from === 'package' ?
+                            scheduleselectedAppointment?.gtpack_data?.gtp_title : ''}}
+                            {{scheduleselectedAppointment?.gto_from === 'thyrocare' ?
+                            'Lab Test' : ''}}
+                            {{(scheduleselectedAppointment?.gto_from?.startsWith('expert-consult')
+                            ||scheduleselectedAppointment?.gto_from?.includes('doctor')) ?
+                            scheduleselectedAppointment?.gtdoc_data?.gtd_fullname ?
+                            scheduleselectedAppointment?.gtdoc_data?.gtd_fullname :
+                            (scheduleselectedAppointment?.gto_from?.slice(15) | titlecase) : ''}}
+                        </div>
+
+                        <ng-container
+                            *ngIf="scheduleselectedAppointment?.appointment_data?.gtap_sugested_dr && scheduleselectedAppointment?.appointment_data?.gtap_sugested_dr?.length">
+                            <div class="text-white fw-bolder mb-2 fs-2">Suggested Doctor</div>
+                            <div class="text-white fw-bolder mb-14 fs-4">
+                                <span
+                                    *ngFor="let doctor of scheduleselectedAppointment?.appointment_data?.gtap_sugested_dr; let index = index">
+                                    {{doctor?.name | titlecase}}
+                                    <span
+                                        *ngIf="index + 1 < scheduleselectedAppointment?.appointment_data?.gtap_sugested_dr?.length">,
+                                    </span>
+                                </span>
+                            </div>
+                        </ng-container>
+
+                        <ng-container
+                            *ngIf="scheduleselectedAppointment?.appointment_data?.gtap_sugested_dr_files?.url ">
+                            <div class="text-white fw-bolder mb-2 fs-2">Suggested Doctor File</div>
+                            <div class="text-white fw-bolder mb-14 fs-4">
+                                <button type="button" class="btn btn-danger btn-sm"
+                                    (click)="openClickHandler(scheduleselectedAppointment?.appointment_data?.gtap_sugested_dr_files)">Open</button>
+                            </div>
+                        </ng-container>
+
+                    </div>
+                    <div class="card-footer border-0">
+                        <div class="text-white" *ngIf="scheduleselectedAppointment?.gto_type === 'consultation'">
+                            Link for joining will be in your email/whatsapp before the appointment
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</ng-container>
+
+<div id="kt_schedule" data-kt-drawer="true" data-kt-drawer-name="schedule"
+    data-kt-drawer-activate="{default: true, xxl: false}" data-kt-drawer-overlay="false"
+    data-kt-drawer-width="{default:'300px', 'xl': '400px'}" data-kt-drawer-direction="end"
+    data-kt-drawer-toggle="#kt_schedule_toggle" data-kt-drawer-close="#kt_schedule_close" class="sidebar-content">
+    <div class="card h-100 bg-transparent">
+        <div id="kt_schedule_scroll" data-kt-scroll="true" data-kt-scroll-wrappers="#kt_schedule_body"
+            data-kt-scroll-dependencies="#kt_schedule_header" data-kt-scroll-offset="0px"
+            class="d-flex flex-column h-100">
+            <div class="card-header flex-nowrap py-12 border-0">
+                <h2 class="fw-bolder text-white fs-1 pt-2">
+                    Appointment Details
+                    <span class=" ms-2 badge badge-lg"
+                        [ngClass]="scheduleselectedAppointment?.gto_type === 'consultation' ? 'badge-warning' : 'badge-success'">
+                        {{scheduleselectedAppointment?.gto_type?.replace('_', ' ')}}</span>
+                </h2>
+                <div class="text-end">
+                    <button type="button" id="kt_schedule_close" class="btn btn-sm btn-icon">
+                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/modal_close.svg" alt="modal_close" height="20"
+                            width="20">
+                    </button>
+                </div>
+            </div>
+            <div class="card-body py-0">
+                <div class="text-white fw-bolder mb-2 fs-2">Appointment Status</div>
+                <div class="text-white fw-bolder mb-14 fs-4">
+                    {{ (scheduleselectedAppointment?.appointment_data?.gtap_status &&
+                    scheduleselectedAppointment?.appointment_data?.gtap_status == 'completed') ? 'Completed' :
+                    (scheduleselectedAppointment?.appointment_data?.gtap_status == 'cancelled' ?
+                    'Cancelled':'Booked')}}</div>
+
+                <div class="text-white fw-bolder mb-2 fs-2">Appointment Date</div>
+                <div class="text-white fw-bolder mb-14 fs-4">
+                    {{scheduleselectedAppointment?.gto_date}}</div>
+
+                <div class="text-white fw-bolder mb-2 fs-2">Appointment Time</div>
+                <div class="text-white fw-bolder fs-4 mb-14">
+                    {{scheduleselectedAppointment?.gto_slot ? scheduleselectedAppointment?.gto_slot :
+                    scheduleselectedAppointment?.gto_time}}
+                </div>
+                <div class="text-white fw-bolder fs-2 mb-2">
+                    {{scheduleselectedAppointment?.gto_from === 'package' ?
+                    'Booked Package' : ''}}
+                    {{scheduleselectedAppointment?.gto_from === 'thyrocare' ?
+                    'Booked' : ''}}
+                    {{(scheduleselectedAppointment?.gto_from?.startsWith('expert-consult') ||
+                    scheduleselectedAppointment?.gto_from?.includes('doctor')) ?
+                    'Booked With' : ''}}
+                </div>
+                <div class="text-white fw-bolder mb-14 fs-4">
+                    {{scheduleselectedAppointment?.gto_from === 'package' ?
+                    scheduleselectedAppointment?.gtpack_data?.gtp_title : ''}}
+                    {{scheduleselectedAppointment?.gto_from === 'thyrocare' ?
+                    'Lab Test' : ''}}
+                    {{(scheduleselectedAppointment?.gto_from?.startsWith('expert-consult')
+                    ||scheduleselectedAppointment?.gto_from?.includes('doctor')) ?
+                    scheduleselectedAppointment?.gtdoc_data?.gtd_fullname ?
+                    scheduleselectedAppointment?.gtdoc_data?.gtd_fullname :
+                    (scheduleselectedAppointment?.gto_from?.slice(15) | titlecase) : ''}}
+                </div>
+
+                <ng-container
+                    *ngIf="scheduleselectedAppointment?.appointment_data?.gtap_sugested_dr && scheduleselectedAppointment?.appointment_data?.gtap_sugested_dr?.length">
+                    <div class="text-white fw-bolder mb-2 fs-2">Suggested Doctor</div>
+                    <div class="text-white fw-bolder mb-14 fs-4">
+                        <span
+                            *ngFor="let doctor of scheduleselectedAppointment?.appointment_data?.gtap_sugested_dr; let index = index">
+                            {{doctor?.name | titlecase}}
+                            <span
+                                *ngIf="index + 1 < scheduleselectedAppointment?.appointment_data?.gtap_sugested_dr?.length">,
+                            </span>
+                        </span>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="scheduleselectedAppointment?.appointment_data?.gtap_sugested_dr_files?.url ">
+                    <div class="text-white fw-bolder mb-2 fs-2">Suggested Doctor File</div>
+                    <div class="text-white fw-bolder mb-14 fs-4">
+                        <button type="button" class="btn btn-danger btn-sm"
+                            (click)="openClickHandler(scheduleselectedAppointment?.appointment_data?.gtap_sugested_dr_files)">Open</button>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="card-footer border-0">
+                <div class="text-white" *ngIf="scheduleselectedAppointment?.gto_type === 'consultation'">
+                    Link for joining will be in your email/whatsapp before the appointment
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

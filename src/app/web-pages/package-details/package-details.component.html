@@ -1,0 +1,251 @@
+<div class="container">
+
+    <section class="my-20">
+        <ng-container *ngIf="!mobileScreen">
+            <div class="row">
+                <div class="col-lg-6 order-lg-1 d-flex flex-column justify-content-center mb-4">
+                    <h2 class="w-500 text-danger mt-lg-0">
+                        {{packageDetail?.gtp_name}}
+                    </h2>
+                    <p>
+                        <span [innerHTML]="(packageDetail?.gtp_srtdescrn || '') | safe: 'html'"></span>
+                    </p>
+                    <ng-container>
+                        <p [innerHTML]="(packageDetail?.gtp_lngdescrn || '') | safe: 'html'"></p>
+                    </ng-container>
+                    <div class="fs-3 fw-bolder currency-font">
+                        {{packageDetail?.gtp_price | currency: 'INR'}}
+                    </div>
+                    <button [id]="packageDetail?.gtp_slug" [attr.data-uniqueId]="packageDetail?.gtp_slug"
+                        (click)="schedulePackage(packageDetail.gtp_slug)"
+                        *ngIf="packageDetail && packageDetail.gtp_slug"
+                        class="btn btn-danger mx-auto mx-lg-0 my-6 w-250px">
+                        BUY NOW
+                    </button>
+                </div>
+                <div class="col-lg-6 order-lg-2 d-flex justify-content-center">
+                    <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="mobileScreen">
+            <div class="row">
+                <div class="col-lg-6 order-lg-1 d-flex flex-column justify-content-center mb-4">
+                    <h2 class="w-500 text-danger mt-lg-0">
+                        {{packageDetail?.gtp_name}}
+                    </h2>
+                </div>
+                <div class="col-lg-6 order-lg-2 mb-4">
+                    <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                </div>
+                <div class="col-lg-6 order-lg-3 d-flex flex-column justify-content-center">
+                    <p>
+                        <span [innerHTML]="(packageDetail?.gtp_srtdescrn || '') | safe: 'html'"></span>
+                        <span class="cursor-pointer text-primary" (click)="displayLongDesc()"
+                            *ngIf="!showLongDesc && packageDetail?.gtp_lngdescrn">
+                            &nbsp;Read More
+                        </span>
+                    </p>
+                    <ng-container *ngIf="showLongDesc">
+                        <p [innerHTML]="(packageDetail?.gtp_lngdescrn || '') | safe: 'html'"></p>
+                    </ng-container>
+                    <div class="fs-3 fw-bolder currency-font">
+                        {{packageDetail?.gtp_price | currency: 'INR'}}
+                    </div>
+                    <div class="text-center d-block d-lg-none rounded-3"
+                        *ngIf="packageDetail && packageDetail.gtp_slug">
+                        <button [id]="packageDetail?.gtp_slug" [attr.data-uniqueId]="packageDetail?.gtp_slug"
+                            (click)="schedulePackage(packageDetail.gtp_slug)"
+                            class="btn btn-danger my-6 w-250px w-100">BUY NOW</button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+    </section>
+
+    <!-- start:: Consultation, PCOS and health report-->
+    <section class="my-20">
+        <div *ngIf="packageDetail?.gtp_consultation_config" class="text-white mb-5 card-width">
+            <h2 class="text-danger"> This package includes </h2>
+        </div>
+        <ng-container *ngFor="let consultation of packageDetail?.gtp_consultation_config; let index = index">
+            <div class="card text-white mb-5 card-width">
+                <div class="card-body rounded banner-background p-6">
+                    <div class="d-flex align-items-center">
+                        <div class="me-10 col-1">
+                            <img [src]="CONSULTATION_CONFIG[consultation.type]" [alt]="consultation?.type" height="50">
+                        </div>
+                        <div class="flex-fill fs-3 fw-bolder">{{consultation?.title}}</div>
+                        <div class="d-flex justify-content-end ms-4">
+                            <div class="collapsible toggle" data-bs-toggle="collapse"
+                                [attr.data-bs-target]="'#consultation' + index" aria-expanded="false">
+                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-4.svg"
+                                    alt="arrow" height="25" width="25">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 collapse" [id]="'consultation' + index">
+                        {{consultation?.description}}
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </section>
+    <!-- end:: Consultation, PCOS and health report-->
+
+    <!--start:: package config images-->
+    <ng-container *ngFor="let config of packageDetail?.gtp_config; let index = index">
+        <ng-container *ngIf="(index % 2) === 0">
+            <section class="my-20">
+                <div class="row">
+                    <div class="col-lg-6 order-lg-2 text-center text-lg-end" *ngIf="!mobileScreen">
+                        <img [src]="config?.img_url" alt="image" class="mh-lg-400px mh-200px mw-lg-100 mw-100">
+                    </div>
+                    <div class="col-lg-6 order-lg-1 d-lg-flex flex-column justify-content-center">
+                        <h2 class="text-danger">
+                            {{config?.title?.replaceAll('-', ' ')}}
+                        </h2>
+                        <!-- <p>
+                            {{config?.description?.replaceAll('-', ' ')}}
+                        </p> -->
+                        <p [innerHTML]="(config?.description?.replaceAll('-', ' ')) | safe: 'html'"></p>
+
+                    </div>
+                </div>
+            </section>
+        </ng-container>
+
+        <ng-container *ngIf="(index % 2) === 1">
+            <section class="my-20">
+                <div class="row">
+                    <div class="col-lg-6 text-center text-lg-start" *ngIf="!mobileScreen">
+                        <img [src]="config?.img_url" alt="image" class="mh-lg-400px mh-200px mw-lg-100 mw-100">
+                    </div>
+                    <div class="col-lg-6 d-lg-flex flex-column justify-content-center">
+                        <h2 class="text-danger">
+                            {{config?.title?.replaceAll('-', ' ')}}
+                        </h2>
+                        <!-- <p>
+                            {{config?.description?.replaceAll('-', ' ')}}
+                        </p> -->
+                        <p [innerHTML]="(config?.description?.replaceAll('-', ' ')) | safe: 'html'"></p>
+
+                    </div>
+                </div>
+            </section>
+        </ng-container>
+    </ng-container>
+    <!--end:: package config images-->
+
+    <!-- Buy now -->
+    <div class="text-center my-20 d-block d-lg-none rounded-3">
+        <button [id]="packageDetail?.gtp_slug" [attr.data-uniqueId]="packageDetail?.gtp_slug"
+            (click)="schedulePackage(packageDetail.gtp_slug)" class="btn btn-danger my-6 w-250px w-100">BUY NOW</button>
+    </div>
+
+    <!-- Packages Start -->
+    <section *ngIf="otherPackages?.packageData && otherPackages?.packageData?.length" class="other-packages my-20">
+        <div class="fw-bolder mb-3 fs-2">Other Packages</div>
+        <div class="mb-3 fs-4">
+            Our packages are backed by research and curated by trusted doctors.
+        </div>
+        <app-show-packages [packageData]="otherPackages">
+        </app-show-packages>
+    </section>
+    <!-- Packages End -->
+
+    <!-- Explore Age Start -->
+    <section class="age-list my-20" *ngIf="ages">
+        <div class="fw-bolder mb-6 fs-2">Explore Age wise</div>
+        <div class="mb-3 fs-4">
+            Find these science backed packages according to your age
+        </div>
+        <div class="row">
+            <div class="col-sm-4" *ngFor="let age of ages">
+                <div class="card text-white h-100 cursor-pointer" (click)="ageGroupClickHandler(age.gtag_value)">
+                    <div class="card-body">
+                        <span class="">
+                            {{age?.gtag_value}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- No data Found Start -->
+        <div *ngIf="ages && !ages.length">
+            <div class="text-center text-danger h1">No records found</div>
+        </div>
+        <!-- No data Found End-->
+    </section>
+    <!-- Explore Age End -->
+
+    <!-- Consult Via Health Clinics start -->
+    <section class="consult-list my-20" *ngIf="consults">
+        <div class="fw-bolder mb-6 fs-2">Consult Via Health Clinics</div>
+        <div class="mb-3 fs-4">
+            Choose the area of your concern and get the solution to your problem through these science
+            backed
+            packages curated according to your health needs.
+        </div>
+        <div class="row">
+            <div class="health-clinic-width col-12 col-md-6 col-lg-4 mb-8"
+                *ngFor="let consult of consults; let index = index">
+                <div class="card text-custom ms-0 me-0">
+                    <div class="consult-card-body">
+                        <img img-preloader="{{consult?.gthc_image}}" height="62" width="62" [alt]="consult?.gthc_name"
+                            class="image-top">
+                        <div class="title cursor-pointer" (click)="healthClinicClickHandler(consult.gthc_name)">
+                            {{consult?.gthc_name?.replaceAll('-', ' ')}}
+                        </div>
+                        <div class="description mt-6 max-line-3 collapse consult-desc-max-height"
+                            [id]="'pack_detail_consult_via_health_' + index">
+                            {{consult?.gthc_dscr}}
+                        </div>
+                        <div class="download collapsible toggle" (click)="onToggleConsultConsultHealthClinic(consult)"
+                            data-bs-toggle="collapse" [attr.data-bs-target]="'#pack_detail_consult_via_health_' + index"
+                            aria-expanded="false">
+                            <img class="download-image-rotation" [class.transform180]="consult?.isOpen"
+                                img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-3.svg"
+                                alt="arrow-down" height="20" width="20">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- No data Found Start -->
+            <ng-container *ngIf="consults && !consults.length">
+                <div class="text-center text-danger h1">No records found</div>
+            </ng-container>
+            <!-- No data Found End-->
+        </div>
+    </section>
+    <!-- Consult Via Health Clinics end -->
+
+    <!-- Articles start -->
+    <section class="article-list my-20" *ngIf="articles">
+        <div class="fw-bolder mb-6 fs-2">Must Read</div>
+        <div class="mx-10 mx-lg-0">
+            <owl-carousel-o [options]="articleList">
+                <ng-container *ngFor="let article of articles">
+                    <ng-template carouselSlide [id]="article?.id" [width]="300">
+                        <div class="card responsive-slides card-flush bg-transparent cursor-pointer"
+                            (click)="articleClickHandler(article.link)">
+                            <img img-preloader="{{article?._embedded['wp:featuredmedia'] && article?._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url }}"
+                                alt="image" width="300" height="169" class="card-shadow rounded">
+                            <div class="fs-2 fw-bolder text-danger mt-3 ms-2 title-height max-line-2"
+                                [innerHTML]="(article?.title?.rendered || '') | safe: 'html'"></div>
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </owl-carousel-o>
+            <!-- No data Found Start -->
+            <ng-container *ngIf="articles && !articles.length">
+                <div class="text-center text-danger h1">No records found</div>
+            </ng-container>
+            <!-- No data Found End-->
+        </div>
+    </section>
+    <!-- Articles start -->
+
+</div>

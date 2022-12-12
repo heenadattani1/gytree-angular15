@@ -1,0 +1,44 @@
+<section class="my-20">
+    <div class="container">
+        <div class="card">
+            <!-- Profile start -->
+            <div class="card-body">
+                <div class="d-flex align-items-center flex-column flex-sm-row">
+                    <div class="flex-fill align-self-start align-self-sm-center">
+                        <div class="d-flex align-items-center">
+                            <div *ngIf="doctorDetails?.gtd_image" class="symbol symbol-circle symbol-100px">
+                                <img img-preloader="{{doctorDetails.gtd_image}}" class="img-size-fit"
+                                    [alt]="doctorDetails?.gtd_name">
+                            </div>
+                            <div class="ms-6">
+                                <span class="text-gray-800 fs-6 fw-bolder lh-1">
+                                    {{doctorDetails?.gtd_fullname?.replaceAll('-', ' ')}}
+                                </span>
+                                <span class="text-muted fw-bold d-block fs-7 lh-1">
+                                    {{doctorDetails?.gtd_degree}}</span>
+                                <small class="text-danger d-block">
+                                    {{doctorDetails?.gtd_type}}
+                                </small>
+                                <small class="text-muted d-block">{{doctorDetails?.gtd_exper}} of Experience</small>
+                                <span class="fw-bolder fs-4 currency-font">
+                                    {{doctorDetails?.gtd_consultation_price | currency: 'INR'}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <button [id]="doctorDetails?.gtd_slug" [attr.data-uniqueId]="doctorDetails?.gtd_slug" class="btn btn-sm btn-danger ms-6 align-self-end align-self-sm-center my-6"
+                        (click)="goToConsult()">BOOK NOW</button>
+                </div>
+            </div>
+
+            <div class="card-body py-0">
+                <div class="border-top border-top-3 border-gray-400"></div>
+            </div>
+            <div class="card-body">
+                <span class="badge badge-lg badge-danger">Bio</span>
+                <p class="mt-6" [innerHTML]="(doctorDetails?.gtd_about_me || '') | safe: 'html'"></p>
+            </div>
+            <!-- Profile end -->
+        </div>
+    </div>
+</section>

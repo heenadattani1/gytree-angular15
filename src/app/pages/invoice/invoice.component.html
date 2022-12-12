@@ -1,0 +1,82 @@
+<div class="row" *ngIf="invoiceList && invoiceList.length">
+
+    <div class="fw-bolder mb-6 h1">My Invoice</div>
+
+    <ng-container *ngFor="let invoice of invoiceList; let index = index;">
+        <div class="col-md-6 col-lg-12 col-xl-6 mb-10">
+            <div class="card card-flush shadow-sm text-white">
+                <div class="card-body h-184">
+                    <span class="badge badge-white mb-5 text-primary-g">Invoice No. {{
+                        invoice?.gtiv_invoice_id || invoice?.gtiv_ref_uid}}</span>
+                    <h3 class="card-title text-white wrap-class">
+                        {{invoice?.gtiv_details?.Test_Name ? invoice?.gtiv_details?.Test_Name :
+                        invoice?.gtiv_details?.consult_desc}}
+                    </h3>
+                    <p>{{invoice?.gtiv_details?.datetime | titlecase}}
+                    </p>
+
+                    <div
+                        class="d-flex gap-5 flex-sm-row justify-content-center align-items-center align-items-sm-end justify-content-sm-between">
+                        <button type="button" *ngIf="invoice && invoice?.gtiv_invoice_id && invoice?.gtiv_pdf"
+                            class="btn btn-sm btn-white text-primary-g d-flex align-items-center flex-nowrap gap-2 flex-shrink-0"
+                            (click)="downloadInvoiceClick(invoice)">
+                            <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/PDF.svg" alt="pdficon" height="14">
+                            Download pdf
+                        </button>
+                        <button (click)="invoice.isOpen = !invoice.isOpen" type="button"
+                            class="btn btn-sm btn-white text-primary-g d-flex align-items-center flex-nowrap gap-2 flex-shrink-0"
+                            data-bs-toggle="collapse" [attr.data-bs-target]="'#invoice_' + index + 1"
+                            aria-expanded="false">
+                            <img class="download-image-rotation" [class.transform180]="invoice?.isOpen"
+                                img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-1.svg" alt="arrowDown"
+                                height="14" width="14"> View full details
+                        </button>
+                    </div>
+                </div>
+                <div class="collapse" [id]="'invoice_' + index + 1">
+                    <div class="card-body pt-0 h-241">
+                        <div class="separator border-3 border-gray-300 mb-5"></div>
+
+                        <div class="lh-lg">
+                            <div class="mb-2 fs-5">Date: {{invoice?.gtive_cdate}}</div>
+                            <div class="text-wrap-two-line">More details: {{invoice?.gtiv_details?.consult_desc}}</div>
+                            <table class="table table-flush text-white mt-6">
+                                <tr>
+                                    <td>GST</td>
+                                    <td class="text-end">{{invoice?.gtiv_details?.GST}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="fs-3">Summary</td>
+                                    <td class="fs-3 text-end currency-font">{{invoice?.gtiv_details?.summary | currency:
+                                        'INR'}}</td>
+                                </tr>
+                                <tr class="fw-bold border-top border-gray-300 fs-3">
+                                    <td>Total</td>
+                                    <td class="text-end currency-font">{{invoice?.gtiv_gst | currency:
+                                        'INR'}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<!-- No data Found Start -->
+<ng-container *ngIf="invoiceList && !invoiceList.length">
+    <div class="h-100">
+        <div class="fw-bolder mb-6 h1">My Invoice</div>
+        <div class="d-flex justify-content-center align-items-center  text-danger h1 "
+            style="height: calc(100% - 100px);">
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <img img-preloader="https://image.gytree.com/assets/media/avatars/3024051.jpg" height="100" width="125px" alt="">
+                <div style="font-size: 1.5rem;
+                margin-top: 17px;">No Record Found!</div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<!-- No data Found End-->

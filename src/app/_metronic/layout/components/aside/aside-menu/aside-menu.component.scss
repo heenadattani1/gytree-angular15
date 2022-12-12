@@ -1,0 +1,41 @@
+@import "../../../../../../assets/sass/gytree-config.scss";
+$g-border-color: #e2bb8a;
+
+:host ::ng-deep {
+  .menu-item {
+    padding: 1rem 0;
+    border-top: 1px solid $g-border-color;
+    &:first-child {
+      border: 0;
+    }
+    .menu-link {
+      &.active {
+        .menu-icon{
+          .svg-icon{
+            color: $g-red-light !important;
+            svg path{
+              fill: $g-red-light !important;
+            }
+          }
+        }
+        .menu-title {
+          color: $g-red-light !important;
+          font-weight: 700 !important;
+        }
+      }
+      .menu-title {
+        font-weight: 600 !important;
+      }
+    }
+  }
+}
+
+.p-05{
+  padding: 0.5rem 0;
+}
+
+
+
+.p-link {
+  padding: 0.5rem 0.5rem;
+}
