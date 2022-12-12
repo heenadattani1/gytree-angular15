@@ -1,13 +1,78 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
 <head>
-  <meta charset="utf-8">
-  <title>GytreeAngular15</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="utf-8" />
+    <title>Gytree</title>
+    <base href="/" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1,  
+    minimal-ui, height=device-height, viewport-fit=cover" />
+    <meta name="facebook-domain-verification" content="o2kv4vg1d2htu5nusffka3adjbeo6i" />
+    <link rel="shortcut icon" href="https://image.gytree.com/assets/media/logos/gytreeicon.png" />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap"> -->
+    <link preload rel="stylesheet" as="font" href="./assets/fonts/google_font.css">
+    <!-- SPLASH SCREEN-->
+    <link rel="stylesheet" id="layout-styles-anchor" href="./assets/splash-screen.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <meta name="theme-color" content="#1976d2">
+
+    <!-- <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+
+    <meta name="viewport"
+        content="initial-scale=1, user-scalable=no, width=device-width, height=device-height, viewport-fit=cover"> -->
+
+    <meta name="description" content=" Making women's health a priority">
+    <meta name="keywords" content="Gytree, appointment, slot book" />
+
+    <meta property="og:title" content="Making women's health a priority" />
+    <meta property="og:description"
+        content="Our team is made of the best specialists from the country, who are mentored to handle women issues with utmost care, sensitivity and discretion." />
+
+    <meta property="og:image" content="https://image.gytree.com/images/image/gytree_new.jpg" />
+    <meta property="og:url" content="https://gytree.com/" />
+
+    <meta property="twitter:title" content="Making women's health a priority" />
+    <meta property="twitter:description"
+        content="Our team is made of the best specialists from the country, who are mentored to handle women issues with utmost care, sensitivity and discretion." />
+    <meta name="google-site-verification" content="Gq6sa2cxbnktwaOx_sxz78k4E9MKMKeML64sydMKPFA" />
+    <!--  <meta name="google-site-verification" content="EfhnsLNukETic20vz9WwvZVu9lVn62Mck3PfXSGedu0" />
+ -->
+    <script>
+        // if (location.protocol !== 'https:') {
+        //     location.replace(`https:${location.href.substring(location.protocol.length)}`);
+        // }
+    </script>
 </head>
-<body>
-  <app-root></app-root>
+
+<body class="h-100">
+
+    <div id="splash-screen-1" class="splash-screen">
+        <img src="https://image.gytree.com/assets/media/gaytree/icons/gytree.svg" alt="logo" />
+        <span>Loading ...</span>
+    </div>
+    <app-root id="kt_body" class="mat-typography">
+    </app-root>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src=" https://www.googletagmanager.com/ns.html?id=GTM-5S66RLB" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <script>
+         const  divId = document.getElementById('splash-screen-1');
+        if(window && window.location && (window.location.pathname == '/' || window.location.pathname == '/home')){
+            divId.style.display = 'none'; 
+        }
+         setTimeout(() => {
+            let divId = document.getElementById('splash-screen-1');
+            if(divId){
+                divId.style.display = 'none';
+            }
+        }, 1000)
+    </script>
 </body>
+
 </html>
