@@ -1,4 +1,11 @@
-import { ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { NavigateService } from '../../modules/shared/helper-utils/navigate.service';
 import { LocalStorageService } from '../../modules/shared/services/local-storage/local-storage.service';
@@ -8,7 +15,7 @@ import { NAV_ITEMS } from './web-layout.constant';
 @Component({
   selector: 'app-web-layout',
   templateUrl: './web-layout.component.html',
-  styleUrls: ['./web-layout.component.scss']
+  styleUrls: ['./web-layout.component.scss'],
 })
 export class WebLayoutComponent implements OnInit, OnDestroy {
   addClass = false;
@@ -35,10 +42,13 @@ export class WebLayoutComponent implements OnInit, OnDestroy {
     private router: Router,
     private cdr: ChangeDetectorRef,
     private localStorageService: LocalStorageService,
-    private eventTrackingService: EventTrackingService,
+    private eventTrackingService: EventTrackingService
   ) {
     router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd && (val?.url === '/' || val?.url === '/home')) {
+      if (
+        val instanceof NavigationEnd &&
+        (val?.url === '/' || val?.url === '/home')
+      ) {
         this.isHomeActive = true;
       } else {
         this.isHomeActive = false;
@@ -49,7 +59,7 @@ export class WebLayoutComponent implements OnInit, OnDestroy {
       } else {
         this.isDisplayBookNow = true;
       }
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -58,7 +68,9 @@ export class WebLayoutComponent implements OnInit, OnDestroy {
   }
 
   footerScrollEvent() {
-    var offsets = document.getElementById('footer-block').getBoundingClientRect();
+    var offsets = document
+      .getElementById('footer-block')
+      .getBoundingClientRect();
     var top = offsets.top;
     if (top < 1200 && !this.isFooterVisible) {
       this.isFooterVisible = true;
@@ -88,11 +100,11 @@ export class WebLayoutComponent implements OnInit, OnDestroy {
 
   addOverFlowHiddenClassToBody = () => {
     document.body.classList.add('overflow-hidden');
-  }
+  };
 
   removeOverFlowHiddenClassToBody = () => {
     document.body.classList.remove('overflow-hidden');
-  }
+  };
 
   handleOverflowHidden = () => {
     if (this.addClass && window.innerWidth <= 991) {
@@ -100,7 +112,7 @@ export class WebLayoutComponent implements OnInit, OnDestroy {
     } else {
       this.removeOverFlowHiddenClassToBody();
     }
-  }
+  };
 
   onClickFooter(routerLink: string) {
     this.router.navigate([routerLink]);
@@ -113,7 +125,7 @@ export class WebLayoutComponent implements OnInit, OnDestroy {
     if (isSideBar == 'IS_SIDE_BAR_OPEN') {
       this.addClass = !this.addClass;
     }
-    this.handleOverflowHidden()
+    this.handleOverflowHidden();
   }
 
   /**
