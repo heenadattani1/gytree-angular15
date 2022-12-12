@@ -30,7 +30,7 @@ body {
 
 //Border color for mobile number input on login screen
 .border-color {
-  border: solid 1px #f25769;
+  border: solid 1px #f25769 !important;
 }
 
 // owl-carousel
@@ -45,32 +45,32 @@ body {
   top: calc(50% - 25px - 1.5rem); // Here, 25 is icon height, 1.5rem is margin of nav
   width: 50px;
   height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  font-weight: 600;
-  background: transparent;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 40px !important;
+  font-weight: 600 !important;
+  background: transparent !important;
 
   &:hover {
-    background: transparent;
-    color: #f25769;
+    background: transparent !important;
+    color: #f25769 !important;
   }
 }
 
 .owl-carousel .owl-nav .owl-prev {
   left: -4rem;
-  color: #f25769;
+  color: #f25769 !important;
 }
 
 .owl-carousel .owl-nav .owl-next {
   right: -4rem;
-  color: #f25769;
+  color: #f25769 !important;
 }
 
 // Dots
 .owl-theme .owl-dots .owl-dot span {
-  background: #f25769;
+  background: #f25769 !important;
   opacity: 0.5;
 }
 
@@ -78,7 +78,7 @@ body {
 .owl-theme .owl-dots .owl-dot:hover span {
   height: 15px;
   width: 15px;
-  background: #f25769;
+  background: #f25769 !important;
   opacity: 1;
 }
 
@@ -183,12 +183,12 @@ ngb-datepicker {
 .responsive-arrows {
   .owl-carousel .owl-nav .owl-prev {
     left: -3.5rem;
-    color: #f25769;
+    color: #f25769 !important;
   }
 
   .owl-carousel .owl-nav .owl-next {
     right: -3.5rem;
-    color: #f25769;
+    color: #f25769 !important;
   }
 }
 
@@ -301,7 +301,7 @@ ngb-datepicker {
 .owl-carousel {
   .owl-nav {
     .owl-dot {
-      color: #f25769;
+      color: #f25769 !important;
     }
   }
 }
