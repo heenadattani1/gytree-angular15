@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FaqComponent } from './faq.component';
 import { RouterModule } from '@angular/router';
 import { SafePipeModule } from '../../core/pipes/safe-pipe/safe-pipe.module';
@@ -15,7 +15,7 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
   imports: [
     CommonModule,
     SafePipeModule,
-    ImageLazyLoadModule,
+    NgOptimizedImage,
     RouterModule.forChild([{
       path: '',
       component: FaqComponent

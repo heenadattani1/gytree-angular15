@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ShowPackagesComponent } from './pages/show-packages/show-packages.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
@@ -10,6 +10,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   imports: [
     CommonModule,
     CarouselModule,
+    NgOptimizedImage
   ],
   exports: [ShowPackagesComponent]
 })

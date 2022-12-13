@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { OurTeamComponent } from './our-team.component';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -15,7 +15,7 @@ import { SafePipeModule } from 'src/app/core/pipes/safe-pipe/safe-pipe.module';
   imports: [
     CommonModule,
     CarouselModule,
-    ImageLazyLoadModule,
+    NgOptimizedImage,
     SafePipeModule,
     RouterModule.forChild([{
       path: '',

@@ -48,8 +48,7 @@
                             <!-- Packages End -->
 
                             <div class="d-flex justify-content-end d-block d-sm-none">
-                                <ng-container
-                                    *ngIf="packages?.packageData[type]?.length > 10">
+                                <ng-container *ngIf="packages?.packageData[type]?.length > 10">
                                     <div class="fw-bolder mt-3 fs-3 cursor-pointer text-danger" (click)="viewAll()">
                                         View More
                                     </div>
@@ -112,7 +111,7 @@
                                 *ngFor="let consult of consults; let index = index">
                                 <div class="card text-custom ms-0 me-0">
                                     <div class="consult-card-body">
-                                        <img img-preloader="{{consult?.gthc_image}}" height="62" width="62"
+                                        <img ngSrc="{{consult?.gthc_image}}" height="62" width="62"
                                             [alt]="consult?.gthc_name" class="image-top">
                                         <div class="title cursor-pointer"
                                             (click)="healthClinicClickHandler(consult.gthc_name)">
@@ -128,7 +127,7 @@
                                             [attr.data-bs-target]="'#pack_consult_via_health_' + index"
                                             aria-expanded="false">
                                             <img class="download-image-rotation" [class.transform180]="consult?.isOpen"
-                                                img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-3.svg"
+                                                ngSrc="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-3.svg"
                                                 alt="arrow-down" height="20" width="20">
                                         </div>
                                     </div>
@@ -152,7 +151,7 @@
                                     <ng-template carouselSlide [id]="article?.id" [width]="300">
                                         <div class="card responsive-slides card-flush bg-transparent cursor-pointer"
                                             (click)="articleClickHandler(article.link)">
-                                            <img img-preloader="{{article?._embedded['wp:featuredmedia'] && article?._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url }}"
+                                            <img ngSrc="{{article?._embedded['wp:featuredmedia'] && article?._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url }}"
                                                 alt="image" width="300" height="169" class="card-shadow rounded">
                                             <div class="fs-2 fw-bolder text-danger mt-3 ms-2 title-height max-line-2"
                                                 [innerHTML]="(article?.title?.rendered || '') | safe: 'html'"></div>

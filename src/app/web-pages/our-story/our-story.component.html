@@ -209,7 +209,7 @@
                 <ng-container *ngFor="let user of shapingGytreeTeam ; let i = index">
                     <ng-template carouselSlide>
                         <div class="card bg-transparent responsive-slides mb-4 overflow-hidden h-100">
-                            <img img-preloader="{{user?.image}}" alt="image" width="380" height="380">
+                            <img ngSrc="{{user?.image}}" alt="image" width="380" height="380">
                             <div class="fs-2 fw-bolder mt-3 mx-4">{{user?.title}}</div>
                             <div class="fs-2 fw-bolder mx-4">{{user?.position}}</div>
                             <div class="d-flex align-items-center fs-4 fw-bold my-3 desc-height mx-4 ">

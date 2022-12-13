@@ -88,7 +88,7 @@
                                         formControlName="date" [markDisabled]="markDateAsDisabled">
                                     <div class=" input-group-append cursor-pointer">
                                         <span class="form-control">
-                                            <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/PCOS.svg" alt="calendar"
+                                            <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/PCOS.svg" alt="calendar"
                                                 height="20" width="20">
                                         </span>
                                     </div>
@@ -120,17 +120,17 @@
                                 <!--begin::Alert-->
                                 <div class="alert alert-warning">
                                     <div class="d-flex align-items-top gap-3">
-                                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/video.svg" alt="videoIcon"
+                                        <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/video.svg" alt="videoIcon"
                                             height="16">
                                         <span>Consultation will be done on a video call</span>
                                     </div>
                                     <div class="d-flex align-items-top gap-3">
-                                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/clock.svg" alt="clockIcon"
+                                        <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/clock.svg" alt="clockIcon"
                                             height="16">
                                         <span>Video call will last for {{packageDetails?.gtp_consultation_time}}</span>
                                     </div>
                                     <div class="d-flex align-items-top gap-3">
-                                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check.svg" alt="checkIcon"
+                                        <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/check.svg" alt="checkIcon"
                                             height="16">
                                         <span>Join the call using the link that
                                             will be sent on WhatsApp/E-mail</span>
@@ -166,7 +166,7 @@
                 <section class="gynec mb-10">
                     <div class="text-end d-xxl-none">
                         <button type="button" id="kt_sidebar_appointment_schedule_close" class="btn btn-sm btn-icon">
-                            <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/modal_close.svg" alt="modal_close"
+                            <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/modal_close.svg" alt="modal_close"
                                 height="20" width="20">
                         </button>
                     </div>
@@ -180,7 +180,7 @@
                                 </span>
                                 <div class="mb-5">
                                     <div class="symbol symbol-75px symbol-circle">
-                                        <img alt="Pic" img-preloader="{{doctor?.gtd_image}}">
+                                        <img alt="Pic" ngSrc="{{doctor?.gtd_image}}">
                                     </div>
                                 </div>
                                 <small>Experience {{doctor?.gtd_exper}}</small>

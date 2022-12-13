@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { PrescriptionComponent } from './prescription.component';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -23,7 +23,7 @@ const routes = [
     CarouselModule,
     RouterModule.forChild(routes),
     InlineSVGModule,
-    ImageLazyLoadModule,
+    NgOptimizedImage,
     SharedModule
   ]
 })

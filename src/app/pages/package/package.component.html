@@ -37,17 +37,17 @@
                                 [ngClass]="mobileScreen ? 'progress-hide col-0 col-md-0 col-lg-0' : ''">
                                 <div class="package-timeline_item ps-0 done">
                                     <span>Package purchased</span>
-                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg" width="22"
+                                    <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg" width="22"
                                         class="done-img" alt="circlesvg">
-                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/ring.svg" width="22"
+                                    <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/ring.svg" width="22"
                                         class="pending-img" alt="ringsvg">
                                 </div>
                                 <div class="package-timeline_item d-flex justify-content-end ps-0"
                                     [ngClass]="package.orders[0].order_appointment_status === 'completed' ? 'done' : 'pending'">
                                     <span class="d-inline-block static-padding">{{package?.gtp_type}} Appointment</span>
-                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg" width="22"
+                                    <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg" width="22"
                                         class="done-img" alt="circlesvg">
-                                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/ring.svg" width="22"
+                                    <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/ring.svg" width="22"
                                         class="pending-img" alt="ringsvg">
                                 </div>
                             </div>
@@ -96,9 +96,9 @@
                                         <div class="timeline-line w-30px"></div>
                                         <div class="timeline-icon">
                                             <div class=" timeline-item_package done">
-                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg"
+                                                <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg"
                                                     width="30" class="done-img" alt="circlesvg">
-                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/ring.svg" width="30"
+                                                <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/ring.svg" width="30"
                                                     class="pending-img" alt="ringsvg">
                                             </div>
                                         </div>
@@ -118,9 +118,9 @@
                                         <div class="timeline-icon">
                                             <div class=" timeline-item_package"
                                                 [ngClass]="order.order_appointment_status === 'completed' ? 'done' : 'pending'">
-                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg"
+                                                <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg"
                                                     width="30" class="done-img" alt="circlesvg">
-                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/ring.svg" width="30"
+                                                <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/ring.svg" width="30"
                                                     class="pending-img" alt="ringsvg">
                                             </div>
                                         </div>
@@ -164,7 +164,7 @@
                                     <h2 class="text-center fw-bolder text-white my-0 fs-1 px-5 px-xxl-10">
                                         <div class="text-end">
                                             <button type="button" id="kt_package_close" class="btn btn-sm btn-icon">
-                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/modal_close.svg"
+                                                <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/modal_close.svg"
                                                     alt="modal_close" height="20" width="20">
                                             </button>
                                         </div>
@@ -183,9 +183,9 @@
                                                         <div class="timeline-line w-30px"></div>
                                                         <div class="timeline-icon">
                                                             <div class=" timeline-item_package done">
-                                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg"
+                                                                <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg"
                                                                     width="30" class="done-img" alt="circlesvg">
-                                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/ring.svg"
+                                                                <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/ring.svg"
                                                                     width="30" class="pending-img" alt="ringsvg">
                                                             </div>
                                                         </div>
@@ -206,9 +206,9 @@
                                                         <div class="timeline-icon">
                                                             <div class=" timeline-item_package"
                                                                 [ngClass]="order.order_appointment_status === 'completed' ? 'done' : 'pending'">
-                                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg"
+                                                                <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/check-circle.svg"
                                                                     width="30" class="done-img" alt="circlesvg">
-                                                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/ring.svg"
+                                                                <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/ring.svg"
                                                                     width="30" class="pending-img" alt="ringsvg">
                                                             </div>
                                                         </div>
