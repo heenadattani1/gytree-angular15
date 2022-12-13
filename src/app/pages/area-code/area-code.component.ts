@@ -75,6 +75,7 @@ export class AreaCodeComponent implements OnInit, OnDestroy {
    * Redirects to billing screen
    */
   continue() {
+    console.log('calll')
     if (this.areaPincodeForm.invalid) return;
     this.modal.close('Ok click');
     this.navigateService.navigation(['/billing'], {

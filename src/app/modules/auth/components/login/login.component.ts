@@ -79,9 +79,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   sendOtpClickHandler() {
     if (this.phoneForm.invalid)
       return;
-    const formVal = this.phoneForm.getRawValue();
+    const formVal: any = this.phoneForm.getRawValue();
     const payload = {
-      user_mobile_number: formVal.phone.replaceAll(' ', '')
+      user_mobile_number: formVal.phone.number.replaceAll(' ', '')
     }
     this.subscriptions.push(this.authenticationService.generateOtp(payload).subscribe(data => {
       if (data?.success) {
@@ -96,9 +96,9 @@ export class LoginComponent implements OnInit, OnDestroy {
    * Checks if the provided Mobile Number is already registered 
    */
   otpNextClickHandler() {
-    const formVal = this.phoneForm.getRawValue();
+    const formVal: any = this.phoneForm.getRawValue();
     const payload = {
-      user_mobile_number: formVal.phone.replace(' ', ''),
+      user_mobile_number: formVal.phone.number.replace(' ', ''),
       user_otp: formVal.otp
     }
     this.subscriptions.push(this.authenticationService.validateUser(payload).subscribe((data: any) => {

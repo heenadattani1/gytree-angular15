@@ -1,3 +1,5 @@
+import { ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { NavigationEnd, Router, Scroll } from '@angular/router';
 import {
   ChangeDetectorRef,
   Component,
@@ -50,7 +52,11 @@ export class WebLayoutComponent implements OnInit, OnDestroy {
         (val?.url === '/' || val?.url === '/home')
       ) {
         this.isHomeActive = true;
-      } else {
+      } 
+      else if(val instanceof Scroll && (val?.routerEvent?.url === '/' || val?.routerEvent?.url === '/home') ){
+        this.isHomeActive = true;
+      }
+      else {
         this.isHomeActive = false;
       }
 
