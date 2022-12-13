@@ -26,6 +26,7 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
     ReactiveFormsModule,
     NgOptimizedImage,
     NgbDatepickerModule,
+    ImageLazyLoadModule
   ],
   exports: [ScheduleAppointmentComponent]
 })
