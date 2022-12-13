@@ -18,7 +18,7 @@
                             <h3 class="mb-2 text-light light">Reminders</h3>
                             <button type="button" (click)="updateDashboardList(reminder)"
                                 class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto">
-                                <img style="width: auto;" src="https://image.gytree.com/assets/media/gaytree/icons/times.svg" alt="close"
+                                <img style="width: auto;" ngSrc="https://image.gytree.com/assets/media/gaytree/icons/times.svg" alt="close"
                                     height="30" width="30">
                             </button>
                         </div>
@@ -37,7 +37,7 @@
         <ng-container *ngFor="let appointment of dasboardnotificationDetail?.appointment;let index =index">
             <ng-template carouselSlide [id]="index.toString()">
                 <div class="responsive-appointment-slides alert d-flex flex-column flex-sm-row p-5 my-0 mb-6">
-                    <img class="ms-5" style="width: 34px" src="https://image.gytree.com/assets/media/gaytree/icons/book-appoinment.svg"
+                    <img class="ms-5" style="width: 34px" ngSrc="https://image.gytree.com/assets/media/gaytree/icons/book-appoinment.svg"
                         alt="appointment" height="34" width="34">
                     <div class="d-flex flex-column text-light pe-0 pe-sm-10 ms-5">
                         <h4 class="mb-2 text-light light">{{appointment?.gtnf_name}}</h4>
@@ -50,7 +50,7 @@
                     </div>
                     <button type="button" (click)="notificationClickHandler(appointment)"
                         class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto">
-                        <img style="width: auto;" src="https://image.gytree.com/assets/media/gaytree/icons/arrow-right.svg" alt="arrow-right"
+                        <img style="width: auto;" ngSrc="https://image.gytree.com/assets/media/gaytree/icons/arrow-right.svg" alt="arrow-right"
                             height="18">
                     </button>
                 </div>
@@ -62,7 +62,7 @@
         <ng-container *ngFor="let prescription of dasboardnotificationDetail?.prescription;let index =index">
             <ng-template carouselSlide [id]="index.toString()">
                 <div class="responsive-appointment-slides alert d-flex flex-column flex-sm-row p-5 mb-6">
-                    <img class="ms-5" style="width: 34px" src="https://image.gytree.com/assets/media/gaytree/icons/pill.png" alt="appointment"
+                    <img class="ms-5" style="width: 34px" ngSrc="https://image.gytree.com/assets/media/gaytree/icons/pill.png" alt="appointment"
                         height="34" width="34">
                     <div class="d-flex flex-column text-light pe-0 pe-sm-10 ms-5">
                         <h4 class="mb-2 text-light light">{{prescription?.gtnf_name}}</h4>
@@ -72,7 +72,7 @@
                     </div>
                     <button type="button" (click)="notificationClickHandler(prescription)"
                         class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto">
-                        <img style="width: auto;" src="https://image.gytree.com/assets/media/gaytree/icons/arrow-right.svg" alt="arrow-right"
+                        <img style="width: auto;" ngSrc="https://image.gytree.com/assets/media/gaytree/icons/arrow-right.svg" alt="arrow-right"
                             height="18">
                     </button>
                 </div>
@@ -108,7 +108,7 @@
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div>
                             <img class="features-background rounded p-2"
-                                img-preloader="{{IMAGE_TYPE_CONFIG[feature.type]}}" alt="image" height="40" width="40">
+                                ngSrc="{{IMAGE_TYPE_CONFIG[feature.type]}}" alt="image" height="40" width="40">
                             <h3 class="my-4 max-line-3">{{feature.title}}</h3>
                         </div>
                         <div>

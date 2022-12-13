@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" id="main_navbar">
         <div class="container-fluid">
             <a class="navbar-brand" [routerLink]="['']">
-                <img img-preloader="https://image.gytree.com/assets/media/gaytree/logo/logo1.webp" alt="logosvg" width="110" height="60">
+                <img ngSrc="https://image.gytree.com/assets/media/gaytree/logo/logo1.webp"  alt="logosvg" width="110" height="60">
             </a>
             <div appClickOutside (onClickedOutside)="addClass = $event;removeOverFlowHiddenClassToBody()">
                 <div class="d-flex">
@@ -50,7 +50,7 @@
                         <li class="nav-item fs-6">
                             <a class="nav-link d-flex align-items-center cursor-pointer"
                                 (click)="closeMenu('iconUser')">
-                                <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/user.svg" alt="usersvg" height="30"
+                                <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/user.svg" alt="usersvg" height="30"
                                     width="30"
                                     [ngbTooltip]="smallScreen ? '' : (userDetails?.user_slug ? 'Profile' : 'Login/Sign Up')">
                                 <span class="book-visit ms-2">{{userDetails?.user_slug ? 'Profile' :
@@ -72,7 +72,7 @@
         <div class="container" *ngIf="isFooterVisible">
             <div class="row">
                 <div class="col-12 text-center pt-2 pb-6 border-bottom mb-6">
-                    <img img-preloader="https://image.gytree.com/assets/media/gaytree/logo/white_logo.svg" alt="white_logo" width="154"
+                    <img ngSrc="https://image.gytree.com/assets/media/gaytree/logo/white_logo.svg" alt="white_logo" width="154"
                         height="80">
                 </div>
                 <!-- <div class="col-6 col-md-3">
@@ -200,23 +200,23 @@
 
                 <div class="col-12 py-10 text-center">
                     <a href="https://www.facebook.com/askgytree" target="_blank" class="p-3 mx-md-5 mx-sm-2">
-                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/facebook.svg" alt="facebook" width="24"
+                        <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/facebook.svg" alt="facebook" width="24"
                             height="24">
                     </a>
                     <!-- <a href="https://twitter.com/" target="_blank" class="p-3 mx-6">
                         <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/twitter.svg" alt="twitter" width="24" height="24">
                     </a> -->
                     <a href="https://www.instagram.com/askgytree" target="_blank" class="p-3 mx-md-5 mx-sm-2">
-                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/instagram.svg" alt="instagram" width="24"
+                        <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/instagram.svg" alt="instagram" width="24"
                             height="24">
                     </a>
                     <a href="https://www.youtube.com/channel/UCtLlKMhk2Y2HQ6mbMrIGrbQ" target="_blank"
                         class="p-3 mx-md-5 mx-sm-2">
-                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/youtube.svg" alt="youtube" width="24"
+                        <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/youtube.svg" alt="youtube" width="24"
                             height="24">
                     </a>
                     <a href="https://bit.ly/3Fv5JWw" target="_blank" class="p-3 mx-md-5 mx-sm-2">
-                        <img img-preloader="https://image.gytree.com/assets/media/gaytree/icons/whatsapp.svg" alt="whatsapp" width="24"
+                        <img ngSrc="https://image.gytree.com/assets/media/gaytree/icons/whatsapp.svg" alt="whatsapp" width="24"
                             height="24">
                     </a>
                 </div>

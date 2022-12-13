@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FounderComponent } from './founder.component';
 import { RouterModule } from '@angular/router';
 import { ImageLazyLoadModule } from '../../shared/image-lazy-load/image-lazy-load.module';
@@ -16,7 +16,7 @@ import { ImageLazyLoadModule } from '../../shared/image-lazy-load/image-lazy-loa
       path: '',
       component: FounderComponent
     }]),
-    ImageLazyLoadModule
+    NgOptimizedImage
   ]
 })
 export class FounderModule { }

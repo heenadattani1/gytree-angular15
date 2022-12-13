@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { BillingComponent } from './billing.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +23,8 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
       },
     ]),
     SharedModule,
-    ImageLazyLoadModule,
+    NgOptimizedImage
+    //ImageLazyLoadModule,
   ]
 })
 export class BillingModule { }

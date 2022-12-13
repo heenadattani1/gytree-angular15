@@ -7,7 +7,7 @@
                     <div class="flex-fill align-self-start align-self-sm-center">
                         <div class="d-flex align-items-center">
                             <div *ngIf="doctorDetails?.gtd_image" class="symbol symbol-circle symbol-100px">
-                                <img img-preloader="{{doctorDetails.gtd_image}}" class="img-size-fit"
+                                <img ngSrc="{{doctorDetails.gtd_image}}" class="img-size-fit"
                                     [alt]="doctorDetails?.gtd_name">
                             </div>
                             <div class="ms-6">

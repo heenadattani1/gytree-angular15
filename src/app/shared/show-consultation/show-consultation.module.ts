@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ShowConsultationComponent } from './pages/show-consultation/show-consultation.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ImageLazyLoadModule } from '../image-lazy-load/image-lazy-load.module';
@@ -14,6 +14,7 @@ import { ImageLazyLoadModule } from '../image-lazy-load/image-lazy-load.module';
     CommonModule,
     CarouselModule,
     ImageLazyLoadModule,
+    NgOptimizedImage
   ],
   exports: [
     ShowConsultationComponent

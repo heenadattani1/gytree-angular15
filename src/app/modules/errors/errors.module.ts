@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 import { ErrorsRoutingModule } from './errors-routing.module';
 import { ErrorsComponent } from '../errors/errors.component';
@@ -14,6 +14,7 @@ import { Error404Component } from './error404/error404.component';
   imports: [
     CommonModule,
     ErrorsRoutingModule,
+    NgOptimizedImage
   ]
 })
 export class ErrorsModule { }

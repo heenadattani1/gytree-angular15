@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HomeComponent } from './home.component';
@@ -21,7 +21,8 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
       component: HomeComponent
     }]),
     SharedModule,
-    ImageLazyLoadModule
+    ImageLazyLoadModule,
+    NgOptimizedImage
   ]
 })
 export class HomeModule { }

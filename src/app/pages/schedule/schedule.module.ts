@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ScheduleComponent } from './schedule.component';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -22,7 +22,7 @@ import { ImageLazyLoadModule } from '../../shared/image-lazy-load/image-lazy-loa
       },
     ]),
     InlineSVGModule,
-    ImageLazyLoadModule,
+    NgOptimizedImage,
     SharedModule
   ]
 })

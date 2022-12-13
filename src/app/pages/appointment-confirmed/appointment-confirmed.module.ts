@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { AppointmentConfirmedComponent } from './appointment-confirmed.component';
 import { RouterModule } from '@angular/router';
 import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-load.module';
@@ -13,6 +13,7 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
   imports: [
     CommonModule,
     ImageLazyLoadModule,
+    NgOptimizedImage,
     RouterModule.forChild([
       {
         path: '',

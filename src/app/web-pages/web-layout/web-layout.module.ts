@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { WebLayoutComponent } from './web-layout.component';
 import { RouterModule, Routes } from '@angular/router';
 import { Routing } from '../routing';
@@ -24,6 +24,7 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     ImageLazyLoadModule,
+    NgOptimizedImage,
     NgbTooltipModule,
     RouterModule.forChild(routes),
   ]

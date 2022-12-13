@@ -11,6 +11,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
+import { NgOptimizedImage } from '@angular/common';
 // import { MetaTagsResolver } from './modules/shared/services/meta-tags/meta-tags.resolver';
 
 
@@ -26,6 +27,7 @@ export function playerFactory() {
     HttpClientModule,
     LottieModule.forRoot({ player: playerFactory }),
     AppRoutingModule,
+    NgOptimizedImage,
     // NgbModule,
     ToastrModule.forRoot(),
   ],

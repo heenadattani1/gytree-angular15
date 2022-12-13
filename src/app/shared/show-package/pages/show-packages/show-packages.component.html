@@ -7,7 +7,7 @@
                 <ng-template carouselSlide [id]="index.toString()">
                     <div class="card text-white" [ngStyle]="{'background' : package.gtp_color}">
                         <img class="card-img-top" height="114" width="114" loading="lazy"
-                            [src]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'"
+                            [ngSrc]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'"
                             alt="Package">
                         <button class="btn btn-more" (click)="packageDetailsClick(package.gtp_slug)">
                             >
@@ -57,7 +57,7 @@
             [ngStyle]="{'background' : package.gtp_color}"
             (click)="purchasedPackages ? '' : packageDetailsClick(package.gtp_slug)">
             <img class="card-img-top img-cover" height="114" width="114" loading="lazy"
-                [src]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'"
+                [ngSrc]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'"
                 alt="Package">
             <button class="btn btn-more" (click)="packageDetailsClick(package.gtp_slug)">
                 >
@@ -99,7 +99,7 @@
             [ngStyle]="{'background' : package.gtp_color}"
             (click)="purchasedPackages ? '' : packageDetailsClick(package.gtp_slug)">
             <img class="card-img-top img-cover" height="114" width="114"
-                [src]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'"
+                [ngSrc]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'"
                 alt="Package">
             <button class="btn btn-more" (click)="packageDetailsClick(package.gtp_slug)">
                 >
@@ -142,7 +142,7 @@
                 *ngFor="let package of packageData?.packageData; let index = index">
                 <div class="card text-white" [ngStyle]="{'background' : package.gtp_color}">
                     <img class="card-img-top" alt="package-image" height="114" width="114"
-                        [src]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'">
+                        [ngSrc]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'">
                     <button class="btn btn-more" (click)="packageDetailsClick(package.gtp_slug)">
                         >
                     </button>

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ContactUsComponent } from './contact-us.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +17,8 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    ImageLazyLoadModule,
+   // ImageLazyLoadModule,
+    NgOptimizedImage,
     RouterModule.forChild([{
       path: '',
       component: ContactUsComponent

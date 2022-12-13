@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ConsultComponent } from './consult.component';
 import { RouterModule } from '@angular/router';
 import { InlineSVGModule } from 'ng-inline-svg-2';
@@ -27,6 +27,7 @@ import { SafePipeModule } from '../../core/pipes/safe-pipe/safe-pipe.module';
     InlineSVGModule,
     FormsModule,
     ReactiveFormsModule,
+    NgOptimizedImage,
     ImageLazyLoadModule,
     NgbDatepickerModule,
     SafePipeModule,

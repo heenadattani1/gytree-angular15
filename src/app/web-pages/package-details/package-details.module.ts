@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { PackageDetailsComponent } from './package-details.component';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -21,6 +21,7 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
     SafePipeModule,
     SharedModule,
     ImageLazyLoadModule,
+    NgOptimizedImage,
     RouterModule.forChild([{
       path: '',
       component: PackageDetailsComponent
