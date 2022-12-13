@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, Scroll } from '@angular/router';
 import { NavigateService } from '../../modules/shared/helper-utils/navigate.service';
 import { LocalStorageService } from '../../modules/shared/services/local-storage/local-storage.service';
 import { EventTrackingService } from '../../shared/services/event-tracking.service';
@@ -38,9 +38,14 @@ export class WebLayoutComponent implements OnInit, OnDestroy {
     private eventTrackingService: EventTrackingService,
   ) {
     router.events.subscribe((val) => {
+      // console.log('====>',val, val instanceof Scroll, val)
       if (val instanceof NavigationEnd && (val?.url === '/' || val?.url === '/home')) {
         this.isHomeActive = true;
-      } else {
+      } 
+      else if(val instanceof Scroll && (val?.routerEvent?.url === '/' || val?.routerEvent?.url === '/home') ){
+        this.isHomeActive = true;
+      }
+      else {
         this.isHomeActive = false;
       }
 
