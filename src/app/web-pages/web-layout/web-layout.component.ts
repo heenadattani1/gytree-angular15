@@ -38,7 +38,6 @@ export class WebLayoutComponent implements OnInit, OnDestroy {
     private eventTrackingService: EventTrackingService,
   ) {
     router.events.subscribe((val) => {
-      // console.log('====>',val, val instanceof Scroll, val)
       if (val instanceof NavigationEnd && (val?.url === '/' || val?.url === '/home')) {
         this.isHomeActive = true;
       } 
