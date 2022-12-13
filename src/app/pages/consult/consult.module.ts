@@ -28,7 +28,7 @@ import { SafePipeModule } from '../../core/pipes/safe-pipe/safe-pipe.module';
     FormsModule,
     ReactiveFormsModule,
     NgOptimizedImage,
-    //ImageLazyLoadModule,
+    ImageLazyLoadModule,
     NgbDatepickerModule,
     SafePipeModule,
   ]
