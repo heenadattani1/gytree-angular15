@@ -1,18 +1,10 @@
 import { ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router, Scroll } from '@angular/router';
-import {
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  HostListener,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
 import { NavigateService } from '../../modules/shared/helper-utils/navigate.service';
 import { LocalStorageService } from '../../modules/shared/services/local-storage/local-storage.service';
 import { EventTrackingService } from '../../shared/services/event-tracking.service';
 import { NAV_ITEMS } from './web-layout.constant';
+
 
 @Component({
   selector: 'app-web-layout',
