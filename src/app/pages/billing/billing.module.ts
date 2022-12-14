@@ -23,8 +23,8 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
       },
     ]),
     SharedModule,
-    NgOptimizedImage
-    //ImageLazyLoadModule,
+    NgOptimizedImage,
+    ImageLazyLoadModule,
   ]
 })
 export class BillingModule { }

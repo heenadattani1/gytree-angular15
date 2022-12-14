@@ -67,6 +67,7 @@ export class BillingComponent implements OnInit {
     private GetData: GetDataService,
     private titleService: Title) {
     this.billingData = this.router.getCurrentNavigation()?.extras.state;
+    this.billingData = !this.billingData ? history.state : this.billingData;
     if (!this.billingData) {
       this.GetData.paymentCompleted = true;
       this.location.back();

@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { NavigateService } from '../../modules/shared/helper-utils/navigate.service';
@@ -31,7 +32,8 @@ export class AreaCodeComponent implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef,
     private navigateService: NavigateService,
     private thyrocareService: ThyrocareService,
-    private pincodeFilterService: PincodeFilterService
+    private pincodeFilterService: PincodeFilterService,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
@@ -75,7 +77,6 @@ export class AreaCodeComponent implements OnInit, OnDestroy {
    * Redirects to billing screen
    */
   continue() {
-    console.log('calll')
     if (this.areaPincodeForm.invalid) return;
     this.modal.close('Ok click');
     this.navigateService.navigation(['/billing'], {

@@ -20,7 +20,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     RouterModule.forChild([{
       path: '',
       component: LabTestComponent
-    }])
+    }]),
+    ImageLazyLoadModule
   ]
 })
 export class LabTestModule { }
