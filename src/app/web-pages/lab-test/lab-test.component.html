@@ -35,7 +35,7 @@
                                     <button type="button" class="btn btn-sm btn-link text-dark collapsible toggle"
                                         data-bs-toggle="collapse" [attr.data-bs-target]="'#test' + index"
                                         aria-expanded="false"> Click for package details <img
-                                            img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down.svg"
+                                            ngSrc="https://image.gytree.com/assets/media/gaytree/icons/arrow-down.svg"
                                             alt="arrow" height="14" width="14">
                                     </button>
                                 </div>
@@ -82,6 +82,7 @@
                                     </div>
                                     <div class="block-graphic">
                                         <img [img-preloader]="config?.image" alt="image" class="block-graphic_image">
+                                        <!-- <img [ngSrc]="config?.image" alt="image" class="block-graphic_image" height="14" width="14"> -->
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +114,7 @@
                                     <button type="button" class="btn btn-sm btn-link text-dark collapsible toggle"
                                         data-bs-toggle="collapse" [attr.data-bs-target]="'#test' + index"
                                         aria-expanded="false"> Click for package details <img
-                                            img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down.svg"
+                                            ngSrc="https://image.gytree.com/assets/media/gaytree/icons/arrow-down.svg"
                                             alt="arrow" height="14" width="14">
                                     </button>
                                 </div>
@@ -172,7 +173,7 @@
                             *ngFor="let consult of consults; let index = index">
                             <div class="card text-custom ms-0 me-0">
                                 <div class="consult-card-body">
-                                    <img img-preloader="{{consult?.gthc_image}}" height="62" width="62"
+                                    <img ngSrc="{{consult?.gthc_image}}" height="62" width="62"
                                         [alt]="consult?.gthc_name" class="image-top">
                                     <div class="title cursor-pointer"
                                         (click)="healthClinicClickHandler(consult.gthc_name)">
@@ -187,7 +188,7 @@
                                         [attr.data-bs-target]="'#test_consult_via_health_' + index"
                                         aria-expanded="false">
                                         <img class="download-image-rotation" [class.transform180]="consult?.isOpen"
-                                            img-preloader="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-3.svg"
+                                            ngSrc="https://image.gytree.com/assets/media/gaytree/icons/arrow-down-3.svg"
                                             alt="arrow-down" height="20" width="20">
                                     </div>
                                 </div>
@@ -211,7 +212,7 @@
                                 <ng-template carouselSlide [id]="article?.id" [width]="300">
                                     <div class="card responsive-slides card-flush bg-transparent cursor-pointer"
                                         (click)="articleClickHandler(article.link)">
-                                        <img img-preloader="{{article?._embedded['wp:featuredmedia'] && article?._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url }}"
+                                        <img ngSrc="{{article?._embedded['wp:featuredmedia'] && article?._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url }}"
                                             alt="image" width="300" height="169" class="card-shadow rounded">
                                         <div class="fs-2 fw-bolder text-danger mt-3 ms-2 title-height max-line-2"
                                             [innerHTML]="(article?.title?.rendered || '') | safe: 'html'"></div>

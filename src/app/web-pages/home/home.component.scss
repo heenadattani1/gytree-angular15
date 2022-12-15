@@ -420,6 +420,7 @@
     object-fit: cover;
     border-radius: 15px;
     height: 100%;
+    // aspect-ratio: auto;
 
     @media (max-width: 1399px) {
       width: 60% !important;
