@@ -66,7 +66,7 @@ export class BillingComponent implements OnInit {
     private transactionOrderService: TransactionOrderService,
     private thyrocareService: ThyrocareService,
     private GetData: GetDataService,
-    private titleService: Title) {
+    public titleService: Title) {
     this.billingData = this.router.getCurrentNavigation()?.extras.state;
     this.billingData = !this.billingData ? history.state : this.billingData;
     if (!this.billingData || this.billingData?.navigationId == 1) {

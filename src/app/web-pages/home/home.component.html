@@ -11,8 +11,8 @@
             <ng-container *ngFor="let banner of banners">
               <ng-template carouselSlide *ngIf="banner && banner?.gtb_image">
                 <div class="banner-slide w-100">
-                  <img fetchpriority="high" name="banner" class="banner-carousel-img rounded-3"
-                    [ngSrc]="banner?.gtb_image" alt="Banner" width="684" height="430">
+                   <img name="banner" class="banner-carousel-img rounded-3"
+                    [ngSrc]="banner?.gtb_image" alt="Banner" width="684" height="430"> 
                   <div class="banner-slide-caption">
                     <div class="banner-title mb-0">{{banner?.gtb_title}}</div>
                     <p class="banner-desc mb-0">{{banner?.gtb_desc}}</p>
