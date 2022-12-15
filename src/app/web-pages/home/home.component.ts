@@ -75,7 +75,6 @@ export class HomeComponent
     videos: false,
     faq: false,
   };
-
   @HostListener('window:scroll', ['$event'])
   onScroll(e: any) {
     let firstBlockData = this.firstblock?.nativeElement.getBoundingClientRect();
@@ -182,6 +181,7 @@ export class HomeComponent
       GetData,
       loaderService
     );
+
   }
 
   ngOnInit(): void {

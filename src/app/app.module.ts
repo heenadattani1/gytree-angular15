@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -11,9 +11,8 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
-import { NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage, provideImageKitLoader } from '@angular/common';
 // import { MetaTagsResolver } from './modules/shared/services/meta-tags/meta-tags.resolver';
-
 
 export function playerFactory() {
   return player;
@@ -32,11 +31,14 @@ export function playerFactory() {
     ToastrModule.forRoot(),
   ],
   providers: [
+   // provideImageKitLoader("https://image.gytree.com/assets/media/gaytree/icons/"),
     {
-      provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
     },
     // MetaTagsResolver
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
