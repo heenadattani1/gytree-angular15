@@ -89,7 +89,7 @@
                             <label class="form-label required">Select Date</label>
                             <div class="d-flex" (click)="d.toggle();$event.stopPropagation();">
                                 <input type="date" class="form-control form-control-solid cursor-pointer"
-                                    container="body" [minDate]="minDate" ngbDatepicker #d="ngbDatepicker"
+                                    container="body" [minDate]="minDate" [maxDate]="maxDate" ngbDatepicker #d="ngbDatepicker"
                                     formControlName="selectDate">
                                 <div class="input-group-append cursor-pointer">
                                     <span class="form-control form-control-solid">

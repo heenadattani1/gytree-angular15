@@ -39,6 +39,7 @@ export class BillingComponent implements OnInit {
   discountAmount = 0;
   subscriptions: Subscription[] = [];
   minDate: DATE_SCHEMA = DATE_FORMAT_CONVERTER_ADD_DAYS(this.datePipe, 1);
+  maxDate: DATE_SCHEMA = DATE_FORMAT_CONVERTER_ADD_DAYS(this.datePipe, 7);
   SlotAvailability: any;
   noSlotAvailabilityMessage: any;
   formControlsConfig = FORM_CONTROLS_CONSTANT;
@@ -68,36 +69,26 @@ export class BillingComponent implements OnInit {
     private titleService: Title) {
     this.billingData = this.router.getCurrentNavigation()?.extras.state;
     this.billingData = !this.billingData ? history.state : this.billingData;
-    if (!this.billingData) {
+    if (!this.billingData || this.billingData?.navigationId == 1) {
       this.GetData.paymentCompleted = true;
       this.location.back();
     }
-  }
-  /**
-  * Method to add razorpay script lazy loaded
-  */
-  addRazorpayScriptTag() {
-    var script = document.createElement('script');
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    document.body.appendChild(script);
   }
 
   ngOnInit(): void {
     this.titleService.setTitle('Gytree - Billing');
     this.initForm();
-    this.addRazorpayScriptTag();
     this.userDetails = this.localStorageService.getItem('userSlug');
     if (this.billingData) {
       const date = new Date();
       date.setDate(date.getDate() + 1);
-      date.setMonth(date.getMonth() + 1);
       let day: string | number = date.getDate();
-      let month: string | number = date.getMonth();
-      if (date.getMonth() < 10) {
-        month = "0" + date.getMonth();
+      let month: string | number = date.getMonth() + 1;
+      if (month < 10) {
+        month = "0" + month;
       }
-      if (date.getDate() < 10) {
-        day = "0" + date.getDate();
+      if (day < 10) {
+        day = "0" + day;
       }
       const todayDate = date.getFullYear() + '-' + month + '-' + day;
       const payload = {
