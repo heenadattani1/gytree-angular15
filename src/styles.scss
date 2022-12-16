@@ -104,12 +104,12 @@ body {
   overflow: hidden;
 }
 
-.max-line-1 {
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+// .max-line-1 {
+//   display: -webkit-box;
+//   -webkit-line-clamp: 1;
+//   -webkit-box-orient: vertical;
+//   overflow: hidden;
+// }
 
 
 //start:ngbdatepicker style
@@ -117,14 +117,14 @@ ngb-datepicker {
   width: 300px !important;
 }
 
-.ngb-dp-month {
-  width: 100%;
-}
+// .ngb-dp-month {
+//   width: 100%;
+// }
 
-.ngb-dp-weekdays,
-.ngb-dp-week {
-  justify-content: space-evenly;
-}
+// .ngb-dp-weekdays,
+// .ngb-dp-week {
+//   justify-content: space-evenly;
+// }
 
 //end:ngbdatepicker style
 
