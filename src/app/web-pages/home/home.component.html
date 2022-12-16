@@ -54,7 +54,7 @@
             <ng-container *ngFor="let slide of whatWeTreat?.first; let index = index">
               <div class="animation-cols"
                 [ngClass]="index % 2===0 ? 'animation-cols-solid' : 'animation-cols-transparent'">
-                <img  fetchpriority="high" ngSrc="{{slide?.gt_wwt_icon}}" alt="" height="50" width="50" class="mb-4">
+                <img  fetchpriority="high" ngSrc="{{slide?.gt_wwt_icon}}" alt="" height="50" width="50" class="mb-4" class="setRatio">
                 {{slide?.gt_wwt_title.slice(0, 1).toUpperCase() +
                 slide?.gt_wwt_title.slice(1).toLowerCase()}}
               </div>

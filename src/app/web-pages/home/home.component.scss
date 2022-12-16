@@ -419,7 +419,9 @@
     width: 58% !important;
     object-fit: cover;
     border-radius: 15px;
-    height: 100%;
+    height: auto;
+
+    // height: 100%;
     // aspect-ratio: auto;
 
     @media (max-width: 1399px) {
@@ -724,6 +726,9 @@
   animation: 1.5s shine linear infinite;
 }
 
+// .setRatio{
+//   aspect-ratio: auto;
+// }
 
 @keyframes shine {
   to {
