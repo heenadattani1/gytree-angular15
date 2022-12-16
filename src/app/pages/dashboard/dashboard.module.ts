@@ -7,7 +7,6 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NotificationComponent } from '../notification/notification.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SafePipeModule } from '../../core/pipes/safe-pipe/safe-pipe.module';
-import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-load.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
       },
     ]),
     PdfViewerModule,
-    ImageLazyLoadModule,
     SharedModule
   ],
 })

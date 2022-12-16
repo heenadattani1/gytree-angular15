@@ -25,7 +25,6 @@ export class AppointmentConfirmedComponent implements OnInit, OnDestroy {
     private router: Router,
     private cdr: ChangeDetectorRef,
     private navigateService: NavigateService,
-    private fileUploadService: FileUploadService,
     private localStorageService: LocalStorageService,
     private invoiceUploadService: InvoiceUploadService,
     private titleService: Title) {

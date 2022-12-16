@@ -16,7 +16,6 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-   // ImageLazyLoadModule,
     NgOptimizedImage
   ]
 })

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { LabTestDetailsComponent } from './lab-test-details.component';
-import { ImageLazyLoadModule } from '../../shared/image-lazy-load/image-lazy-load.module';
 import { SafePipeModule } from '../../core/pipes/safe-pipe/safe-pipe.module';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';

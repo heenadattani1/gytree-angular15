@@ -755,6 +755,7 @@ class MenuComponent {
 
   private _click = (element: HTMLElement, e: Event) => {
     e.preventDefault();
+    
     const item = this._getItemElement(element);
     if (this._getItemOption(item, "trigger") !== "click") {
       return;

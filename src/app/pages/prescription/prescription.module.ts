@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { InlineSVGModule } from 'ng-inline-svg-2';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-load.module';
 
 const routes = [
   {

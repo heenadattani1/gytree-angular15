@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule} from '@angular/common';
 import { ScheduleAppointmentComponent } from './schedule-appointment.component';
 import { RouterModule } from '@angular/router';
 import { InlineSVGModule } from 'ng-inline-svg-2';
@@ -24,7 +24,6 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
     InlineSVGModule,
     FormsModule,
     ReactiveFormsModule,
-    NgOptimizedImage,
     NgbDatepickerModule,
     ImageLazyLoadModule
   ],

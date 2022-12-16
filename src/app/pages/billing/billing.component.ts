@@ -7,7 +7,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { FORM_VALIDATION } from 'src/app/modules/shared/constants/form-validatin.constant';
 import { GET_DAY } from 'src/app/modules/shared/constants/get-day.constant';
-import { BillingDetailsService } from 'src/app/modules/shared/services/billing-details/billing-details.service';
 import { LocalStorageService } from 'src/app/modules/shared/services/local-storage/local-storage.service';
 import { ThyrocareService } from 'src/app/modules/shared/services/thyrocare/thyrocare.service';
 import { TOASTER_CONSTANTS } from 'src/app/modules/shared/toaster/toaster.constant';
@@ -62,7 +61,6 @@ export class BillingComponent implements OnInit {
     private windowRef: RazorpayWindowRefService,
     private localStorageService: LocalStorageService,
     private orderInsertionService: OrderInsertionService,
-    private billingDetailsService: BillingDetailsService,
     private transactionOrderService: TransactionOrderService,
     private thyrocareService: ThyrocareService,
     private GetData: GetDataService,

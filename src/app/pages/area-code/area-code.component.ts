@@ -32,7 +32,6 @@ export class AreaCodeComponent implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef,
     private navigateService: NavigateService,
     private thyrocareService: ThyrocareService,
-    private pincodeFilterService: PincodeFilterService,
     public router: Router
   ) {}
 

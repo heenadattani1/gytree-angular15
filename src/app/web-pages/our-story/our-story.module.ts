@@ -20,6 +20,7 @@ import { ImageLazyLoadModule } from '../../shared/image-lazy-load/image-lazy-loa
       component: OurStoryComponent
     }]),
     CarouselModule,
+    ImageLazyLoadModule,
     NgOptimizedImage
   ]
 })

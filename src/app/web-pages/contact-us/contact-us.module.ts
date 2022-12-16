@@ -4,9 +4,6 @@ import { ContactUsComponent } from './contact-us.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-load.module';
-
-
 
 @NgModule({
   declarations: [
@@ -17,7 +14,6 @@ import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-l
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-   // ImageLazyLoadModule,
     NgOptimizedImage,
     RouterModule.forChild([{
       path: '',
