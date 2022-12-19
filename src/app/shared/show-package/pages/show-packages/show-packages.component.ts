@@ -1,4 +1,5 @@
-import { Component, HostListener, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { NavigateService } from 'src/app/modules/shared/helper-utils/navigate.service';
 import { EventTrackingService } from '../../../services/event-tracking.service';
 
@@ -10,28 +11,41 @@ import { EventTrackingService } from '../../../services/event-tracking.service';
 })
 export class ShowPackagesComponent implements OnInit {
   @Input() packageData: any;
+  @Input() packageDataTemp: any;
   @Input() carouselOption: any;
   @Input() purchasedPackages: boolean;
-  mobileScreen: boolean;
-  packageDataTemp: any;
+  @Input() homeMobilePackages: any;
+  mobileScreen = false;
 
-  @HostListener('window:orientationchange', ['$event'])
-  onOrientationChange(event: any) {
-    if (!this.mobileScreen) {
-      this.packageData.packageData = [];
-      setTimeout(() => {
-        this.packageData.packageData = [...this.packageDataTemp];
-      });
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.getScreenSize();
+  }
+
+  getScreenSize() {
+    this.packageData = {};
+    setTimeout(() => {
+      this.packageData = { ...this.packageDataTemp };
+      this.cdr.detectChanges();
+    });
+    if (window.innerWidth <= 575) {
+      this.mobileScreen = true;
+      this.cdr.detectChanges();
+    } else {
+      this.mobileScreen = false;
+      this.cdr.detectChanges();
     }
   }
 
   constructor(
     private navigateService: NavigateService,
     private eventTrackingService: EventTrackingService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
-    this.packageDataTemp = this.packageData?.packageData;
+    this.getScreenSize();
+    this.cdr.detectChanges();
   }
 
   converToNumber(data: any) {
