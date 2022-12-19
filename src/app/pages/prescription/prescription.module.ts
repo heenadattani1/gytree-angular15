@@ -12,7 +12,6 @@ const routes = [
     component: PrescriptionComponent,
   },
 ]
-
 @NgModule({
   declarations: [
     PrescriptionComponent

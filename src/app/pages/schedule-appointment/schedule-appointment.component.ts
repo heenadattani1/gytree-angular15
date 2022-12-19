@@ -496,5 +496,4 @@ export class ScheduleAppointmentComponent extends ModalBaseClass implements OnIn
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
-
 }

@@ -117,6 +117,5 @@ export class PackageComponent extends GlobalBaseComponent implements OnInit, OnD
   ngOnDestroy(): void {
     this.packagesubscriptions.forEach((subscription) => subscription.unsubscribe());
   }
-
 }
 

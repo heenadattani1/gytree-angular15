@@ -4,9 +4,6 @@ import { LabTestDetailsComponent } from './lab-test-details.component';
 import { SafePipeModule } from '../../core/pipes/safe-pipe/safe-pipe.module';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
-
-
 @NgModule({
   declarations: [
     LabTestDetailsComponent

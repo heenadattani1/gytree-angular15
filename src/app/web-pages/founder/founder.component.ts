@@ -18,5 +18,4 @@ export class FounderComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle('Gytree - Founder');
   }
-
 }

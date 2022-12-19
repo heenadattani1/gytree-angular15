@@ -266,5 +266,4 @@ export class PackageDetailsComponent implements OnInit, OnDestroy {
     }
     CommonUtil.setMetaTagAndTitle(this.titleService, this.metaService, data)
   }
-
 }

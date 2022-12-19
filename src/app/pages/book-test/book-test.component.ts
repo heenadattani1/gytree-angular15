@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AreaCodeComponent } from '../area-code/area-code.component';
 import { GlobalBaseComponent } from '../../modules/shared/base-component/global-base/global-base.component';
-
 @Component({
   selector: 'app-book-test',
   templateUrl: './book-test.component.html',
@@ -44,5 +43,4 @@ export class BookTestComponent extends GlobalBaseComponent implements OnInit, On
     this.labTestsubscriptions.forEach((subscription) => subscription.unsubscribe());
     document?.getElementById('kt_wrapper')?.classList?.remove('pe-xl-0');
   }
-
 }

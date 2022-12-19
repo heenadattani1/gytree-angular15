@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-
 import { INVOICE_LIST_SCHEMA } from '../../modules/shared/models/invoice-list.constant';
 import { GlobalBaseComponent } from '../../modules/shared/base-component/global-base/global-base.component';
 
@@ -33,5 +32,4 @@ export class InvoiceComponent extends GlobalBaseComponent implements OnInit, OnD
     this.invoicesubscriptions.forEach((subscription) => subscription.unsubscribe());
     document?.getElementById('kt_wrapper')?.classList?.remove('pe-xl-0');
   }
-
 }

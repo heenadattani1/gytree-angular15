@@ -89,5 +89,4 @@ export class WhatWeTreatComponent implements OnInit, OnDestroy {
       }
     })
   }
-
 }

@@ -3,8 +3,6 @@ import { IMAGE_TYPE_CONFIG } from '../../web-pages/package-details/package-detai
 import { NotificationComponent } from '../notification/notification.component';
 import { NOTIFICATION_OPTIONS } from './dashboard.constant';
 import { GlobalBaseComponent } from 'src/app/modules/shared/base-component/global-base/global-base.component';
-
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -15,7 +13,6 @@ export class DashboardComponent extends GlobalBaseComponent implements OnInit, O
   userDetails: any;
   IMAGE_TYPE_CONFIG: any = IMAGE_TYPE_CONFIG;
   notificationOption = NOTIFICATION_OPTIONS;
-
 
   ngOnInit(): void {
     this.userDetails = this.localStorageService.getItem('userSlug');
@@ -94,5 +91,4 @@ export class DashboardComponent extends GlobalBaseComponent implements OnInit, O
     this.dashBoardsubscriptions.forEach((subscription) => subscription.unsubscribe());
     document?.getElementById('kt_wrapper')?.classList?.remove('pe-xl-0');
   }
-
 }

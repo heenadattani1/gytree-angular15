@@ -8,9 +8,6 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-load.module';
 import { DoctorDetailsPopupComponent } from '../doctor-details-popup/doctor-details-popup.component';
 import { SafePipeModule } from '../../core/pipes/safe-pipe/safe-pipe.module';
-
-
-
 @NgModule({
   declarations: [
     ConsultComponent,

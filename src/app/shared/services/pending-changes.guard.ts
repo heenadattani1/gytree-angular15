@@ -27,5 +27,4 @@ export class PendingChangesGuard implements CanDeactivate<ComponentCanDeactivate
       return confirm('ALERT: Changes that you made may not be saved.');
     }
   }
-
 }

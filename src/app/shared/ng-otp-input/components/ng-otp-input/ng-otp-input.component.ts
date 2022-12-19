@@ -93,7 +93,6 @@ export class NgOtpInputComponent implements OnInit, AfterViewInit {
     }
   }
 
-
   onKeyUp($event: any, inputIdx: any = null) {
     const nextInputId = this.appendKey(`otp_${inputIdx + 1}`);
     const prevInputId = this.appendKey(`otp_${inputIdx - 1}`);
@@ -212,7 +211,6 @@ export class NgOtpInputComponent implements OnInit, AfterViewInit {
     this.onInputChange.emit(val);
     this.currentVal = val;
   }
-
 
   handlePaste(e: any) {
     // Get pasted data via clipboard API

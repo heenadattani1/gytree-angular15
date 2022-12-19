@@ -42,7 +42,6 @@ import { MetaTagsService } from '../../modules/shared/services/meta-tags/meta-ta
 import { MetaTagsEnum } from '../../shared/constants/meta-tags.enum';
 import { EventTrackingService } from '../../shared/services/event-tracking.service';
 import * as _ from 'lodash';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -118,7 +117,6 @@ export class HomeComponent
       }
     }
     this.lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-
     this.allScrollEvents();
   }
 

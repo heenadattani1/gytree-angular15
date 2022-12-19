@@ -7,9 +7,6 @@ import { NgxGalleryModule } from 'ngx-gallery-9';
 import { SafePipeModule } from '../../core/pipes/safe-pipe/safe-pipe.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-load.module';
-
-
-
 @NgModule({
   declarations: [
     PackageDetailsComponent

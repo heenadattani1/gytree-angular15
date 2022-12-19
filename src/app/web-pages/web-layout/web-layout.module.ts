@@ -6,7 +6,6 @@ import { Routing } from '../routing';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -14,7 +13,6 @@ const routes: Routes = [
     children: Routing,
   },
 ];
-
 @NgModule({
   declarations: [
     WebLayoutComponent

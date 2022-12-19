@@ -76,5 +76,4 @@ export class ShowPackagesComponent implements OnInit {
     this.navigateService.navigation(['/schedule-appointment', slug]);
     this.eventTrackingService.trackEvent('Book Now Clicked', 'Package_' + slug);
   }
-
 }

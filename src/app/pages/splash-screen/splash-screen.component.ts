@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
 @Component({
   selector: 'app-splash-screen',
   templateUrl: './splash-screen.component.html',
@@ -23,5 +22,4 @@ export class SplashScreenComponent implements OnInit {
       this.cdr.detectChanges();
     }, this.duration * 1000);
   }
-
 }

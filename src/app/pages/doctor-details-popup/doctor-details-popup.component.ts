@@ -3,7 +3,6 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { DOCTOR_DETAILS_SCHEMA } from '../../modules/shared/models/doctor-details.constant';
 import { DoctorDetialsService } from '../../modules/shared/services/doctor-details/doctor-details.service';
-
 @Component({
   selector: 'app-doctor-details-popup',
   templateUrl: './doctor-details-popup.component.html',
@@ -46,5 +45,4 @@ export class DoctorDetailsPopupComponent implements OnInit, OnDestroy {
    ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
-
 }

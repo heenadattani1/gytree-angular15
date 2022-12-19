@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { OurApproachComponent } from './our-approach.component';
 import { RouterModule } from '@angular/router';
 import { SafePipeModule } from '../../core/pipes/safe-pipe/safe-pipe.module';
-
-
-
 @NgModule({
   declarations: [
     OurApproachComponent

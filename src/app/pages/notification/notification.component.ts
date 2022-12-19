@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
@@ -28,5 +27,4 @@ export class NotificationComponent implements OnInit {
       document.body.appendChild(script);
     }
   }
-
 }

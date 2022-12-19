@@ -4,7 +4,6 @@ import { GlobalBaseComponent } from '../../modules/shared/base-component/global-
 import { APPOINTMENT_SCHEMA } from '../../modules/shared/models/appointment-list.constant';
 import { NotificationComponent } from '../notification/notification.component';
 import { APPOINTMENT_LIST_OPTIONS } from './schedule.constant';
-
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
@@ -14,9 +13,6 @@ export class ScheduleComponent extends GlobalBaseComponent implements OnInit {
 
   appointmentListOptions: OwlOptions = APPOINTMENT_LIST_OPTIONS;
   outerHeight: number;
-
-
-
 
   ngOnInit(): void {
     this.schedulenotification_data = this.router.getCurrentNavigation()?.extras.state?.notification;

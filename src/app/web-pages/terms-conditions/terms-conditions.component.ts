@@ -40,5 +40,4 @@ export class TermsConditionsComponent implements OnInit {
       }
     })
   }
-
 }

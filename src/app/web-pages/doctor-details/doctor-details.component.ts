@@ -28,7 +28,6 @@ export class DoctorDetailsComponent implements OnInit, OnDestroy {
     private eventTrackingService: EventTrackingService,
     private titleService: Title
   ) { }
-
   
   ngOnInit(): void {
     this.activatedRoute.queryParamMap

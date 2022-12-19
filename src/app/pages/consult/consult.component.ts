@@ -712,5 +712,4 @@ export class ConsultComponent extends ModalBaseClass implements OnInit {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
     document.body.classList.remove("h-auto");
   }
-
 }

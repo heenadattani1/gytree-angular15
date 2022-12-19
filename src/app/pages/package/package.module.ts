@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { InlineSVGModule } from 'ng-inline-svg-2';
 import { SharedModule } from 'src/app/shared/shared.module';
-
 @NgModule({
   declarations: [
     PackageComponent

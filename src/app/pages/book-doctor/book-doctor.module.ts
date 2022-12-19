@@ -4,9 +4,6 @@ import { BookDoctorComponent } from './book-doctor.component';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ImageLazyLoadModule } from 'src/app/shared/image-lazy-load/image-lazy-load.module';
-
-
-
 @NgModule({
   declarations: [
     BookDoctorComponent,

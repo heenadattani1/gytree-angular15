@@ -2,7 +2,6 @@ import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { CAROUSEL_CONFIG } from 'src/app/modules/shared/constants/carousel-config.constant';
 import { NavigateService } from 'src/app/modules/shared/helper-utils/navigate.service';
 import { CONSULTATION_SCHEMA } from 'src/app/modules/shared/models/consultations.constant';
-
 @Component({
   selector: 'app-show-consultation',
   templateUrl: './show-consultation.component.html',
@@ -99,5 +98,4 @@ export class ShowConsultationComponent implements OnInit {
   bookNowClickHandler(route: string) {
     this.navigateService.navigation([route]);
   }
-
 }
