@@ -5,7 +5,7 @@
             class="custom-height">
             <ng-container *ngFor="let package of packageData?.packageData; let index = index">
                 <ng-template carouselSlide [id]="index.toString()">
-                    <div class="card text-white setRatio" [ngStyle]="{'background' : package.gtp_color}">
+                    <div class="card text-white" [ngStyle]="{'background' : package.gtp_color}">
                         <img class="card-img-top"  loading=eager
                             [srcset]="package?.gtp_thumbnail[0] ? package?.gtp_thumbnail[0] : 'https://image.gytree.com/assets/media/gaytree/icons/gytree.svg'"
                             alt="Package">
@@ -53,7 +53,7 @@
 <!-- For mobile screen -->
 <div class="package-mobile d-block d-sm-none" *ngIf="!packageData?.packageData?.viewAll">
     <ng-container *ngFor="let package of packageData?.packageData; let index = index">
-        <div class="card text-white mt-2 setRatio" [class.cursor-pointer]="!purchasedPackages"
+        <div class="card text-white mt-2" [class.cursor-pointer]="!purchasedPackages"
             [ngStyle]="{'background' : package.gtp_color}"
             (click)="purchasedPackages ? '' : packageDetailsClick(package.gtp_slug)">
             <img class="card-img-top img-cover"   loading=eager
